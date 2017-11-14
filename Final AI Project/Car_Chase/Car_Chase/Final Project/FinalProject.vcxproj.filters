@@ -1,404 +1,403 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Event System">
-      <UniqueIdentifier>{b274ce34-0fc6-4a17-b303-d41172d18197}</UniqueIdentifier>
+    <Filter Include="Zelda Game">
+      <UniqueIdentifier>{e746df60-f44d-4e70-9111-f89cdb24b52e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Event System\Events">
-      <UniqueIdentifier>{2838c067-7b42-4ec7-bf43-f28a2facade6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event System\Events\Cpp">
-      <UniqueIdentifier>{99f16dda-661b-46a4-a2b7-64e1e6c6e5d8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event System\Events\Headers">
-      <UniqueIdentifier>{219edc9a-9d05-4dbb-b86e-3f8080025cd5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event System\System">
-      <UniqueIdentifier>{e2bea33f-d092-44d9-a0f1-7c05e4d2b341}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base">
+    <Filter Include="Zelda Game\Base">
       <UniqueIdentifier>{7d45f01a-5a7a-428f-9253-e53e8709a623}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{d6200131-4052-487c-a900-afa2c115d7db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Base\Cpps">
+    <Filter Include="Zelda Game\Base\Cpps">
       <UniqueIdentifier>{8734cf8c-9458-42c9-a901-d1b885905687}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Base\Headers">
+    <Filter Include="Zelda Game\Base\Headers">
       <UniqueIdentifier>{cbab105f-4cca-4fb8-a831-46a8bf251d05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Managers">
-      <UniqueIdentifier>{267cf8f4-74a8-4379-b686-0b7bdd584672}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Event System">
+      <UniqueIdentifier>{b274ce34-0fc6-4a17-b303-d41172d18197}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Managers\Headers">
-      <UniqueIdentifier>{a82becb2-6104-48d4-8536-2eaa7dd5dd43}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Event System\Events">
+      <UniqueIdentifier>{2838c067-7b42-4ec7-bf43-f28a2facade6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Managers\Cpps">
-      <UniqueIdentifier>{bc32f20f-cc66-49b8-8537-980921cb054e}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Event System\Events\Cpp">
+      <UniqueIdentifier>{99f16dda-661b-46a4-a2b7-64e1e6c6e5d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects">
-      <UniqueIdentifier>{89a05b7b-11af-4089-95ee-5229728e161b}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Event System\Events\Headers">
+      <UniqueIdentifier>{219edc9a-9d05-4dbb-b86e-3f8080025cd5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\CPPs">
-      <UniqueIdentifier>{c7774971-89df-4387-befb-df0e0fddc099}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Event System\System">
+      <UniqueIdentifier>{e2bea33f-d092-44d9-a0f1-7c05e4d2b341}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Objects\Headers">
-      <UniqueIdentifier>{f5dc30fa-3af4-4788-95fd-eb8009ef8bb8}</UniqueIdentifier>
+    <Filter Include="Zelda Game\Game">
+      <UniqueIdentifier>{d6200131-4052-487c-a900-afa2c115d7db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components">
+    <Filter Include="Zelda Game\Components">
       <UniqueIdentifier>{1aca6713-280e-4ca2-9838-cbd8f0985d1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components\CPPs">
+    <Filter Include="Zelda Game\CPPs">
       <UniqueIdentifier>{74af77bb-4f91-46cf-b2ff-f52daf2ee07e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Components\Headers">
+    <Filter Include="Zelda Game\Headers">
       <UniqueIdentifier>{3cbd7af5-039b-4f81-96e0-f2efd24b2971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Objects">
+      <UniqueIdentifier>{89a05b7b-11af-4089-95ee-5229728e161b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Objects\CPPs">
+      <UniqueIdentifier>{c7774971-89df-4387-befb-df0e0fddc099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Objects\Headers">
+      <UniqueIdentifier>{f5dc30fa-3af4-4788-95fd-eb8009ef8bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Managers">
+      <UniqueIdentifier>{267cf8f4-74a8-4379-b686-0b7bdd584672}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Managers\Headers">
+      <UniqueIdentifier>{a82becb2-6104-48d4-8536-2eaa7dd5dd43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Managers\Cpps">
+      <UniqueIdentifier>{bc32f20f-cc66-49b8-8537-980921cb054e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game">
+      <UniqueIdentifier>{535444fa-ed1a-4f08-aaef-e3aa02d9b937}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BufferManager.cpp">
-      <Filter>Managers\Cpps</Filter>
+      <Filter>Zelda Game\Managers\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="EndGameEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="DeathCollisionEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="MovementEventDown.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="MovementEventLeft.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="MovementEventRight.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="MovementEventUp.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="StartGameEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="LevelManager.cpp">
-      <Filter>Managers\Cpps</Filter>
+      <Filter>Zelda Game\Managers\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Event.cpp">
-      <Filter>Event System\System</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClCompile>
     <ClCompile Include="EventListener.cpp">
-      <Filter>Event System\System</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClCompile>
     <ClCompile Include="EventSystem.cpp">
-      <Filter>Event System\System</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="UserInput.cpp">
-      <Filter>Game</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClCompile>
     <ClCompile Include="animation.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="color.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="font.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="graphicsbuffer.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="graphicssystem.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="sprite.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
-    <ClCompile Include="Main___Tester.cpp" />
     <ClCompile Include="The Boneyard.cpp" />
-    <ClCompile Include="UserInterface.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Unit.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Link.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="EnemyKese.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="EnemyStalfos.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="AnimationManager.cpp">
-      <Filter>Managers\Cpps</Filter>
+      <Filter>Zelda Game\Managers\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="AttackEventPrimary.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="AttackEventSecondary.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Block.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Treasures.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="HorizontalDoor.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="VerticalDoor.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="AudioSystem.cpp">
-      <Filter>Base\Cpps</Filter>
+      <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="StalfosComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="LinkComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="PickupComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="CanGetKilledComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="EnemyGel.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="ScaryComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="HurtPlayerEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="KeseComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Aquamentus.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="AquamentusComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="DropComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="PapaSmurf.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="EnemyPeahat.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="PeahatComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="CanGetKilledByArrowComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Fireball.cpp">
-      <Filter>Game\Objects\CPPs</Filter>
+      <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="SpecialDoorUnlockComponent.cpp">
-      <Filter>Game\Components\CPPs</Filter>
+      <Filter>Zelda Game\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="ChangeDifficultyEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="PlayAudioEvent.cpp">
-      <Filter>Event System\Events\Cpp</Filter>
+      <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
+    <ClCompile Include="UserInput.cpp">
+      <Filter>Zelda Game</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Zelda Game</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BufferManager.h">
-      <Filter>Managers\Headers</Filter>
+      <Filter>Zelda Game\Managers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EndGameEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="DeathCollisionEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="MovementEventDown.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="MovementEventLeft.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="MovementEventRight.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="MovementEventUp.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="StartGameEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LevelManager.h">
-      <Filter>Managers\Headers</Filter>
+      <Filter>Zelda Game\Managers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EventListener.h">
-      <Filter>Event System\System</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClInclude>
     <ClInclude Include="EventSystem.h">
-      <Filter>Event System\System</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClInclude>
     <ClInclude Include="Event.h">
-      <Filter>Event System\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Game</Filter>
+      <Filter>Zelda Game\Event System\System</Filter>
     </ClInclude>
     <ClInclude Include="SDL_lib.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInput.h">
-      <Filter>Game</Filter>
+      <Filter>Zelda Game\Base</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsBuffer.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsSystem.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Base\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="UserInterface.h">
-      <Filter>Game</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Link.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyKese.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyStalfos.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AnimationManager.h">
-      <Filter>Managers\Headers</Filter>
+      <Filter>Zelda Game\Managers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AttackEventPrimary.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AttackEventSecondary.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Block.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Treasures.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="HorizontalDoor.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="VerticalDoor.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AudioSystem.h">
-      <Filter>Base\Headers</Filter>
+      <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LinkComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PickupComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="StalfosComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CanGetKilledComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyGel.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ScaryComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="HurtPlayerEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="KeseComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Aquamentus.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AquamentusComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="DropComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PapaSmurf.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyPeahat.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PeahatComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CanGetKilledByArrowComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Fireball.h">
-      <Filter>Game\Objects\Headers</Filter>
+      <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SpecialDoorUnlockComponent.h">
-      <Filter>Game\Components\Headers</Filter>
+      <Filter>Zelda Game\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ChangeDifficultyEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PlayAudioEvent.h">
-      <Filter>Event System\Events\Headers</Filter>
+      <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="UserInput.h">
+      <Filter>Zelda Game</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Zelda Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h" />
   </ItemGroup>
 </Project>

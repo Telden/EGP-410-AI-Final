@@ -150,7 +150,6 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="LinkComponent.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Main___Tester.cpp" />
     <ClCompile Include="MovementEventDown.cpp" />
     <ClCompile Include="MovementEventLeft.cpp" />
     <ClCompile Include="MovementEventRight.cpp" />

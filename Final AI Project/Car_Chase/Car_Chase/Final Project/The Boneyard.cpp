@@ -1,5 +1,63 @@
 //REST IN PIECE YOU SWEET GLORIOUS BASTARDS
 
+
+
+//if (mEVENT[SDL_SCANCODE_1])
+//{
+//	std::cout << "Difficulty changed: EASY\n";
+//	gpEventSystem->fireEvent(ChangeDifficultyEvent(3, "Easy"));
+//}
+
+//if (mEVENT[SDL_SCANCODE_2])
+//{
+//	std::cout << "Difficulty changed: MEDIUM\n";
+//	gpEventSystem->fireEvent(ChangeDifficultyEvent(0, "Medium"));
+//}
+
+//if (mEVENT[SDL_SCANCODE_3])
+//{
+//	std::cout << "Difficulty changed: HARD\n";
+//	gpEventSystem->fireEvent(ChangeDifficultyEvent(-1, "Hard"));
+//}
+
+//if (switchcooldown == 0)
+//{
+//	if (mEVENT[SDL_SCANCODE_W])
+//	{
+//		gpEventSystem->fireEvent(LOAD_UPPER_LEVEL);
+//		switchcooldown = 60;
+//	}
+//	if (mEVENT[SDL_SCANCODE_A])
+//	{
+//		gpEventSystem->fireEvent(LOAD_LEFT_LEVEL);
+//		switchcooldown = 60;
+//	}
+//	if (mEVENT[SDL_SCANCODE_S])
+//	{
+//		gpEventSystem->fireEvent(LOAD_LOWER_LEVEL);
+//		switchcooldown = 60;
+//	}
+//	if (mEVENT[SDL_SCANCODE_D])
+//	{
+//		gpEventSystem->fireEvent(LOAD_RIGHT_LEVEL);
+//		switchcooldown = 60;
+//	}
+//}
+//else
+//{
+//	switchcooldown--;
+//}
+
+
+
+
+
+
+
+
+
+
+
 //Graphics System
 
 //mpBlackBG = SDL_CreateRenderer(mpDisplay, 0, 0);

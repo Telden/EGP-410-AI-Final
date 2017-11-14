@@ -81,10 +81,9 @@ void Game::init()
 	gpEventSystem->addListener(LOAD_GAME_EVENT, this);
 	gpEventSystem->addListener(LOAD_SAVE_EVENT, this);
 	gpEventSystem->addListener(END_GAME_EVENT, this);
-	gpEventSystem->addListener(LINK_DEATH_EVENT, this);
-	gpEventSystem->addListener(WIN_GAME_EVENT, this);
-	gpEventSystem->addListener(RESET_GAME_EVENT, this);
-	gpEventSystem->addListener(CHANGE_DIFFICULTY_EVENT, this);
+	
+	
+
 	
 	if (mp_timer == NULL)
 	{
@@ -100,28 +99,14 @@ void Game::loadData()
 	inputF.open(DATA_PATH);
 
 	// Load file paths
-	getline(inputF, mArrow_Path);
-	getline(inputF, mDungeon_Background_Path);
-	getline(inputF, mDungeon_Doors_Horizontal_Path);
-	getline(inputF, mDungeon_Doors_Vertical_Path);
-	getline(inputF, mDungeon_Tiles_Path);
-	getline(inputF, mKese_Path);
 	getline(inputF, mLink_Attack_Path);
 	getline(inputF, mLink_Walk_Path);
-	getline(inputF, mStalfos_Path);
 	getline(inputF, mSword_Path);
-	getline(inputF, mTreasures_Path);
-	getline(inputF, mPapaSmurf_Path);
 	getline(inputF, mTitle_Path);
 	getline(inputF, mUI_Path);
-	getline(inputF, mGel_Path);
-	getline(inputF, mDragon_Path);
-	getline(inputF, mFireball_Path);
 	getline(inputF, mGameOver_Path);
 	getline(inputF, mWinScreen_Path);
 	getline(inputF, mMenuText_Path);
-	getline(inputF, mPeahat_Path);
-	getline(inputF, mDifficulty_Path);
 	inputF.close();
 }
 
@@ -250,7 +235,6 @@ void Game::titleScreen()
 		mp_timer->start();
 		mp_Input->checkInput();
 		mp_GraphicsSystem->drawSprite(tempAnim->getSprite(tempAnim->getCurrentSprite()), 0, 0);
-		mp_GraphicsSystem->drawSprite(mp_AnimationManager->getAnimation("Difficulty")->getSprite(mCurrentDifficulty), 780, 780);
 		tempAnim->update();
 		mp_GraphicsSystem->flip();
 		mp_timer->sleepUntilElapsed(FRAME_RATE);
@@ -371,28 +355,15 @@ void Game::createBufferObject()
 	SDL_assert(mp_GraphicsBufferManager != nullptr);
 
 	// add the graphics buffers to the manager
-	mp_GraphicsBufferManager->createBuffer("Arrow", mp_Arrow = new GraphicsBuffer(mArrow_Path));
-	mp_GraphicsBufferManager->createBuffer("DungeonBackground", mp_DungeonBG = new GraphicsBuffer(mDungeon_Background_Path));
-	mp_GraphicsBufferManager->createBuffer("HorizontalDoor", mp_Door_Horizontal = new GraphicsBuffer(mDungeon_Doors_Horizontal_Path));
-	mp_GraphicsBufferManager->createBuffer("VerticalDoor", mp_Door_Vertical = new GraphicsBuffer(mDungeon_Doors_Vertical_Path));
-	mp_GraphicsBufferManager->createBuffer("Tiles", mp_Dungeon_Tiles = new GraphicsBuffer(mDungeon_Tiles_Path));
-	mp_GraphicsBufferManager->createBuffer("Kese", mp_Kese = new GraphicsBuffer(mKese_Path));
+	
 	mp_GraphicsBufferManager->createBuffer("LinkAttack", mp_Link_Attack = new GraphicsBuffer(mLink_Attack_Path));
 	mp_GraphicsBufferManager->createBuffer("LinkMove", mp_link_walk = new GraphicsBuffer(mLink_Walk_Path));
-	mp_GraphicsBufferManager->createBuffer("Stalfos", mp_Stalfos = new GraphicsBuffer(mStalfos_Path));
 	mp_GraphicsBufferManager->createBuffer("Sword", mp_Sword = new GraphicsBuffer(mSword_Path));
-	mp_GraphicsBufferManager->createBuffer("PapaSmurf", mp_PapaSmurf = new GraphicsBuffer(mPapaSmurf_Path));
 	mp_GraphicsBufferManager->createBuffer("Title", mp_TitleScreen = new GraphicsBuffer(mTitle_Path));
-	mp_GraphicsBufferManager->createBuffer("Treasures", mp_treasures = new GraphicsBuffer(mTreasures_Path));
 	mp_GraphicsBufferManager->createBuffer("UI", mp_UI = new GraphicsBuffer(mUI_Path));
-	mp_GraphicsBufferManager->createBuffer("Gel", mp_Gel = new GraphicsBuffer(mGel_Path));
-	mp_GraphicsBufferManager->createBuffer("Dragon", mp_Dragon = new GraphicsBuffer(mDragon_Path));
-	mp_GraphicsBufferManager->createBuffer("Fireball", mp_Fireball = new GraphicsBuffer(mFireball_Path));
 	mp_GraphicsBufferManager->createBuffer("GameOver", mp_GameOver = new GraphicsBuffer(mGameOver_Path));
 	mp_GraphicsBufferManager->createBuffer("WinScreen", mp_WinScreen = new GraphicsBuffer(mWinScreen_Path));
 	mp_GraphicsBufferManager->createBuffer("Menu Text", mp_MenuText = new GraphicsBuffer(mMenuText_Path));
-	mp_GraphicsBufferManager->createBuffer("Peahat", mp_Peahat = new GraphicsBuffer(mPeahat_Path));
-	mp_GraphicsBufferManager->createBuffer("Difficulty", mp_Difficulty = new GraphicsBuffer(mDifficulty_Path));
 }
 
 int Game::getLinkCurrentHealth()
