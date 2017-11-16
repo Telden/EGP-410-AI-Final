@@ -148,7 +148,7 @@ void LinkComponent::render()
 	mpMyUnit->getGraphicsSystem()->drawSprite(mpSword->getAnimation().getSprite(mpSword->getAnimation().getCurrentSprite()), mpSword->getLocX(), mpSword->getLocY());
 
 	// render the arrow
-	mpMyUnit->getGraphicsSystem()->drawSprite(mpArrow->getAnimation().getSprite(mpArrow->getAnimation().getCurrentSprite()), mpArrow->getLocX(), mpArrow->getLocY());
+	//mpMyUnit->getGraphicsSystem()->drawSprite(mpArrow->getAnimation().getSprite(mpArrow->getAnimation().getCurrentSprite()), mpArrow->getLocX(), mpArrow->getLocY());
 
 	// render the current animation
 	mpMyUnit->getGraphicsSystem()->drawSprite(mpCurrentAnimation->getSprite(mpCurrentAnimation->getCurrentSprite()), mpMyUnit->getLocX(), mpMyUnit->getLocY());
@@ -207,7 +207,7 @@ void LinkComponent::update()
 	useDoors();
 
 	// move the arrow based on the current arrow direction
-	if (mDirectionArrow == "up")
+	/*if (mDirectionArrow == "up")
 	{
 		mpArrow->setLocY(mpArrow->getLocY() - mArrowSpeed);
 		mpArrow->setAnimation(*mpArrowUp);
@@ -226,13 +226,13 @@ void LinkComponent::update()
 	{
 		mpArrow->setLocX(mpArrow->getLocX() + mArrowSpeed);
 		mpArrow->setAnimation(*mpArrowRight);
-	}
+	}*/
 
 	if (mIsAttacking)
 	{
 		resetSword();
 	}
-	resetBow();
+	//resetBow();
 
 	// direction of the sword
 	if (mDirectionFacing == "up")

@@ -29,10 +29,6 @@ LevelManager::LevelManager(int scalar)
 	mGridSizeWithScalar = GRID_SIZE * mScalar; 
 	mCompensationWithScalar = BG_COMPENSATION * mScalar;
 
-	gpEventSystem->addListener(LOAD_LEFT_LEVEL, this);
-	gpEventSystem->addListener(LOAD_RIGHT_LEVEL, this);
-	gpEventSystem->addListener(LOAD_UPPER_LEVEL, this);
-	gpEventSystem->addListener(LOAD_LOWER_LEVEL, this);
 	gpEventSystem->addListener(RESET_GAME_EVENT, this);
 	gpEventSystem->addListener(END_GAME_EVENT, this);
 	gpEventSystem->addListener(SAVE_GAME_EVENT, this);
@@ -81,260 +77,260 @@ void LevelManager::initLevels()
 				std::cout << "Adding level " << level << std::endl;
 				addLevel(level, tempLevel);
 
-				while (!inputF.eof())
-				{
-						inputF >> file_input;
-						switch (file_input)
-						{
-						case '1':
-						{
-							std::cout << "1";
-							//Add right-facing statue
-							tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 1));
-							break;
-						}
+				//while (!inputF.eof())
+				//{
+				//		inputF >> file_input;
+				//		switch (file_input)
+				//		{
+				//		case '1':
+				//		{
+				//			std::cout << "1";
+				//			//Add right-facing statue
+				//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 1));
+				//			break;
+				//		}
 
-						case '2':
-						{
-							std::cout << "2";
-							//Add a left-facing statue unit
-							tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 2));
-							break;
-						}
-						case '3':
-						{
-							std::cout << "3";
-							//Add a block unit
-							tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 3));
-							break;
-						}
-						case '4':
-						{
-							std::cout << "4";
-							//Add a sand unit
-							tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 4));
-							break;
-						}
-						case '5':
-						{
-							std::cout << "5";
-							//Add a black unit
-							tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
-							break;
-						}
-						case '6':
-						{
-							std::cout << "6";
-							//Add a water unit
-							tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
-							break;
-						}
-						case 'W':
-						{	
-							//Add a wall unit
-							std::cout << "W";
-							tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
-							break;
-						}
-						case 'A':
-						{
-							std::cout << "A";
-							//Add a Bow Unit
-							tempLevel->addTreasure(new Treasure("Bow",(mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
-							break;
-						}
-						case 'H':
-						{
-							std::cout << "H";
-							//Add a door unit
-							inputF >> file_input;
-							if (file_input == 'D')
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//Add a right horizontal open door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-								}
-								else
-								{
-									//Add a left horizontal open door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-								}
-							}
-							else if(file_input == 'L')//L
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//Add a right horizontal closed door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, false, false));
-									
-								}
-								else
-								{
-									//Add a left horizontal closed door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, false, false));
-									
-								}
-							}
-							else //special locked door
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//Add a right Horizonal special door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 4, false, true));
-								}
-								else
-								{
-									//add left Horizontal special door
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-									tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 5, false, true));
-								}
-							}
-							break;
-						}
-						case 'V':
-						{
-							std::cout << "V";
-							//Add a locked door unit
-							inputF >> file_input;
-							if (file_input == 'D')
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//Add a right horizontal open door
-									//std::cout << "Creating Door Object\n";
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-								}
-								else
-								{
-									//Add a left horizontal open door
-									//std::cout << "Creating Door Object\n";
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-								}
-							}
-							else if (file_input == 'L')
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//Add a right horizontal closed door
-									//std::cout << "Creating Door Object\n";
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, false, false));
-								}
-								else
-								{
-									//Add a left horizontal closed door
-									//std::cout << "Creating Door Object\n";
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, false, false));
-								}
-							}
-							else
-							{
-								inputF >> file_input;
-								if (file_input == '0')
-								{
-									//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, 4, false, true));
-								}
-								else
-								{
-									//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-									tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, 5, false, true));
-								}
-							}
-							break;
-						}
-						case 'B':
-						{
-							//add a bat unit
-							std::cout << "B";
-							tempLevel->addEnemyKese(new EnemyKese((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-							break;
-						}
-						case 'K':
-						{
-							//Add a key unit
-							std::cout << "K";
-							tempLevel->addTreasure(new Treasure("Key",(mGridSizeWithScalar * c) + mCompensationWithScalar + 16, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
-							break;
-						}
-						case 'S':
-						{
-							//Add a skeleton unit
-							std::cout << "S";
-							tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, false));
-							break;
-						}
-						case 'Q':
-						{
-							//Add a Skeleton holding key
-							tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, true));
-							break;
-						}
-						case 'C':
-						{
-							//Add a black unit
-							tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
-							//Add a 'curse you papa smurf'
-							tempLevel->addSmurf(new PapaSmurf((mGridSizeWithScalar * c) + mCompensationWithScalar + 160, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-							break;
-						}
-						case 'G':
-						{
-							//Add a Gel unit
-							tempLevel->addEnemyGel(new EnemyGel((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-							break;
-						}
-						case 'D':
-						{
-							//Add Aquamentus unit
-							tempLevel->addAquamentus(new Aquamentus((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-							break;
-						}
-						case 'T':
-						{
-							//Add Triforce
-							tempLevel->addTreasure(new Treasure("Triforce",(mGridSizeWithScalar * c) + mCompensationWithScalar +42, (mGridSizeWithScalar * r) + mCompensationWithScalar +35, 0));
-							break;
+				//		case '2':
+				//		{
+				//			std::cout << "2";
+				//			//Add a left-facing statue unit
+				//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 2));
+				//			break;
+				//		}
+				//		case '3':
+				//		{
+				//			std::cout << "3";
+				//			//Add a block unit
+				//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 3));
+				//			break;
+				//		}
+				//		case '4':
+				//		{
+				//			std::cout << "4";
+				//			//Add a sand unit
+				//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 4));
+				//			break;
+				//		}
+				//		case '5':
+				//		{
+				//			std::cout << "5";
+				//			//Add a black unit
+				//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
+				//			break;
+				//		}
+				//		case '6':
+				//		{
+				//			std::cout << "6";
+				//			//Add a water unit
+				//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
+				//			break;
+				//		}
+				//		case 'W':
+				//		{	
+				//			//Add a wall unit
+				//			std::cout << "W";
+				//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
+				//			break;
+				//		}
+				//		case 'A':
+				//		{
+				//			std::cout << "A";
+				//			//Add a Bow Unit
+				//			tempLevel->addTreasure(new Treasure("Bow",(mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
+				//			break;
+				//		}
+				//		case 'H':
+				//		{
+				//			std::cout << "H";
+				//			//Add a door unit
+				//			inputF >> file_input;
+				//			if (file_input == 'D')
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//Add a right horizontal open door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+				//				}
+				//				else
+				//				{
+				//					//Add a left horizontal open door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+				//				}
+				//			}
+				//			else if(file_input == 'L')//L
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//Add a right horizontal closed door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, false, false));
+				//					
+				//				}
+				//				else
+				//				{
+				//					//Add a left horizontal closed door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, false, false));
+				//					
+				//				}
+				//			}
+				//			else //special locked door
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//Add a right Horizonal special door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 4, false, true));
+				//				}
+				//				else
+				//				{
+				//					//add left Horizontal special door
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+				//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 5, false, true));
+				//				}
+				//			}
+				//			break;
+				//		}
+				//		case 'V':
+				//		{
+				//			std::cout << "V";
+				//			//Add a locked door unit
+				//			inputF >> file_input;
+				//			if (file_input == 'D')
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//Add a right horizontal open door
+				//					//std::cout << "Creating Door Object\n";
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+				//				}
+				//				else
+				//				{
+				//					//Add a left horizontal open door
+				//					//std::cout << "Creating Door Object\n";
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+				//				}
+				//			}
+				//			else if (file_input == 'L')
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//Add a right horizontal closed door
+				//					//std::cout << "Creating Door Object\n";
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, false, false));
+				//				}
+				//				else
+				//				{
+				//					//Add a left horizontal closed door
+				//					//std::cout << "Creating Door Object\n";
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, false, false));
+				//				}
+				//			}
+				//			else
+				//			{
+				//				inputF >> file_input;
+				//				if (file_input == '0')
+				//				{
+				//					//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, 4, false, true));
+				//				}
+				//				else
+				//				{
+				//					//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+				//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, 5, false, true));
+				//				}
+				//			}
+				//			break;
+				//		}
+				//		case 'B':
+				//		{
+				//			//add a bat unit
+				//			std::cout << "B";
+				//			tempLevel->addEnemyKese(new EnemyKese((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+				//			break;
+				//		}
+				//		case 'K':
+				//		{
+				//			//Add a key unit
+				//			std::cout << "K";
+				//			tempLevel->addTreasure(new Treasure("Key",(mGridSizeWithScalar * c) + mCompensationWithScalar + 16, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
+				//			break;
+				//		}
+				//		case 'S':
+				//		{
+				//			//Add a skeleton unit
+				//			std::cout << "S";
+				//			tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, false));
+				//			break;
+				//		}
+				//		case 'Q':
+				//		{
+				//			//Add a Skeleton holding key
+				//			tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, true));
+				//			break;
+				//		}
+				//		case 'C':
+				//		{
+				//			//Add a black unit
+				//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
+				//			//Add a 'curse you papa smurf'
+				//			tempLevel->addSmurf(new PapaSmurf((mGridSizeWithScalar * c) + mCompensationWithScalar + 160, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+				//			break;
+				//		}
+				//		case 'G':
+				//		{
+				//			//Add a Gel unit
+				//			tempLevel->addEnemyGel(new EnemyGel((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+				//			break;
+				//		}
+				//		case 'D':
+				//		{
+				//			//Add Aquamentus unit
+				//			tempLevel->addAquamentus(new Aquamentus((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+				//			break;
+				//		}
+				//		case 'T':
+				//		{
+				//			//Add Triforce
+				//			tempLevel->addTreasure(new Treasure("Triforce",(mGridSizeWithScalar * c) + mCompensationWithScalar +42, (mGridSizeWithScalar * r) + mCompensationWithScalar +35, 0));
+				//			break;
 
-						}
-						case 'P':
-						{
-							tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, true));
-							break;
-						}
-						case 'p':
-						{
-							tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, false));
-							break;
-						}
-						default:
-						{
-							std::cout << file_input;
-							//std::cout << "I do not know what to do with " << file_input << std::endl;
-							break;
-						}
+				//		}
+				//		case 'P':
+				//		{
+				//			tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, true));
+				//			break;
+				//		}
+				//		case 'p':
+				//		{
+				//			tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, false));
+				//			break;
+				//		}
+				//		default:
+				//		{
+				//			std::cout << file_input;
+				//			//std::cout << "I do not know what to do with " << file_input << std::endl;
+				//			break;
+				//		}
 
-						
-					}
-						c++;
+				//		
+				//	}
+				//		c++;
 
-						if (c == TOTAL_COLUMNS)
-						{
-							std::cout << std::endl;
-							c = 0;
-							r++;
-						}
-				}
+				//		if (c == TOTAL_COLUMNS)
+				//		{
+				//			std::cout << std::endl;
+				//			c = 0;
+				//			r++;
+				//		}
+				//}
 				tempLevel = NULL;
 			}
 			inputF.close();
@@ -368,8 +364,8 @@ void LevelManager::loadSave()
 		saveFile >> input_data;
 		mCurrentLevel = atoi(input_data.c_str());
 
-		while (!saveFile.eof())
-		{
+	/*	while (!saveFile.eof())
+		{*/
 			
 			//Load Link
 		
@@ -395,243 +391,243 @@ void LevelManager::loadSave()
 				mpLink = new Link(locX, locY, numKeys, currentHealth, maxHealth, direction, tempBool);
 				linkCreated = true;
 			}
-		saveFile >> input_data;
-		if (input_data != "0")
-		{
-			tempLevel = new Level(input_data);
-			filename = input_data;
-			std::cout << input_data << std::endl;
-			loadSaveLevel(tempLevel, input_data); //Load the walls, blocks, and tiles
-			addLevel(filename, tempLevel);
+	//	saveFile >> input_data;
+	//	if (input_data != "0")
+	//	{
+	//		tempLevel = new Level(input_data);
+	//		filename = input_data;
+	//		std::cout << input_data << std::endl;
+	//		loadSaveLevel(tempLevel, input_data); //Load the walls, blocks, and tiles
+	//		addLevel(filename, tempLevel);
 
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str()); //convert the string to an int;
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str()); //convert the string to an int;
 
-														//Add Stalfos
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				saveFile >> input_data;
-				if (input_data == "True")
-				{
-					tempBool = true;
+	//													//Add Stalfos
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			saveFile >> input_data;
+	//			if (input_data == "True")
+	//			{
+	//				tempBool = true;
 
-				}
+	//			}
 
-				else
-					tempBool = false;
+	//			else
+	//				tempBool = false;
 
-				tempLevel->addStalfos(new EnemyStalfos(locX, locY, tempBool));
-				tempLevel->getEnemyStalfos(i)->setIsActive(isActive);
-			}
+	//			tempLevel->addStalfos(new EnemyStalfos(locX, locY, tempBool));
+	//			tempLevel->getEnemyStalfos(i)->setIsActive(isActive);
+	//		}
 
-			//Add this level's Kese
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				tempLevel->addEnemyKese(new EnemyKese(locX, locY));
-				tempLevel->getEnemyKese(i)->setIsActive(isActive);
-			}
+	//		//Add this level's Kese
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			tempLevel->addEnemyKese(new EnemyKese(locX, locY));
+	//			tempLevel->getEnemyKese(i)->setIsActive(isActive);
+	//		}
 
-			//Add this level's gel's
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				tempLevel->addEnemyGel(new EnemyGel(locX, locY));
-				tempLevel->getEnemyGel(i)->setIsActive(isActive);
-			}
+	//		//Add this level's gel's
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			tempLevel->addEnemyGel(new EnemyGel(locX, locY));
+	//			tempLevel->getEnemyGel(i)->setIsActive(isActive);
+	//		}
 
-			//Load this level's Peahats
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				saveFile >> input_data;
-				if (input_data == "True")
-					tempBool = true;
-				else
-					tempBool = false;
-				tempLevel->addPeahat(new EnemyPeahat(locX, locY, tempBool));
-				tempLevel->getPeahat(i)->setIsActive(isActive);
-			}
+	//		//Load this level's Peahats
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			saveFile >> input_data;
+	//			if (input_data == "True")
+	//				tempBool = true;
+	//			else
+	//				tempBool = false;
+	//			tempLevel->addPeahat(new EnemyPeahat(locX, locY, tempBool));
+	//			tempLevel->getPeahat(i)->setIsActive(isActive);
+	//		}
 
-			//Load this Level's AquaMentus
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				tempLevel->addAquamentus(new Aquamentus(locX, locY));
-				tempLevel->getAquamentus(i)->setIsActive(isActive);
-			}
+	//		//Load this Level's AquaMentus
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			tempLevel->addAquamentus(new Aquamentus(locX, locY));
+	//			tempLevel->getAquamentus(i)->setIsActive(isActive);
+	//		}
 
-			//Add this Level's treasures
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				saveFile >> input_data;
-				spritenum = atoi(input_data.c_str());
-				saveFile >> tag;
-				tempLevel->addTreasure(new Treasure(tag, locX, locY, spritenum));
-				tempLevel->getTreasure(i)->setIsActive(isActive);
-			}
+	//		//Add this Level's treasures
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			saveFile >> input_data;
+	//			spritenum = atoi(input_data.c_str());
+	//			saveFile >> tag;
+	//			tempLevel->addTreasure(new Treasure(tag, locX, locY, spritenum));
+	//			tempLevel->getTreasure(i)->setIsActive(isActive);
+	//		}
 
-			//Add this Level's Horizontal's Doors
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				saveFile >> input_data;
-				if (input_data == "True")
-				{
-					tempBool = true;
-					saveFile >> input_data;
-					spritenum = atoi(input_data.c_str());
-					tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, NULL, NULL, spritenum, NULL, tempBool));
-					tempLevel->getHorizDoor(i)->setIsActive(isActive);
-				}
+	//		//Add this Level's Horizontal's Doors
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			saveFile >> input_data;
+	//			if (input_data == "True")
+	//			{
+	//				tempBool = true;
+	//				saveFile >> input_data;
+	//				spritenum = atoi(input_data.c_str());
+	//				tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, NULL, NULL, spritenum, NULL, tempBool));
+	//				tempLevel->getHorizDoor(i)->setIsActive(isActive);
+	//			}
 
-				else //Not special door
-				{
-					saveFile >> input_data;
-					if (input_data == "True") //is open
-					{
-						tempBool = true;
-						saveFile >> input_data;
-						spritenum = atoi(input_data.c_str());
-						tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, spritenum, NULL, NULL, true, false));
-						tempLevel->getHorizDoor(i)->setIsActive(isActive);
-					}
-					else
-					{
-						tempBool = false;
-						saveFile >> input_data;
-						spritenum = atoi(input_data.c_str());
-						tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, NULL, spritenum, NULL, false, false));
-						tempLevel->getHorizDoor(i)->setIsActive(isActive);
-					}
-				}
+	//			else //Not special door
+	//			{
+	//				saveFile >> input_data;
+	//				if (input_data == "True") //is open
+	//				{
+	//					tempBool = true;
+	//					saveFile >> input_data;
+	//					spritenum = atoi(input_data.c_str());
+	//					tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, spritenum, NULL, NULL, true, false));
+	//					tempLevel->getHorizDoor(i)->setIsActive(isActive);
+	//				}
+	//				else
+	//				{
+	//					tempBool = false;
+	//					saveFile >> input_data;
+	//					spritenum = atoi(input_data.c_str());
+	//					tempLevel->addHorizDoor(new HorizontalDoor(locX, locY, NULL, spritenum, NULL, false, false));
+	//					tempLevel->getHorizDoor(i)->setIsActive(isActive);
+	//				}
+	//			}
 
-			}
+	//		}
 
-			//Add this Level's Vertical Doors
-			saveFile >> input_data;
-			temp = atoi(input_data.c_str());
-			for (int i = 0; i < temp; i++)
-			{
-				saveFile >> input_data;
-				locX = atoi(input_data.c_str());
-				saveFile >> input_data;
-				locY = atoi(input_data.c_str());
-				saveFile >> input_data;
-				if (input_data == "0")
-					isActive = false;
-				else
-					isActive = true;
-				saveFile >> input_data;
-				if (input_data == "True")
-				{
-					tempBool = true;
-					saveFile >> input_data;
-					spritenum = atoi(input_data.c_str());
-					tempLevel->addVertDoor(new VerticalDoor(locX, locY, NULL, NULL, spritenum, NULL, tempBool));
-					tempLevel->getVertDoor(i)->setIsActive(isActive);
-				}
+	//		//Add this Level's Vertical Doors
+	//		saveFile >> input_data;
+	//		temp = atoi(input_data.c_str());
+	//		for (int i = 0; i < temp; i++)
+	//		{
+	//			saveFile >> input_data;
+	//			locX = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			locY = atoi(input_data.c_str());
+	//			saveFile >> input_data;
+	//			if (input_data == "0")
+	//				isActive = false;
+	//			else
+	//				isActive = true;
+	//			saveFile >> input_data;
+	//			if (input_data == "True")
+	//			{
+	//				tempBool = true;
+	//				saveFile >> input_data;
+	//				spritenum = atoi(input_data.c_str());
+	//				tempLevel->addVertDoor(new VerticalDoor(locX, locY, NULL, NULL, spritenum, NULL, tempBool));
+	//				tempLevel->getVertDoor(i)->setIsActive(isActive);
+	//			}
 
-				else //Not special door
-				{
-					saveFile >> input_data;
-					if (input_data == "True") //is open
-					{
-						tempBool = true;
-						saveFile >> input_data;
-						spritenum = atoi(input_data.c_str());
-						tempLevel->addVertDoor(new VerticalDoor(locX, locY, spritenum, NULL, NULL, true, false));
-						tempLevel->getVertDoor(i)->setIsActive(isActive);
-					}
-					else
-					{
-						tempBool = false;
-						saveFile >> input_data;
-						spritenum = atoi(input_data.c_str());
-						tempLevel->addVertDoor(new VerticalDoor(locX, locY, NULL, spritenum, NULL, false, false));
-						tempLevel->getVertDoor(i)->setIsActive(isActive);
-					}
-				}
-			}
+	//			else //Not special door
+	//			{
+	//				saveFile >> input_data;
+	//				if (input_data == "True") //is open
+	//				{
+	//					tempBool = true;
+	//					saveFile >> input_data;
+	//					spritenum = atoi(input_data.c_str());
+	//					tempLevel->addVertDoor(new VerticalDoor(locX, locY, spritenum, NULL, NULL, true, false));
+	//					tempLevel->getVertDoor(i)->setIsActive(isActive);
+	//				}
+	//				else
+	//				{
+	//					tempBool = false;
+	//					saveFile >> input_data;
+	//					spritenum = atoi(input_data.c_str());
+	//					tempLevel->addVertDoor(new VerticalDoor(locX, locY, NULL, spritenum, NULL, false, false));
+	//					tempLevel->getVertDoor(i)->setIsActive(isActive);
+	//				}
+	//			}
+	//		}
 
-		}
-		
-		
+	//	}
+	//	
+	//	
 
-		
+	//	
 
-		
-	}
+	//	
+	//}
 	saveFile.close();
  }
 
@@ -639,293 +635,293 @@ void LevelManager::loadSave()
 
 void LevelManager::loadSaveLevel(Level* tempLevel, std::string levelName)
 {
-	ifstream inputF;
-	char file_input;
-	int c = 0, r = 0;
-	
-	inputF.open("Save/level" + levelName + ".txt");
-	if(inputF.fail())
-	{
-		std::cout << "File failed to open\n";
-	}
-	else
-	{
-		while (!inputF.eof())
-		{
-			inputF >> file_input;
-			switch (file_input)
-			{
-			case '1':
-			{
-				std::cout << "1";
-				//Add right-facing statue
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 1));
-				break;
-			}
+	//ifstream inputF;
+	//char file_input;
+	//int c = 0, r = 0;
+	//
+	//inputF.open("Save/level" + levelName + ".txt");
+	//if(inputF.fail())
+	//{
+	//	std::cout << "File failed to open\n";
+	//}
+	//else
+	//{
+	//	while (!inputF.eof())
+	//	{
+	//		inputF >> file_input;
+	//		switch (file_input)
+	//		{
+	//		case '1':
+	//		{
+	//			std::cout << "1";
+	//			//Add right-facing statue
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 1));
+	//			break;
+	//		}
 
-			case '2':
-			{
-				std::cout << "2";
-				//Add a left-facing statue unit
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 2));
-				break;
-			}
-			case '3':
-			{
-				std::cout << "3";
-				//Add a block unit
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 3));
-				break;
-			}
-			case '4':
-			{
-				std::cout << "4";
-				//Add a sand unit
-				tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 4));
-				break;
-			}
-			case '5':
-			{
-				std::cout << "5";
-				//Add a black unit
-				tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
-				break;
-			}
-			case '6':
-			{
-				std::cout << "6";
-				//Add a water unit
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
-				break;
-			}
-			case 'W':
-			{
-				//Add a wall unit
-				std::cout << "W";
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
-				break;
-			}
-			case 'A':
-			{
-				std::cout << "A";
-				//Add a Bow Unit
-				tempLevel->addTreasure(new Treasure("Bow", (mGridSizeWithScalar * c) + mCompensationWithScalar + 16, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
-				break;
-			}
-			case 'H':
-			{
-				std::cout << "H";
-				//Add a door unit
-				inputF >> file_input;
-				if (file_input == 'D')
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//Add a right horizontal open door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-					}
-					else
-					{
-						//Add a left horizontal open door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-					}
-				}
-				else if (file_input == 'L')//L
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//Add a right horizontal closed door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, false, false));
+	//		case '2':
+	//		{
+	//			std::cout << "2";
+	//			//Add a left-facing statue unit
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 2));
+	//			break;
+	//		}
+	//		case '3':
+	//		{
+	//			std::cout << "3";
+	//			//Add a block unit
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 3));
+	//			break;
+	//		}
+	//		case '4':
+	//		{
+	//			std::cout << "4";
+	//			//Add a sand unit
+	//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 4));
+	//			break;
+	//		}
+	//		case '5':
+	//		{
+	//			std::cout << "5";
+	//			//Add a black unit
+	//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
+	//			break;
+	//		}
+	//		case '6':
+	//		{
+	//			std::cout << "6";
+	//			//Add a water unit
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
+	//			break;
+	//		}
+	//		case 'W':
+	//		{
+	//			//Add a wall unit
+	//			std::cout << "W";
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
+	//			break;
+	//		}
+	//		case 'A':
+	//		{
+	//			std::cout << "A";
+	//			//Add a Bow Unit
+	//			tempLevel->addTreasure(new Treasure("Bow", (mGridSizeWithScalar * c) + mCompensationWithScalar + 16, (mGridSizeWithScalar * r) + mCompensationWithScalar, 7));
+	//			break;
+	//		}
+	//		case 'H':
+	//		{
+	//			std::cout << "H";
+	//			//Add a door unit
+	//			inputF >> file_input;
+	//			if (file_input == 'D')
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//Add a right horizontal open door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+	//				}
+	//				else
+	//				{
+	//					//Add a left horizontal open door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+	//				}
+	//			}
+	//			else if (file_input == 'L')//L
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//Add a right horizontal closed door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, false, false));
 
-					}
-					else
-					{
-						//Add a left horizontal closed door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, false, false));
+	//				}
+	//				else
+	//				{
+	//					//Add a left horizontal closed door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, false, false));
 
-					}
-				}
-				else //special locked door
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//Add a right horizontal special door
-						//tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 4, false, true));
-					}
-					else
-					{
-						//tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
-						tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 5, false, true));
-					}
-				}
-				break;
-			}
-			case 'V':
-			{
-				std::cout << "V";
-				//Add a locked door unit
-				inputF >> file_input;
-				if (file_input == 'D')
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//Add a right horizontal open door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-					}
-					else
-					{
-						//Add a left horizontal open door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-					}
-				}
-				else if (file_input == 'L')
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//Add a right horizontal closed door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, false, false));
-					}
-					else
-					{
-						//Add a left horizontal closed door
-						//std::cout << "Creating Door Object\n";
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, false, false));
-					}
-				}
-				else
-				{
-					inputF >> file_input;
-					if (file_input == '0')
-					{
-						//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, 4, false, true));
-					}
-					else
-					{
-						//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
-						tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, 5, false, true));
-					}
-				}
-				break;
-			}
-			case 'B':
-			{
-				//add a bat unit
-				std::cout << "B";
-				tempLevel->addEnemyKese(new EnemyKese((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-				break;
-			}
-			case 'K':
-			{
-				//Add a key unit
-				std::cout << "K";
-				tempLevel->addTreasure(new Treasure("Key", (mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
-				break;
-			}
-			case 'S':
-			{
-				//Add a skeleton unit
-				std::cout << "S";
-				tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, false));
-				break;
-			}
-			case 'Q':
-			{
-				//Add a Skeleton holding key
-				tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, true));
-				break;
-			}
-			case 'C':
-			{
-				//Add a black unit
-				tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
-				//Add a 'curse you papa smurf'
-				tempLevel->addSmurf(new PapaSmurf((mGridSizeWithScalar * c) + mCompensationWithScalar + 160, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-				break;
-			}
-			case 'G':
-			{
-				//Add a Gel unit
-				tempLevel->addEnemyGel(new EnemyGel((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-				break;
-			}
-			case 'Y':
-			{
-				//Add a blackTile
-				tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
-				break;
-			}
-			case 'D':
-			{
-				//Add Aquamentus unit
-				tempLevel->addAquamentus(new Aquamentus((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
-				break;
-			}
-			case 'T':
-			{
-				//Add Triforce
-				tempLevel->addTreasure(new Treasure("Triforce", (mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, 0));
-				break;
+	//				}
+	//			}
+	//			else //special locked door
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//Add a right horizontal special door
+	//					//tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 0, 2, NULL, true, false));
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 4, false, true));
+	//				}
+	//				else
+	//				{
+	//					//tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, 1, 3, NULL, true, false));
+	//					tempLevel->addHorizDoor(new HorizontalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar - 12, (mGridSizeWithScalar * r) + mCompensationWithScalar - 32, NULL, NULL, 5, false, true));
+	//				}
+	//			}
+	//			break;
+	//		}
+	//		case 'V':
+	//		{
+	//			std::cout << "V";
+	//			//Add a locked door unit
+	//			inputF >> file_input;
+	//			if (file_input == 'D')
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//Add a right horizontal open door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+	//				}
+	//				else
+	//				{
+	//					//Add a left horizontal open door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+	//				}
+	//			}
+	//			else if (file_input == 'L')
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//Add a right horizontal closed door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, false, false));
+	//				}
+	//				else
+	//				{
+	//					//Add a left horizontal closed door
+	//					//std::cout << "Creating Door Object\n";
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, false, false));
+	//				}
+	//			}
+	//			else
+	//			{
+	//				inputF >> file_input;
+	//				if (file_input == '0')
+	//				{
+	//					//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, NULL, true, false));
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 0, 2, 4, false, true));
+	//				}
+	//				else
+	//				{
+	//					//tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, NULL, true, false));
+	//					tempLevel->addVertDoor(new VerticalDoor((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar - 12, 1, 3, 5, false, true));
+	//				}
+	//			}
+	//			break;
+	//		}
+	//		case 'B':
+	//		{
+	//			//add a bat unit
+	//			std::cout << "B";
+	//			tempLevel->addEnemyKese(new EnemyKese((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+	//			break;
+	//		}
+	//		case 'K':
+	//		{
+	//			//Add a key unit
+	//			std::cout << "K";
+	//			tempLevel->addTreasure(new Treasure("Key", (mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 6));
+	//			break;
+	//		}
+	//		case 'S':
+	//		{
+	//			//Add a skeleton unit
+	//			std::cout << "S";
+	//			tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, false));
+	//			break;
+	//		}
+	//		case 'Q':
+	//		{
+	//			//Add a Skeleton holding key
+	//			tempLevel->addStalfos(new EnemyStalfos((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, true));
+	//			break;
+	//		}
+	//		case 'C':
+	//		{
+	//			//Add a black unit
+	//			tempLevel->addTile(new Tile((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
+	//			//Add a 'curse you papa smurf'
+	//			tempLevel->addSmurf(new PapaSmurf((mGridSizeWithScalar * c) + mCompensationWithScalar + 160, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+	//			break;
+	//		}
+	//		case 'G':
+	//		{
+	//			//Add a Gel unit
+	//			tempLevel->addEnemyGel(new EnemyGel((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+	//			break;
+	//		}
+	//		case 'Y':
+	//		{
+	//			//Add a blackTile
+	//			tempLevel->addBlock(new Block((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar, 5));
+	//			break;
+	//		}
+	//		case 'D':
+	//		{
+	//			//Add Aquamentus unit
+	//			tempLevel->addAquamentus(new Aquamentus((mGridSizeWithScalar * c) + mCompensationWithScalar, (mGridSizeWithScalar * r) + mCompensationWithScalar));
+	//			break;
+	//		}
+	//		case 'T':
+	//		{
+	//			//Add Triforce
+	//			tempLevel->addTreasure(new Treasure("Triforce", (mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, 0));
+	//			break;
 
-			}
-			case 'P':
-			{
-				tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, true));
-				break;
-			}
-			case 'p':
-			{
-				tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, false));
-				break;
-			}
-			default:
-			{
-				std::cout << file_input;
-				//std::cout << "I do not know what to do with " << file_input << std::endl;
-				break;
-			}
+	//		}
+	//		case 'P':
+	//		{
+	//			tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, true));
+	//			break;
+	//		}
+	//		case 'p':
+	//		{
+	//			tempLevel->addPeahat(new EnemyPeahat((mGridSizeWithScalar * c) + mCompensationWithScalar + 42, (mGridSizeWithScalar * r) + mCompensationWithScalar + 35, false));
+	//			break;
+	//		}
+	//		default:
+	//		{
+	//			std::cout << file_input;
+	//			//std::cout << "I do not know what to do with " << file_input << std::endl;
+	//			break;
+	//		}
 
 
-			}
-			c++;
+	//		}
+	//		c++;
 
-			if (c == TOTAL_COLUMNS)
-			{
-				std::cout << std::endl;
-				c = 0;
-				r++;
-			}
-		}
-	}
+	//		if (c == TOTAL_COLUMNS)
+	//		{
+	//			std::cout << std::endl;
+	//			c = 0;
+	//			r++;
+	//		}
+	//	}
+	//}
 }
 
 void LevelManager::update()
 {
 	mpLink->update();
-	getCurrentLevel()->update();
+	//getCurrentLevel()->update();
 }
 
 void LevelManager::render()
 {
 	
-	getCurrentLevel()->render();
+	//getCurrentLevel()->render();
 	mpLink->render();
 }
 

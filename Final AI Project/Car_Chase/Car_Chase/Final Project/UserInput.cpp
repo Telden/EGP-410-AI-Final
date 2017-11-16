@@ -124,12 +124,6 @@ void UserInput::checkInput()
 	//	//std::cout << "Secondary Attack\n";
 	//	gpEventSystem->fireEvent(ATTACK_EVENT_SECONDARY);
 	//}
-
-	if (mEVENT[SDL_SCANCODE_X])
-	{
-		//std::cout << "Secondary Attack\n";
-		gpEventSystem->fireEvent(ATTACK_EVENT_SECONDARY);
-	}
 	
 
 

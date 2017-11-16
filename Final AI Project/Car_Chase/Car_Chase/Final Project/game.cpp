@@ -337,7 +337,7 @@ void Game::update()
 void Game::render()
 {
 	// draw the background
-	mp_GraphicsSystem->drawBuffer(mp_DungeonBG, 0, 0);
+	//mp_GraphicsSystem->drawBuffer(mp_DungeonBG, 0, 0);
 
 	// render the unit behavior
 	mp_LevelManager->render();
