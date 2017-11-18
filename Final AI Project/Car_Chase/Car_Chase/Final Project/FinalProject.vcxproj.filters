@@ -34,12 +34,6 @@
     <Filter Include="Zelda Game\Components">
       <UniqueIdentifier>{1aca6713-280e-4ca2-9838-cbd8f0985d1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Zelda Game\CPPs">
-      <UniqueIdentifier>{74af77bb-4f91-46cf-b2ff-f52daf2ee07e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Zelda Game\Headers">
-      <UniqueIdentifier>{3cbd7af5-039b-4f81-96e0-f2efd24b2971}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Zelda Game\Objects">
       <UniqueIdentifier>{89a05b7b-11af-4089-95ee-5229728e161b}</UniqueIdentifier>
     </Filter>
@@ -60,6 +54,30 @@
     </Filter>
     <Filter Include="Car  Game">
       <UniqueIdentifier>{535444fa-ed1a-4f08-aaef-e3aa02d9b937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Components">
+      <UniqueIdentifier>{f996a48e-3448-4f4a-a51a-c9a674147fb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Components\Headers">
+      <UniqueIdentifier>{02e84b65-dfe0-4fb4-afb2-6230ebafbbaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Components\CPPs">
+      <UniqueIdentifier>{e3444d17-e8d1-43e4-818e-48cd9d7894dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Components\CPPs">
+      <UniqueIdentifier>{74af77bb-4f91-46cf-b2ff-f52daf2ee07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zelda Game\Components\Headers">
+      <UniqueIdentifier>{3cbd7af5-039b-4f81-96e0-f2efd24b2971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Objects">
+      <UniqueIdentifier>{c894b15d-0fd0-4c62-9304-6be5ebe62e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Objects\Headers">
+      <UniqueIdentifier>{bbb05ff3-ab1e-41ee-8931-2faf1771649c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Car  Game\Objects\CPPs">
+      <UniqueIdentifier>{5b5df401-b397-4299-9b4e-0059fe59583a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +135,6 @@
     <ClCompile Include="sprite.cpp">
       <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
-    <ClCompile Include="The Boneyard.cpp" />
     <ClCompile Include="Unit.cpp">
       <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
@@ -158,43 +175,40 @@
       <Filter>Zelda Game\Base\Cpps</Filter>
     </ClCompile>
     <ClCompile Include="StalfosComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="LinkComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
-    </ClCompile>
-    <ClCompile Include="PickupComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="CanGetKilledComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="EnemyGel.cpp">
       <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="ScaryComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="HurtPlayerEvent.cpp">
       <Filter>Zelda Game\Event System\Events\Cpp</Filter>
     </ClCompile>
     <ClCompile Include="KeseComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Aquamentus.cpp">
       <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="AquamentusComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="DropComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="PapaSmurf.cpp">
       <Filter>Zelda Game\Objects\CPPs</Filter>
@@ -203,16 +217,16 @@
       <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="PeahatComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="CanGetKilledByArrowComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="Fireball.cpp">
       <Filter>Zelda Game\Objects\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="SpecialDoorUnlockComponent.cpp">
-      <Filter>Zelda Game\CPPs</Filter>
+      <Filter>Zelda Game\Components\CPPs</Filter>
     </ClCompile>
     <ClCompile Include="ChangeDifficultyEvent.cpp">
       <Filter>Zelda Game\Event System\Events\Cpp</Filter>
@@ -228,6 +242,27 @@
     </ClCompile>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PickupComponent.cpp">
+      <Filter>Car  Game\Components\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySteeringComponent.cpp">
+      <Filter>Car  Game\Components\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>Car  Game\Objects\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Police.cpp">
+      <Filter>Car  Game\Objects\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Money.cpp">
+      <Filter>Car  Game\Objects\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Gasoline.cpp">
+      <Filter>Car  Game\Objects\CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="CarComponent.cpp">
+      <Filter>Car  Game\Components\CPPs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BufferManager.h">
@@ -327,46 +362,43 @@
       <Filter>Zelda Game\Base\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LinkComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="PickupComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="StalfosComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CanGetKilledComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="EnemyGel.h">
       <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ScaryComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="HurtPlayerEvent.h">
       <Filter>Zelda Game\Event System\Events\Headers</Filter>
     </ClInclude>
     <ClInclude Include="KeseComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Aquamentus.h">
       <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="AquamentusComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="DropComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PapaSmurf.h">
       <Filter>Zelda Game\Objects\Headers</Filter>
@@ -375,16 +407,16 @@
       <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="PeahatComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CanGetKilledByArrowComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Fireball.h">
       <Filter>Zelda Game\Objects\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SpecialDoorUnlockComponent.h">
-      <Filter>Zelda Game\Headers</Filter>
+      <Filter>Zelda Game\Components\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ChangeDifficultyEvent.h">
       <Filter>Zelda Game\Event System\Events\Headers</Filter>
@@ -399,5 +431,26 @@
       <Filter>Zelda Game</Filter>
     </ClInclude>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="PickupComponent.h">
+      <Filter>Car  Game\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySteeringComponent.h">
+      <Filter>Car  Game\Components\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Car  Game\Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Police.h">
+      <Filter>Car  Game\Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Money.h">
+      <Filter>Car  Game\Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Gasoline.h">
+      <Filter>Car  Game\Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CarComponent.h">
+      <Filter>Car  Game\Components\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-15 704 288 0 3 3 right 0
+25 392 448 0 3 3 right 0
 02
 0
 0
@@ -6,32 +6,16 @@
 0
 0
 0
-1
-864 256 1 False 
- True 0
+0
 0
 10
 0
-5
-160 224 1
-145 209 1
-431 111 0
-230 410 1
-230 410 1
 0
-6
-202 131 1 True
-863 131 1 True
-863 131 1 True
-394 -34 1 True
-179 515 1 False
-179 515 1 True
 0
-1
-480 288 0 7 Bow
-1
-864 256 1 False 
- True 0
+0
+0
+0
+0
 0
 12
 0
@@ -40,152 +24,71 @@
 0
 0
 0
-3
-20 256 1 False 
- True 1
-20 256 1 True 5
-864 256 1 False 
- True 0
-1
-416 532 1 False 
- True 1
+0
+0
 13
 0
-4
-288 160 1
-672 160 1
-160 224 1
-288 288 1
 0
 0
 0
 0
-1
-864 256 1 False 
- True 0
-2
-416 20 1 False 
- True 0
-416 20 1 False 
- False 2
+0
+0
+0
 15
 0
 0
-3
-224 202 1
-464 416 1
-316 352 1
 0
 0
-1
-176 224 1 6 Key
-1
-864 256 1 False 
- True 0
+0
+0
+0
 0
 20
-1
-544 160 1 True
 0
 0
-4
-202 332 1 False
-650 332 1 False
-714 524 1 False
-330 588 1 False
 0
 0
-2
-20 256 1 False 
- True 1
-20 256 1 False 
- False 3
-1
-416 532 1 False 
- True 1
+0
+0
+0
+0
 21
 0
 0
 0
-2
-531 259 1 True
-403 387 1 True
 0
-1
-752 224 1 6 Key
 0
-3
-416 20 1 False 
- True 0
-416 20 1 False 
- False 2
-416 532 1 False 
- True 1
+0
+0
+0
 22
 0
 0
-4
-222 96 1
-828 98 1
-634 416 1
-828 478 1
 0
 0
 0
-3
-20 256 1 False 
- True 1
-864 256 1 False 
- True 0
-864 256 1 False 
- False 2
-1
-416 20 1 False 
- True 0
+0
+0
+0
 23
-4
-214 160 1 False
-352 214 1 False
-170 288 1 False
-106 352 1 False
 0
 0
 0
 0
 0
-2
-20 256 1 False 
- True 1
-864 256 1 False 
- True 0
-1
-416 532 1 False 
- True 1
+0
+0
+0
 24
-12
-544 96 1 False
-224 224 1 False
-672 224 1 False
-608 96 1 False
-350 224 1 False
-736 224 1 False
-608 158 0 False
-288 162 0 False
-736 162 0 False
-608 246 1 False
-224 198 1 False
-642 162 1 False
 0
 0
 0
 0
 0
 0
-2
-416 20 1 False 
- True 0
-416 532 1 False 
- True 1
+0
+0
 25
 0
 0
@@ -193,115 +96,59 @@
 0
 0
 0
-2
-20 256 1 False 
- True 1
-864 256 1 False 
- True 0
-1
-416 20 1 False 
- True 0
+0
+0
 32
-2
-544 288 1 False
-800 416 1 False
 0
 0
-5
-330 131 1 False
-394 195 1 False
-458 259 1 False
-522 323 1 False
-586 387 1 False
 0
 0
-2
-20 256 1 False 
- True 1
-864 256 1 False 
- True 0
+0
+0
+0
 0
 33
 0
-5
-736 160 1
-416 224 1
-608 352 1
-736 416 1
-288 480 1
 0
-1
-458 198 1 False
 0
-1
-688 288 1 6 Key
-1
-20 256 1 False 
- True 1
+0
+0
+0
+0
 0
 35
-6
-224 160 1 False
-480 160 1 False
-672 160 1 False
-544 352 1 False
-288 416 1 False
-736 416 1 True
 0
 0
 0
 0
-1
-672 480 0 6 Key
-1
-20 256 1 False 
- True 1
+0
+0
+0
 0
 41
 0
 0
 0
 0
-1
-700 240 1
 0
-2
-864 256 1 False 
- True 0
-864 256 1 True 4
-1
-416 532 1 False 
- True 1
+0
+0
+0
 42
-3
-608 96 1 False
-288 224 1 False
-672 352 1 False
-2
-672 96 1
-608 480 1
-0
-1
-586 195 1 True
 0
 0
-1
-20 256 1 False 
- True 1
-2
-416 20 1 False 
- True 0
-416 20 1 False 
- False 2
+0
+0
+0
+0
+0
+0
 51
 0
 0
 0
 0
 0
-1
-458 323 1 0 Triforce
-1
-20 256 1 False 
- True 1
+0
+0
 0

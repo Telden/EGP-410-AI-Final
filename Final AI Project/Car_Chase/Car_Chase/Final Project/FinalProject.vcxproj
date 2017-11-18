@@ -127,6 +127,7 @@
     <ClCompile Include="BufferManager.cpp" />
     <ClCompile Include="CanGetKilledByArrowComponent.cpp" />
     <ClCompile Include="CanGetKilledComponent.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="ChangeDifficultyEvent.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="DeathCollisionEvent.cpp" />
@@ -135,12 +136,14 @@
     <ClCompile Include="EnemyGel.cpp" />
     <ClCompile Include="EnemyKese.cpp" />
     <ClCompile Include="EnemyStalfos.cpp" />
+    <ClCompile Include="EnemySteeringComponent.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventListener.cpp" />
     <ClCompile Include="EventSystem.cpp" />
     <ClCompile Include="Fireball.cpp" />
     <ClCompile Include="font.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Gasoline.cpp" />
     <ClCompile Include="graphicsbuffer.cpp" />
     <ClCompile Include="graphicssystem.cpp" />
     <ClCompile Include="HorizontalDoor.cpp" />
@@ -150,6 +153,7 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="LinkComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Money.cpp" />
     <ClCompile Include="MovementEventDown.cpp" />
     <ClCompile Include="MovementEventLeft.cpp" />
     <ClCompile Include="MovementEventRight.cpp" />
@@ -159,13 +163,14 @@
     <ClCompile Include="PeahatComponent.cpp" />
     <ClCompile Include="PickupComponent.cpp" />
     <ClCompile Include="PlayAudioEvent.cpp" />
+    <ClCompile Include="CarComponent.cpp" />
+    <ClCompile Include="Police.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="ScaryComponent.cpp" />
     <ClCompile Include="SpecialDoorUnlockComponent.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="StalfosComponent.cpp" />
     <ClCompile Include="StartGameEvent.cpp" />
-    <ClCompile Include="The Boneyard.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Treasures.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -186,6 +191,7 @@
     <ClInclude Include="BufferManager.h" />
     <ClInclude Include="CanGetKilledByArrowComponent.h" />
     <ClInclude Include="CanGetKilledComponent.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="ChangeDifficultyEvent.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
@@ -195,12 +201,14 @@
     <ClInclude Include="EnemyGel.h" />
     <ClInclude Include="EnemyKese.h" />
     <ClInclude Include="EnemyStalfos.h" />
+    <ClInclude Include="EnemySteeringComponent.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="EventSystem.h" />
     <ClInclude Include="Fireball.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Gasoline.h" />
     <ClInclude Include="GraphicsBuffer.h" />
     <ClInclude Include="GraphicsSystem.h" />
     <ClInclude Include="HorizontalDoor.h" />
@@ -209,6 +217,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="LinkComponent.h" />
+    <ClInclude Include="Money.h" />
     <ClInclude Include="MovementEventDown.h" />
     <ClInclude Include="MovementEventLeft.h" />
     <ClInclude Include="MovementEventRight.h" />
@@ -218,6 +227,8 @@
     <ClInclude Include="PeahatComponent.h" />
     <ClInclude Include="PickupComponent.h" />
     <ClInclude Include="PlayAudioEvent.h" />
+    <ClInclude Include="CarComponent.h" />
+    <ClInclude Include="Police.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="ScaryComponent.h" />
     <ClInclude Include="SDL_lib.h" />

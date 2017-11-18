@@ -90,7 +90,7 @@ void GraphicsSystem::drawSprite(Sprite spriteObj, int drawLocX, int drawLocY)
 {
 	//http://programmersranch.blogspot.com/2014/03/sdl2-animations-with-sprite-sheets.html
 	SDL_Rect srcrect = { spriteObj.getLocX(), spriteObj.getLocY(), spriteObj.getHeight(), spriteObj.getWidth() };
-	SDL_Rect dstrect = { drawLocX, drawLocY, spriteObj.getHeight() * mScalar, spriteObj.getWidth() *mScalar };
+	SDL_Rect dstrect = { drawLocX, drawLocY, spriteObj.getHeight() * mScalar, spriteObj.getWidth() * mScalar };
 	
 	SDL_RenderCopy(mpRenderer, spriteObj.getBuffer()->getTexture(), &srcrect, &dstrect);
 	
