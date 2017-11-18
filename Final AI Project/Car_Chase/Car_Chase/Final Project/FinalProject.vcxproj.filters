@@ -263,6 +263,9 @@
     <ClCompile Include="CarComponent.cpp">
       <Filter>Car  Game\Components\CPPs</Filter>
     </ClCompile>
+    <ClCompile Include="Dean Kinematic\Kinematic.cpp" />
+    <ClCompile Include="Dean Kinematic\KinematicUnit.cpp" />
+    <ClCompile Include="Dean Kinematic\Steering.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BufferManager.h">
@@ -452,5 +455,8 @@
     <ClInclude Include="CarComponent.h">
       <Filter>Car  Game\Components\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Dean Kinematic\Kinematic.h" />
+    <ClInclude Include="Dean Kinematic\KinematicUnit.h" />
+    <ClInclude Include="Dean Kinematic\Steering.h" />
   </ItemGroup>
 </Project>

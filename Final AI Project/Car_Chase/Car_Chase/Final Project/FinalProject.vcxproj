@@ -130,6 +130,9 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="ChangeDifficultyEvent.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="Dean Kinematic\Kinematic.cpp" />
+    <ClCompile Include="Dean Kinematic\KinematicUnit.cpp" />
+    <ClCompile Include="Dean Kinematic\Steering.cpp" />
     <ClCompile Include="DeathCollisionEvent.cpp" />
     <ClCompile Include="DropComponent.cpp" />
     <ClCompile Include="EndGameEvent.cpp" />
@@ -195,6 +198,9 @@
     <ClInclude Include="ChangeDifficultyEvent.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Dean Kinematic\Kinematic.h" />
+    <ClInclude Include="Dean Kinematic\KinematicUnit.h" />
+    <ClInclude Include="Dean Kinematic\Steering.h" />
     <ClInclude Include="DeathCollisionEvent.h" />
     <ClInclude Include="DropComponent.h" />
     <ClInclude Include="EndGameEvent.h" />
