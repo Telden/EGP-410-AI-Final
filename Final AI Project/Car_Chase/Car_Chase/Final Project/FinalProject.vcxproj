@@ -168,12 +168,14 @@
     <ClCompile Include="PlayAudioEvent.cpp" />
     <ClCompile Include="CarComponent.cpp" />
     <ClCompile Include="Police.cpp" />
+    <ClCompile Include="PoliceStates.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="ScaryComponent.cpp" />
     <ClCompile Include="SpecialDoorUnlockComponent.cpp" />
     <ClCompile Include="sprite.cpp" />
     <ClCompile Include="StalfosComponent.cpp" />
     <ClCompile Include="StartGameEvent.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Treasures.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -235,6 +237,7 @@
     <ClInclude Include="PlayAudioEvent.h" />
     <ClInclude Include="CarComponent.h" />
     <ClInclude Include="Police.h" />
+    <ClInclude Include="PoliceStates.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="ScaryComponent.h" />
     <ClInclude Include="SDL_lib.h" />
@@ -242,6 +245,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StalfosComponent.h" />
     <ClInclude Include="StartGameEvent.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Treasures.h" />
     <ClInclude Include="Unit.h" />

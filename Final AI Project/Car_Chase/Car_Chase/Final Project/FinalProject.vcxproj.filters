@@ -79,6 +79,9 @@
     <Filter Include="Car  Game\Objects\CPPs">
       <UniqueIdentifier>{5b5df401-b397-4299-9b4e-0059fe59583a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Car  Game\State Machine">
+      <UniqueIdentifier>{9ba7d5d0-cf77-40d0-82fb-fb5ad886a6cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BufferManager.cpp">
@@ -266,6 +269,12 @@
     <ClCompile Include="Dean Kinematic\Kinematic.cpp" />
     <ClCompile Include="Dean Kinematic\KinematicUnit.cpp" />
     <ClCompile Include="Dean Kinematic\Steering.cpp" />
+    <ClCompile Include="PoliceStates.cpp">
+      <Filter>Car  Game\State Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Car  Game\State Machine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BufferManager.h">
@@ -458,5 +467,11 @@
     <ClInclude Include="Dean Kinematic\Kinematic.h" />
     <ClInclude Include="Dean Kinematic\KinematicUnit.h" />
     <ClInclude Include="Dean Kinematic\Steering.h" />
+    <ClInclude Include="PoliceStates.h">
+      <Filter>Car  Game\State Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Car  Game\State Machine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
