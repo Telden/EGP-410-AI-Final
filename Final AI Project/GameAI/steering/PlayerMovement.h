@@ -11,8 +11,7 @@ public:
 	~PlayerMovement(){};
 
 	virtual Steering* getSteering(); 
-	Vector2D calculateOrientationAsVector();
-
+	Vector2D deceleratePlayer();
 
 	void recieveMessage(char input, bool isPressed);
 
@@ -20,6 +19,10 @@ private:
 	KinematicUnit* mpMover;
 	bool mShouldCast = true;
 	float previousAngle = 0;
+	float mCurrentAcceleration = 0;
+	float mAccelerationIncrease = 5;
+	float mDeceleration = 1;
+
 
 	/* Player Input Bools */
 	bool mMoveForwards = false;

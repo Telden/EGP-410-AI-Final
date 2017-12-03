@@ -88,7 +88,7 @@ void UnitManager::updateUnits(float time)
 /*Destroys the objects in the Unit manager's vectors*/
 void UnitManager::cleanup()
 {
-
+	delete mpPlayer;
 	
 	for (int i = 0; i < mpUnits.size(); i++)
 	{
