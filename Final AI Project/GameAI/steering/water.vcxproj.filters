@@ -151,6 +151,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Units</Filter>
     </ClCompile>
+    <ClCompile Include="Raycast.cpp" />
+    <ClCompile Include="WallUnit.cpp" />
+    <ClCompile Include="CircleCollision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -303,6 +306,9 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Units</Filter>
     </ClInclude>
+    <ClInclude Include="Raycast.h" />
+    <ClInclude Include="WallUnit.h" />
+    <ClInclude Include="CircleCollision.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

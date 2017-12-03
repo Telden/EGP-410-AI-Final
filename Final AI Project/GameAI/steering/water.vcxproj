@@ -15,6 +15,7 @@
     <ClInclude Include="BehaviorandWeight.h" />
     <ClInclude Include="BlendedSteering.h" />
     <ClInclude Include="ChangeUnitValue.h" />
+    <ClInclude Include="CircleCollision.h" />
     <ClInclude Include="Cohesion.h" />
     <ClInclude Include="CollisionAvoidance.h" />
     <ClInclude Include="CollisionDetector.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="Raycast.h" />
     <ClInclude Include="SaveSettingsMessage.h" />
     <ClInclude Include="Separation.h" />
     <ClInclude Include="Sprite.h" />
@@ -61,11 +63,13 @@
     <ClInclude Include="VelocityMatching.h" />
     <ClInclude Include="VerticalWall.h" />
     <ClInclude Include="WallDetection.h" />
+    <ClInclude Include="WallUnit.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Allignment.cpp" />
     <ClCompile Include="BlendedSteering.cpp" />
     <ClCompile Include="ChangeUnitValue.cpp" />
+    <ClCompile Include="CircleCollision.cpp" />
     <ClCompile Include="Cohesion.cpp" />
     <ClCompile Include="CollisionAvoidance.cpp" />
     <ClCompile Include="CollisionDetector.cpp" />
@@ -100,6 +104,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="SaveSettingsMessage.cpp" />
     <ClCompile Include="Separation.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -113,6 +118,7 @@
     <ClCompile Include="VelocityMatching.cpp" />
     <ClCompile Include="VerticalWall.cpp" />
     <ClCompile Include="WallDetection.cpp" />
+    <ClCompile Include="WallUnit.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>
