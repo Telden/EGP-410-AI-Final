@@ -28,6 +28,9 @@ public:
 
 	static ALLEGRO_BITMAP* switchTargetBitmap( ALLEGRO_BITMAP* pNewTarget );//return old target
 
+   void drawRectangle(Vector2D topLeft, Vector2D bottomRight);
+   void drawLine(Vector2D start, Vector2D end);
+
 private:
 	ALLEGRO_DISPLAY* mpDisplay;
 	GraphicsBuffer* mpBackBuffer;
