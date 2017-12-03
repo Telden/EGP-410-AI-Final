@@ -25,6 +25,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Player.h"
+#include "WallUnit.h"
 
 // Message headers
 #include "GameMessage.h"
@@ -54,6 +55,10 @@ void UnitManager::addUnit(KinematicUnit* newUnit)
 	mpUnits.push_back(newUnit);
 }
 
+void UnitManager::addWall(WallUnit* newUnit)
+{
+	mpWalls.push_back(newUnit);
+}
 
 /*Update the units with new steering values, get their steering, and draw them*/
 void UnitManager::updateUnits(float time)
@@ -105,6 +110,16 @@ std::vector<KinematicUnit*> UnitManager::getUnitList()
 KinematicUnit* UnitManager::getKinematicUnit(int index)
 {
 	return mpUnits[index];
+}
+
+WallUnit* UnitManager::getWallUnit(int index)
+{
+	return mpWalls[index];
+}
+
+int UnitManager::getNumOfWalls()
+{
+	return mpWalls.size();
 }
 
 /* Updates values on the debug UI*/

@@ -10,6 +10,7 @@ class Player;
 
 class Sprite;
 class KinematicUnit;
+class WallUnit;
 
 class UnitManager : public Trackable
 {
@@ -17,6 +18,7 @@ private:
 	Player* mpPlayer;
 
 	std::vector<KinematicUnit*> mpUnits;
+	std::vector<WallUnit*> mpWalls;
 	Sprite* mpEnemySprite;
 
 
@@ -29,9 +31,13 @@ public:
 	/* Accessors */
 	std::vector<KinematicUnit*> getUnitList(); 
 	KinematicUnit* getKinematicUnit(int index);
+	WallUnit* getWallUnit(int index);
+
 	Player* getPlayerUnit() { return mpPlayer; };
+	int getNumOfWalls();
 
 	void addUnit(KinematicUnit* newUnit);
+	void addWall(WallUnit* newUnit);
 	
 	/* Update Functions */
 	void updateUnits(float time);

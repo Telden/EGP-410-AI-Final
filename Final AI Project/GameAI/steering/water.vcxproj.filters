@@ -153,6 +153,7 @@
     </ClCompile>
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="WallUnit.cpp" />
+    <ClCompile Include="CircleCollision.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -307,6 +308,7 @@
     </ClInclude>
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="WallUnit.h" />
+    <ClInclude Include="CircleCollision.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
