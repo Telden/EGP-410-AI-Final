@@ -1,6 +1,10 @@
 #include "PlayerMovement.h"
 #include "KinematicUnit.h"
 #include "GameMessage.h"
+#include "GraphicsSystem.h"
+#include <math.h>
+
+
 
 //Remove later
 #include "Game.h"
@@ -14,39 +18,52 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
-	//mLinear = mpMover->getOrientationAsVector() * mpMover->getMaxVelocity();
-	//mAngular = mpMover->getOrientation() + (genRandomBinomial() * 0.5);
-	//return this;
+	
+	mLinear = 0;
+	mAngular = previousAngle;
+	
+	//std::cout << mpMover->getOrientation() << "\n";
 
-	////mAngular = 0;
-	////mLinear = 0;
 
-	//mLinear = mpMover->getOrientationAsVector();
-	/* When move up key is pressed */
 	if (mMoveForwards)
 	{
-		//mLinear.normalize();
+		std::cout << "Moving forwards\n";
+		
 		mLinear = mpMover->getOrientationAsVector() * mpMover->getMaxVelocity() * -1;
+
 	}
 	/* When move down key is pressed */
 	else if (mMoveBackwards)
 	{
-		//mLinear.normalize();
+		std::cout << "Moving backwards\n";
+		
 		mLinear = mpMover->getOrientationAsVector() * mpMover->getMaxVelocity();
 	}
 	/* When move right key is pressed */
 	if (mMoveRight)
 	{
-		mAngular = mpMover->getOrientation() + (genRandomBinomial() * 0.5);
+		std::cout << "Moving Right\n";
+		mAngular = previousAngle = mpMover->getOrientation() - .1; 
+		
 	}
 	/* When move left key is pressed */
 	else if (mMoveLeft)
 	{
+		std::cout << "Moving left\n";
+		mAngular = previousAngle = mpMover->getOrientation() + .1;
 		
-		mAngular = mpMover->getOrientation() + (genRandomBinomial() * 0.5);
+
 	}
 
 	return this;
+}
+
+Vector2D PlayerMovement::calculateOrientationAsVector()
+{
+	Vector2D rotationVector;
+
+	return rotationVector;
+	
 }
 
 
@@ -90,4 +107,12 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 		std::cout << "Invalid input in player movement switch\n";
 
 	}
+/*
+	void drawForwardLine()
+	{
+
+	}*/
+
+
+
 }

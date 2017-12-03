@@ -36,7 +36,7 @@ KinematicUnit::~KinematicUnit()
 
 void KinematicUnit::draw( GraphicsBuffer* pBuffer )
 {
-	mpSprite->draw( *pBuffer, mPosition.getX(), mPosition.getY(), mOrientation );
+	mpSprite->draw( *pBuffer, mPosition.getX(), mPosition.getY(), -mOrientation );
 }
 
 void KinematicUnit::update(float time)

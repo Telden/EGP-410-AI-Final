@@ -11,12 +11,15 @@ public:
 	~PlayerMovement(){};
 
 	virtual Steering* getSteering(); 
+	Vector2D calculateOrientationAsVector();
+
+
 	void recieveMessage(char input, bool isPressed);
 
 private:
 	KinematicUnit* mpMover;
 	bool mShouldCast = true;
-
+	float previousAngle = 0;
 
 	/* Player Input Bools */
 	bool mMoveForwards = false;

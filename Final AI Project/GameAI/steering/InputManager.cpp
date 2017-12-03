@@ -82,7 +82,7 @@ void InputManager::checkInput()
 	{
 		//printf("D Key");
 		mRightKeyDown = true;
-		pMessage = new MovementMessage('A', mRightKeyDown);
+		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
@@ -116,7 +116,10 @@ void InputManager::checkInput()
 	{
 		printf("D Key Released\n");
 		mRightKeyDown = false;
-		pMessage = new MovementMessage('A', mRightKeyDown);
+		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
+
+
+
 }

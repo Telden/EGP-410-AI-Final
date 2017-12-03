@@ -36,8 +36,8 @@ UnitManager::UnitManager()
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
 	Vector2D vel(1.0f, 1.0f);
-	Vector2D pos(0, 0);
-	mpPlayer = new Player(mpEnemySprite, pos, 1, vel, 0, 180.0f, 100.0f);
+	Vector2D pos(180, 180);
+	mpPlayer = new Player(mpEnemySprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
 
 	srand(time(NULL)); //Need to move this out of here
