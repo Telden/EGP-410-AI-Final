@@ -19,11 +19,8 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
-	
-	//mLinear = 0;
 	mAngular = previousAngle;
-	std::cout << mCurrentAcceleration << "\n";
-	
+		
 	if (mMoveBackwards || mMoveForwards || mMoveRight || mMoveLeft)
 	{
 		/* When move up key is pressed */

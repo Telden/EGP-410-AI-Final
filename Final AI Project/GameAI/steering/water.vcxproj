@@ -19,6 +19,7 @@
     <ClInclude Include="Cohesion.h" />
     <ClInclude Include="CollisionAvoidance.h" />
     <ClInclude Include="CollisionDetector.h" />
+    <ClInclude Include="Connection.h" />
     <ClInclude Include="CreateBoidFlock.h" />
     <ClInclude Include="CreateDynamicArrive.h" />
     <ClInclude Include="CreateDynamicSeek.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameMessage.h" />
     <ClInclude Include="GameMessageManager.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphicsBuffer.h" />
     <ClInclude Include="GraphicsBufferManager.h" />
     <ClInclude Include="GraphicsSystem.h" />
@@ -46,6 +48,7 @@
     <ClInclude Include="KinematicUnit.h" />
     <ClInclude Include="KinematicWanderSteering.h" />
     <ClInclude Include="MovementMessage.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
@@ -73,6 +76,7 @@
     <ClCompile Include="Cohesion.cpp" />
     <ClCompile Include="CollisionAvoidance.cpp" />
     <ClCompile Include="CollisionDetector.cpp" />
+    <ClCompile Include="Connection.cpp" />
     <ClCompile Include="CreateBoidFlock.cpp" />
     <ClCompile Include="CreateBoidMessage.cpp" />
     <ClCompile Include="CreateDynamicArrive.cpp" />
@@ -89,6 +93,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameMessage.cpp" />
     <ClCompile Include="GameMessageManager.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="GraphicsBuffer.cpp" />
     <ClCompile Include="GraphicsBufferManager.cpp" />
     <ClCompile Include="GraphicsSystem.cpp" />
@@ -101,6 +106,7 @@
     <ClCompile Include="KinematicWanderSteering.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovementMessage.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />

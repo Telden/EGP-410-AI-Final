@@ -57,14 +57,12 @@ void InputManager::checkInput()
 	/* Movement Key Inputs (If pressed) */
 	if (al_key_down(&keyState, ALLEGRO_KEY_W) && !mForwardKeyDown)
 	{
-		//printf("W Key\n");
 		mForwardKeyDown = true;
 		pMessage = new MovementMessage('W', mForwardKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mBackwardsKeyDown)
 	{
-		//printf("S Key\n");
 		mBackwardsKeyDown = true;
 		pMessage = new MovementMessage('S', mBackwardsKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -72,7 +70,6 @@ void InputManager::checkInput()
 
 	if (al_key_down(&keyState, ALLEGRO_KEY_A) && !mLeftKeyDown)
 	{
-		//printf("A Key\n");
 		mLeftKeyDown = true;
 		pMessage = new MovementMessage('A', mLeftKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -80,7 +77,6 @@ void InputManager::checkInput()
 	}
 	if (al_key_down(&keyState, ALLEGRO_KEY_D) && !mRightKeyDown)
 	{
-		//printf("D Key");
 		mRightKeyDown = true;
 		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -98,7 +94,6 @@ void InputManager::checkInput()
 	}
 	else if (!al_key_down(&keyState, ALLEGRO_KEY_S) && mBackwardsKeyDown)
 	{
-		printf("S Key Released\n");
 		mBackwardsKeyDown = false;
 		pMessage = new MovementMessage('S', mBackwardsKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -106,7 +101,6 @@ void InputManager::checkInput()
 
 	if (!al_key_down(&keyState, ALLEGRO_KEY_A) && mLeftKeyDown)
 	{
-		printf("A Key Released\n");
 		mLeftKeyDown = false;
 		pMessage = new MovementMessage('A', mLeftKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -114,7 +108,6 @@ void InputManager::checkInput()
 	}
 	else if (!al_key_down(&keyState, ALLEGRO_KEY_D) && mRightKeyDown)
 	{
-		printf("D Key Released\n");
 		mRightKeyDown = false;
 		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
