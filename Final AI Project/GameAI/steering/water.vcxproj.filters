@@ -163,6 +163,9 @@
     <ClCompile Include="Connection.cpp">
       <Filter>Pathfinding</Filter>
     </ClCompile>
+    <ClCompile Include="ToggleDebugMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -326,6 +329,9 @@
     </ClInclude>
     <ClInclude Include="Connection.h">
       <Filter>Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleDebugMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

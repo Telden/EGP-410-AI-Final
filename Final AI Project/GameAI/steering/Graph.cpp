@@ -2,7 +2,8 @@
 #include "Connection.h"
 #include "Node.h"
 #include <fstream>
-
+#include <string>
+#include <vector>
 
 Graph::Graph()
 {
@@ -16,12 +17,83 @@ Graph::~Graph()
 
 void Graph::init()
 {
-	std::fstream ifStream(PATHING_FILENAME);
+	loadNodes();
+	loadConnections();
+
+	
+}
+
+void Graph::loadNodes()
+{
+	Node* newnode;
+	std::string input;
+	float xPos, yPos;
+	
+	std::fstream ifStream(NODES_FILENAME_PATH);
 	while (!ifStream.eof())
 	{
-		ifStream >> 
+		//Get the Node's ID
+		ifStream >> input;
+		const NODE_ID nodeID = std::stoi(input);
+		//Get the x and y location of the node
+		ifStream >> input;
+		xPos = std::stoi(input);
+		ifStream >> input;
+		yPos = std::stoi(input);
+		
+		//Create the node
+		newnode = new Node(xPos, yPos, nodeID);
+
+		//Add it to the node vector and the node map w/node id
+		mpNodes.push_back(newnode);
+		mpNodeMap.insert(std::pair<NODE_ID, Node*>(nodeID, newnode));
+
 	}
 }
+
+void Graph::loadConnections()
+{
+	int numConnections;
+	Node* pfrom; Node* pto;
+	std::vector<Connection*> connectionList;
+	Connection* newConnection;
+	std::string input;
+
+	std::fstream ifStream(CONNECTIONS_FILENAME_PATH);
+	while (!ifStream.eof())
+	{
+		//Get node ID (node from)
+		ifStream >> input;
+		const NODE_ID nodeID = std::stoi(input);
+		pfrom = getNode(nodeID);
+
+
+
+		//Get the number of connections this node has
+		ifStream >> input;
+		numConnections = std::stoi(input);
+
+		//Load the NodeID's that have connection from this node (Node to(s))
+		for (int i = 0; i < numConnections; i++)
+		{
+			ifStream >> input;
+			const NODE_ID toNode = std::stoi(input);
+			pto = getNode(toNode);
+			newConnection = new Connection(pto, pfrom, CONNECTION_COST);
+			connectionList.push_back(newConnection);
+			mpConnections.push_back(newConnection);
+
+		}
+		mConnectionMap.insert(std::pair<NODE_ID, std::vector<Connection*>>(nodeID, connectionList));
+	}
+
+	
+
+
+
+
+}
+
 
 std::vector<Connection*> Graph::getConnections(const Node& from)
 {
@@ -43,6 +115,7 @@ std::vector<Connection*> Graph::getConnections(const NODE_ID& fromId)
 	}
 }
 
+
 Node* Graph::getNode(int index)
 {
 	if (index < (int)mpNodes.size())
@@ -55,11 +128,26 @@ Node* Graph::getNode(int index)
 	}
 }
 
+//Node* Graph::getNode(const NODE_ID& nodeID)
+//{
+//	std::map< NODE_ID, Node*>::iterator iter = mpNodeMap.find(nodeID);
+//	if (iter == mpNodeMap.end())
+//	{
+//		std::cout << "ERROR: Could not find node with given node ID\n";
+//	}
+//	else
+//	{
+//		return iter->second;
+//	}
+//}
+
 
 void Graph::renderGraph()
 {
-	for (int i = 0; i < mpNodes.size(); i++)
-		mpNodes[i]->renderNode();
-	for (int i = 0; i < mpConnections.size(); i++)
-		mpConnections[i]->renderConnection();
+		for (int i = 0; i < mpNodes.size(); i++)
+			mpNodes[i]->renderNode();
+		for (int i = 0; i < mpConnections.size(); i++)
+			mpConnections[i]->renderConnection();
+	
+	
 }

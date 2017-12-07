@@ -17,7 +17,7 @@ private:
 	bool mBackwardsKeyDown = false;
 	bool mLeftKeyDown = false;
 	bool mRightKeyDown = false;
-
+	bool mDebugKeyDown = false;
 
 
 	std::string mCurrentSelection = "V";

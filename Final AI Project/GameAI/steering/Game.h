@@ -18,6 +18,7 @@ class Timer;
 class UnitManager;
 class InputManager;
 class UiManager;
+class Graph;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -55,6 +56,8 @@ public:
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
+	void toggleDebug();
+
 private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
@@ -66,6 +69,7 @@ private:
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
 	bool mShouldExit;
+	bool mShouldDebug = false;
 
 	ALLEGRO_SAMPLE* mpSample;
 	IDType mBackgroundBufferID;
@@ -79,7 +83,7 @@ private:
 	KinematicUnit* mpAIUnit;
 	KinematicUnit* mpAIUnit2;
 
-	
+	Graph* mpGraph;
 
 };
 

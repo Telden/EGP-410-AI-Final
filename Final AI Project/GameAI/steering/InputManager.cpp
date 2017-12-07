@@ -9,6 +9,7 @@
 // Messages
 #include "EndGameMessage.h"
 #include "MovementMessage.h"
+#include "ToggleDebugMessage.h"
 
 
 
@@ -82,6 +83,12 @@ void InputManager::checkInput()
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
+	if (al_key_down(&keyState, ALLEGRO_KEY_B) && !mDebugKeyDown)
+	{
+		mDebugKeyDown = true;
+		pMessage = new ToggleDebugMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
 
 	/* When a movement key is released */
 
@@ -112,7 +119,10 @@ void InputManager::checkInput()
 		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
-
+	if (!al_key_down(&keyState, ALLEGRO_KEY_B) && mDebugKeyDown)
+	{
+		mDebugKeyDown = false;
+	}
 
 
 }

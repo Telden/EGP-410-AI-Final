@@ -15,9 +15,14 @@ public:
 	~Graph();
 
 	void init();
+	void loadNodes();
+	void loadConnections();
+
+
 	std::vector<Connection*> getConnections(const Node& from);
 	std::vector<Connection*> getConnections(const NODE_ID& fromId);
-	Node* getNode(int index) { return mpNodes[index]; };
+	Node* getNode(int index);
+	//Node* getNode(const NODE_ID& nodeID);
 	void renderGraph();
 
 
@@ -25,10 +30,11 @@ private:
 	std::vector<Node*> mpNodes;
 	std::vector<Connection*>mpConnections;
 	std::map< NODE_ID, std::vector<Connection*> > mConnectionMap;
+	std::map<NODE_ID, Node*>  mpNodeMap;
 
-
-	bool mShouldDebug = false;
-	const std::string PATHING_FILENAME = "pathgrid.txt";
+	const std::string NODES_FILENAME_PATH = "data/nodes.txt";
+	const std::string CONNECTIONS_FILENAME_PATH = "data/connections.txt";
+	const int CONNECTION_COST = 1;
 	
 	
 };

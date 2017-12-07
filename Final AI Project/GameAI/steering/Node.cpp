@@ -4,11 +4,25 @@
 
 Node::Node(float xLoc, float yLoc, const NODE_ID& id):mId(id)
 {
-	mPos.setX(xLoc);
-	mPos.setY(yLoc);
+	int width = NODE_SIZE / 2;
+	int height = NODE_SIZE / 2;
+
+	//Set the node centerpoint
+	mCenterpoint.setX(xLoc);
+	mCenterpoint.setY(yLoc);
+
+	//set the top left corner
+	mTopLeftCorner.setX(mCenterpoint.getX() - width);
+	mTopLeftCorner.setY(mCenterpoint.getY() - height);
+
+	//set the bottom right corner
+	mBottomRightCorner.setX(mCenterpoint.getX() + width);
+	mBottomRightCorner.setY(mCenterpoint.getY() + height);
+
+
 }
 
 void Node::renderNode()
 {
-	//Implement Render code here
+	GRAPHICS_SYSTEM->drawRectangle(mTopLeftCorner, mBottomRightCorner);
 }

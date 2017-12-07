@@ -23,6 +23,7 @@
 #include "UnitManager.h"
 #include "InputManager.h"
 #include "UiManager.h"
+#include "Graph.h"
 
 Game* gpGame = NULL;
 
@@ -172,7 +173,8 @@ bool Game::init()
 		pHorizontalWallSprite = mpSpriteManager->createAndManageSprite(HORIZONTAL_WALL_ID , pHorizontalWallBuffer, 0, 0, pHorizontalWallBuffer->getWidth(), pHorizontalWallBuffer->getHeight());
 	}
 
-
+	mpGraph = new Graph();
+	mpGraph->init();
 
 	//Create UnitManager
 	mpUnitManager = new UnitManager();
@@ -227,7 +229,8 @@ void Game::cleanup()
 	mpMessageManager = NULL;
 	delete mpUiManager;
 	mpUiManager = NULL;
-
+	delete mpGraph;
+	mpGraph = NULL;
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
 
@@ -249,15 +252,23 @@ void Game::beginLoop()
 
 void Game::processLoop()
 {
-
+	
 	//draw background
 	Sprite* pBackgroundSprite = mpSpriteManager->getSprite(BACKGROUND_SPRITE_ID);
 	pBackgroundSprite->draw(*(mpGraphicsSystem->getBackBuffer()), 0, 0);
+
+	//If in debug mode draw debug elements
+	if (mShouldDebug)
+	{
+		mpGraph->renderGraph();
+	}
+	
 
 	mpUnitManager->updateUnits(LOOP_TARGET_TIME / 1000.0f);
 	mpUnitManager->updateUI();
 	mpInputManager->checkInput();
 	mpUiManager->update();
+	
 	mpMessageManager->processMessagesForThisframe();
 
 	GRAPHICS_SYSTEM->swap();
@@ -286,6 +297,14 @@ float genRandomFloat()
 void Game::endGame()
 {
 	mShouldExit = true;
+}
+
+void Game::toggleDebug()
+{
+	if (mShouldDebug)
+		mShouldDebug = false;
+	else
+		mShouldDebug = true;
 }
 
 

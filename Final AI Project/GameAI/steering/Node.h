@@ -9,11 +9,14 @@ class Node : public  Trackable
 {
 public:
 	Node(float xPos, float yPos, const NODE_ID& id);
-	~Node();
-	Vector2D getPosision() { return mPos; };
+	~Node() {};
+	Vector2D getPosision() { return mCenterpoint; };
 	void renderNode();
 	const NODE_ID& getId() const { return mId; };
 private:
-	Vector2D mPos;
+	Vector2D mCenterpoint;
+	Vector2D mTopLeftCorner;
+	Vector2D mBottomRightCorner;
+	const int NODE_SIZE= 64;
 	const NODE_ID mId;
 };

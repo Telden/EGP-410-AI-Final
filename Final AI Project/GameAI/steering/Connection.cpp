@@ -18,6 +18,6 @@ Connection::~Connection()
 
 void Connection::renderConnection()
 {
-	//Call graphics system draw line code here
+	GRAPHICS_SYSTEM->drawLine(mpTo->getPosision(), mpFrom->getPosision());
 }
 
