@@ -1,0 +1,3 @@
+Node ID number
+number of connections
+ID numbers of nodes this node goes to
