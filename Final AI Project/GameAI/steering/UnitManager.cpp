@@ -61,6 +61,12 @@ UnitManager::UnitManager()
 	pUnit = NULL;
 	pWanderToNode = NULL;
 
+	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0);
+	mpPickups.push_back(pPickup);
+
+	WallUnit* pWall = new WallUnit(Vector2D(100, 200), Vector2D(500, 500), 0);
+	mpWalls.push_back(pWall);
+
 	srand(time(NULL)); //Need to move this out of here
 
 	
@@ -121,6 +127,7 @@ void UnitManager::updateUnits(float time)
    // draw consumables
    for (unsigned int i = 0; i < mpPickups.size(); i++)
    {
+	   mpPickups[i]->update();
       mpPickups[i]->draw();
    }
 

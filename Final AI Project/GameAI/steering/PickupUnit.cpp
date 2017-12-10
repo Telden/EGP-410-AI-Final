@@ -28,12 +28,14 @@ void PickupUnit::update()
 	if (distance < mRadius)
 	{
 		//pickup the unit
+		mActive = false;
 	}
 	
 }
 void PickupUnit::draw()
 {
-   gpGame->getGraphicsSystem()->drawCircle(mPosition, mRadius / 2);
+	if(mActive)
+		gpGame->getGraphicsSystem()->drawCircle(mPosition, mRadius / 2);
 }
 
 int PickupUnit::getMode()

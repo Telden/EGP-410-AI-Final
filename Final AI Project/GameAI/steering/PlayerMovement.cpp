@@ -28,7 +28,12 @@ Steering* PlayerMovement::getSteering()
    unitList = UNIT_MANAGER->getUnitList();
 
    if (test)
-      std::cout << "player detecting wall - circ x rect" << std::endl;
+   {
+	   std::cout << "player detecting wall - circ x rect" << std::endl;
+	  // mLinear = 0;
+	   //return this;
+   }
+     
 	
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
@@ -109,6 +114,7 @@ Steering* PlayerMovement::getSteering()
 		mLinear = deceleratePlayer();
 	}
 	
+
 
 	return this;
 }
