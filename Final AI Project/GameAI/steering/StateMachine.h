@@ -20,6 +20,8 @@ class StateMachine
       Steering* doCurrentState();
       void changeCurrentState(Steering* newState);
 
+      bool connectionExists(Steering* from, Steering* to);
+
       void AddState(Steering* newSteer);
       void AddConnection(Steering* from, Steering* to);
 };
