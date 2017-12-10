@@ -166,6 +166,15 @@
     <ClCompile Include="ToggleDebugMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="CreateNodeMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="DeleteNodeMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderToNode.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -332,6 +341,15 @@
     </ClInclude>
     <ClInclude Include="ToggleDebugMessage.h">
       <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateNodeMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="DeleteNodeMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderToNode.h">
+      <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

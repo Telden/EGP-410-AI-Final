@@ -261,13 +261,18 @@ void Game::processLoop()
 	if (mShouldDebug)
 	{
 		mpGraph->renderGraph();
+		mpInputManager->checkDebugInput();
 	}
-	
+	else
+	{
+		mpUnitManager->updateUnits(LOOP_TARGET_TIME / 1000.0f);
+		mpInputManager->checkInput();
+		mpUiManager->update();
+	}
 
-	mpUnitManager->updateUnits(LOOP_TARGET_TIME / 1000.0f);
-	mpUnitManager->updateUI();
-	mpInputManager->checkInput();
-	mpUiManager->update();
+	
+	//mpUnitManager->updateUI();
+	
 	
 	mpMessageManager->processMessagesForThisframe();
 

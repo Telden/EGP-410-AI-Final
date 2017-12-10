@@ -11,6 +11,8 @@ public:
 	Node(float xPos, float yPos, const NODE_ID& id);
 	~Node() {};
 	Vector2D getPosision() { return mCenterpoint; };
+	Vector2D getTopLeftCorner() { return mTopLeftCorner; };
+	Vector2D getBottomRightCorner() { return mBottomRightCorner; };
 	void renderNode();
 	const NODE_ID& getId() const { return mId; };
 private:

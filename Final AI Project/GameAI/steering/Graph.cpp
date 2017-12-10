@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <stack>
 
 Graph::Graph()
 {
@@ -34,7 +35,7 @@ void Graph::loadNodes()
 	{
 		//Get the Node's ID
 		ifStream >> input;
-		const NODE_ID nodeID = std::stoi(input);
+		const NODE_ID nodeID = lastID = std::stoi(input);
 		//Get the x and y location of the node
 		ifStream >> input;
 		xPos = std::stoi(input);
@@ -66,6 +67,7 @@ void Graph::loadConnections()
 		ifStream >> input;
 		const NODE_ID nodeID = std::stoi(input);
 		pfrom = getNode(nodeID);
+		
 
 
 
@@ -151,3 +153,69 @@ void Graph::renderGraph()
 	
 	
 }
+
+void Graph::createNode(Vector2D mousePos)
+{
+	Node* pNode;
+	const NODE_ID nodeID = lastID += 1;
+	
+	pNode = new Node(mousePos.getX(), mousePos.getY(), nodeID);
+	mpNodes.push_back(pNode);
+}
+
+void Graph::deleteNode(Vector2D mousePos)
+{
+	Vector2D  topleft;
+	Vector2D bottomRight;
+	Node* pTarget;
+	NODE_ID targetID;
+	int i = 0;
+	bool nodeFound = false;
+	for (i; i < mpNodes.size(); i++)
+	{
+		//cache the bottom right, top  left corners 
+		topleft = mpNodes[i]->getTopLeftCorner();
+		bottomRight = mpNodes[i]->getBottomRightCorner();
+
+		if (mousePos.getX() >= topleft.getX() && mousePos.getY() >= topleft.getY() &&
+			mousePos.getX() <= bottomRight.getX() && mousePos.getY() <= bottomRight.getY())
+		{
+			targetID = mpNodes[i]->getId();
+			std::cout << "Deleting node " << mpNodes[i]->getId() << std::endl;
+			nodeFound = true;
+			break;
+		}
+	}
+
+	
+	if (nodeFound)
+	{
+		removeConnections(targetID);
+		mpNodes.erase(mpNodes.begin() + i);
+	}
+		
+	
+
+}
+
+void Graph::removeConnections(NODE_ID targetID)
+{
+	std::stack<int> indexes;
+	int toDelete;
+	for (int i = 0; i < mpConnections.size(); i++)
+	{
+		if (mpConnections[i]->getFromNode()->getId() == targetID || mpConnections[i]->getToNode()->getId() == targetID)
+		{
+			toDelete = i;
+			indexes.push(toDelete);
+		}
+	}
+
+	while (!indexes.empty())
+	{
+		toDelete = indexes.top();
+		mpConnections.erase(mpConnections.begin() + toDelete);
+		indexes.pop();
+	}
+}
+

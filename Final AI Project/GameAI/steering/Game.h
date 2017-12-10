@@ -50,6 +50,7 @@ public:
 	inline UiManager* getUiManager() const { return mpUiManager; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
+	inline Graph* getGraph() const { return mpGraph; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else

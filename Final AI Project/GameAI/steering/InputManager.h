@@ -18,6 +18,8 @@ private:
 	bool mLeftKeyDown = false;
 	bool mRightKeyDown = false;
 	bool mDebugKeyDown = false;
+	bool mLeftClickDown = false;
+	bool mRightClickDown = false;
 
 
 	std::string mCurrentSelection = "V";
@@ -26,6 +28,7 @@ public:
 	InputManager();
 	~InputManager();
 	void checkInput();
+	void checkDebugInput();
 	bool init();
 };
 #endif // !INPUTMANAGER_H

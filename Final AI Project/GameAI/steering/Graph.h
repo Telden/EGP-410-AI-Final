@@ -17,7 +17,9 @@ public:
 	void init();
 	void loadNodes();
 	void loadConnections();
-
+	void createNode(Vector2D mousePos);
+	void deleteNode(Vector2D mousePos);
+	void removeConnections(NODE_ID targetID);
 
 	std::vector<Connection*> getConnections(const Node& from);
 	std::vector<Connection*> getConnections(const NODE_ID& fromId);
@@ -31,6 +33,8 @@ private:
 	std::vector<Connection*>mpConnections;
 	std::map< NODE_ID, std::vector<Connection*> > mConnectionMap;
 	std::map<NODE_ID, Node*>  mpNodeMap;
+	
+	NODE_ID lastID; //Used for adding new nodes past what is loaded from the textfile
 
 	const std::string NODES_FILENAME_PATH = "data/nodes.txt";
 	const std::string CONNECTIONS_FILENAME_PATH = "data/connections.txt";

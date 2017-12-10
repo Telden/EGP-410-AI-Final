@@ -23,10 +23,12 @@
     <ClInclude Include="CreateBoidFlock.h" />
     <ClInclude Include="CreateDynamicArrive.h" />
     <ClInclude Include="CreateDynamicSeek.h" />
+    <ClInclude Include="CreateNodeMessage.h" />
     <ClInclude Include="CreateWanderFlee.h" />
     <ClInclude Include="CreateWanderSeek.h" />
     <ClInclude Include="CylinderCollision.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="DeleteNodeMessage.h" />
     <ClInclude Include="DeleteUnitMessage.h" />
     <ClInclude Include="DynamicArriveSteering.h" />
     <ClInclude Include="DynamicSeekSteering.h" />
@@ -68,6 +70,7 @@
     <ClInclude Include="VerticalWall.h" />
     <ClInclude Include="WallDetection.h" />
     <ClInclude Include="WallUnit.h" />
+    <ClInclude Include="WanderToNode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Allignment.cpp" />
@@ -82,9 +85,11 @@
     <ClCompile Include="CreateBoidMessage.cpp" />
     <ClCompile Include="CreateDynamicArrive.cpp" />
     <ClCompile Include="CreateDynamicSeek.cpp" />
+    <ClCompile Include="CreateNodeMessage.cpp" />
     <ClCompile Include="CreateWanderFlee.cpp" />
     <ClCompile Include="CreateWanderSeek.cpp" />
     <ClCompile Include="CylinderCollisoin.cpp" />
+    <ClCompile Include="DeleteNodeMessage.cpp" />
     <ClCompile Include="DeleteUnitMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />
     <ClCompile Include="DynamicSeekSteering.cpp" />
@@ -127,6 +132,7 @@
     <ClCompile Include="VerticalWall.cpp" />
     <ClCompile Include="WallDetection.cpp" />
     <ClCompile Include="WallUnit.cpp" />
+    <ClCompile Include="WanderToNode.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>

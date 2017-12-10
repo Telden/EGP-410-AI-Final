@@ -4,12 +4,10 @@
 class UpdateMouseUiMessage : public GameMessage
 {
 private:
-	float mMouseX, mMouseY;
-	std::string mMousePos;
-	std::string mCurrentSelection;
+	Vector2D mMousePos;
 	
 public:
-	UpdateMouseUiMessage(float mouseX, float mouseY, std::string mousePos, std::string currentSelection);
+	UpdateMouseUiMessage(Vector2D);
 	~UpdateMouseUiMessage();
 
 	void process();
