@@ -177,6 +177,7 @@
     </ClCompile>
     <ClCompile Include="PoliceSteering.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="PickupUnit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -355,6 +356,7 @@
     </ClInclude>
     <ClInclude Include="PoliceSteering.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="PickupUnit.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

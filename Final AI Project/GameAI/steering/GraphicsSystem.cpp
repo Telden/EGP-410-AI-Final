@@ -100,6 +100,11 @@ void GraphicsSystem::drawLine(Vector2D start, Vector2D end)
    al_draw_line(start.getX(), start.getY(), end.getX(), end.getY(), al_map_rgb(0, 255, 0), 2.0f);
 }
 
+void GraphicsSystem::drawCircle(Vector2D center, int radius)
+{
+   al_draw_circle(center.getX(), center.getY(), radius, al_map_rgb(255, 255, 255), 2);
+}
+
 void GraphicsSystem::drawMouse(Vector2D mousePos)
 {
 	int width = NODE_SIZE / 2;

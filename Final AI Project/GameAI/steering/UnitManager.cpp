@@ -26,8 +26,8 @@
 #include <iomanip>
 #include "Player.h"
 #include "WallUnit.h"
-#include "Graph.h"
-#include "WanderToNode.h"
+#include "PickupUnit.h"
+
 // Message headers
 #include "GameMessage.h"
 #include "GameMessageManager.h"
@@ -37,20 +37,9 @@ UnitManager::UnitManager()
 {
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
-	Vector2D vel(0, 0);
+	Vector2D vel(1.0f, 1.0f);
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpEnemySprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
-
-	//Vector2D vel(1.0f, 1.0f);
-	Node* startingNode = GRAPH->getNode(8);
-	Vector2D nodePos = GRAPH->getNode(8)->getPosision();
-	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 180, 100);
-	mpUnits.push_back(pUnit);
-	
-	WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);
-	pUnit->setSteering(pWanderToNode);
-	pUnit = NULL;
-	pWanderToNode = NULL;
 
 	srand(time(NULL)); //Need to move this out of here
 
@@ -72,6 +61,16 @@ void UnitManager::addWall(WallUnit* newUnit)
 	mpWalls.push_back(newUnit);
 }
 
+void UnitManager::addWater(WallUnit* newUnit)
+{
+   mpWater.push_back(newUnit);
+}
+
+void UnitManager::addPickup(PickupUnit* newUnit)
+{
+   mpPickups.push_back(newUnit);
+}
+
 /*Update the units with new steering values, get their steering, and draw them*/
 void UnitManager::updateUnits(float time)
 {
@@ -81,17 +80,28 @@ void UnitManager::updateUnits(float time)
 
 
 	// update and draw police
-	for (int i = 0; i < mpUnits.size(); i++)
+	for (unsigned int i = 0; i < mpUnits.size(); i++)
 	{
-	
 		mpUnits[i]->update(time);
 		mpUnits[i]->draw(GRAPHICS_SYSTEM->getBackBuffer());
 	}
 
    // draw walls
-   for (int i = 0; i < mpWalls.size(); i++)
+   for (unsigned int i = 0; i < mpWalls.size(); i++)
    {
       mpWalls[i]->draw();
+   }
+
+   // draw water
+   for (unsigned int i = 0; i < mpWater.size(); i++)
+   {
+      mpWater[i]->draw();
+   }
+
+   // draw consumables
+   for (unsigned int i = 0; i < mpPickups.size(); i++)
+   {
+      mpPickups[i]->draw();
    }
 
 	
@@ -121,6 +131,16 @@ void UnitManager::cleanup()
    {
       delete mpWalls[i];
    }
+
+   for (unsigned int i = 0; i < mpWater.size(); i++)
+   {
+      delete mpWater[i];
+   }
+
+   for (unsigned int i = 0; i < mpPickups.size(); i++)
+   {
+      delete mpPickups[i];
+   }
 }
 
 std::vector<KinematicUnit*> UnitManager::getUnitList()
@@ -136,6 +156,16 @@ KinematicUnit* UnitManager::getKinematicUnit(int index)
 WallUnit* UnitManager::getWallUnit(int index)
 {
 	return mpWalls[index];
+}
+
+WallUnit* UnitManager::getWaterUnit(int index)
+{
+   return mpWater[index];
+}
+
+PickupUnit* UnitManager::getPickupUnit(int index)
+{
+   return mpPickups[index];
 }
 
 int UnitManager::getNumOfWalls()

@@ -11,6 +11,7 @@ class Player;
 class Sprite;
 class KinematicUnit;
 class WallUnit;
+class PickupUnit;
 
 class UnitManager : public Trackable
 {
@@ -19,6 +20,8 @@ private:
 
 	std::vector<KinematicUnit*> mpUnits;
 	std::vector<WallUnit*> mpWalls;
+   std::vector<WallUnit*> mpWater;
+   std::vector<PickupUnit*> mpPickups;
 	Sprite* mpEnemySprite;
 
 
@@ -32,29 +35,22 @@ public:
 	std::vector<KinematicUnit*> getUnitList(); 
 	KinematicUnit* getKinematicUnit(int index);
 	WallUnit* getWallUnit(int index);
+   WallUnit* getWaterUnit(int index);
+   PickupUnit* getPickupUnit(int index);
 
 	Player* getPlayerUnit() { return mpPlayer; };
 	int getNumOfWalls();
+   int getNumOfWater() { return mpWater.size(); }
+   int getNumOfPickUps() { return mpPickups.size(); }
 
 	void addUnit(KinematicUnit* newUnit);
 	void addWall(WallUnit* newUnit);
+   void addWater(WallUnit* newUnit);
+   void addPickup(PickupUnit* newUnit);
 	
 	/* Update Functions */
 	void updateUnits(float time);
 	void updateUI();
-	
-	
-
-	
-
-
-	
-
-	
-	
-
-
-	
 };
 #endif 
 

@@ -20,6 +20,7 @@
     <ClInclude Include="CollisionAvoidance.h" />
     <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="Connection.h" />
+    <ClInclude Include="PickupUnit.h" />
     <ClInclude Include="CreateBoidFlock.h" />
     <ClInclude Include="CreateDynamicArrive.h" />
     <ClInclude Include="CreateDynamicSeek.h" />
@@ -83,6 +84,7 @@
     <ClCompile Include="CollisionAvoidance.cpp" />
     <ClCompile Include="CollisionDetector.cpp" />
     <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="PickupUnit.cpp" />
     <ClCompile Include="CreateBoidFlock.cpp" />
     <ClCompile Include="CreateBoidMessage.cpp" />
     <ClCompile Include="CreateDynamicArrive.cpp" />
