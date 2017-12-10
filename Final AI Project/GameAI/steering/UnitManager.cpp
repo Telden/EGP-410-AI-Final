@@ -100,12 +100,12 @@ void UnitManager::cleanup()
 {
 	delete mpPlayer;
 	
-	for (int i = 0; i < mpUnits.size(); i++)
+	for (unsigned int i = 0; i < mpUnits.size(); i++)
 	{
 		delete mpUnits[i];
 	}
 
-   for (int i = 0; i < mpWalls.size(); i++)
+   for (unsigned int i = 0; i < mpWalls.size(); i++)
    {
       delete mpWalls[i];
    }

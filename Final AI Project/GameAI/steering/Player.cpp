@@ -10,3 +10,8 @@ Player::Player(Sprite *pSprite, const Vector2D &position, float orientation, con
 	setSteering(mpPlayerMovement);
 }
 
+Player::~Player()
+{
+   if (mpPlayerMovement != NULL)
+      delete mpPlayerMovement;
+}
