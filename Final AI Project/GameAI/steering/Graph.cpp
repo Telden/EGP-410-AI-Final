@@ -146,9 +146,9 @@ Node* Graph::getNode(int index)
 
 void Graph::renderGraph()
 {
-		for (int i = 0; i < mpNodes.size(); i++)
+		for (unsigned int i = 0; i < mpNodes.size(); i++)
 			mpNodes[i]->renderNode();
-		for (int i = 0; i < mpConnections.size(); i++)
+		for (unsigned int i = 0; i < mpConnections.size(); i++)
 			mpConnections[i]->renderConnection();
 	
 	
@@ -169,7 +169,7 @@ void Graph::deleteNode(Vector2D mousePos)
 	Vector2D bottomRight;
 	Node* pTarget;
 	NODE_ID targetID;
-	int i = 0;
+	unsigned int i = 0;
 	bool nodeFound = false;
 	for (i; i < mpNodes.size(); i++)
 	{
@@ -202,7 +202,7 @@ void Graph::removeConnections(NODE_ID targetID)
 {
 	std::stack<int> indexes;
 	int toDelete;
-	for (int i = 0; i < mpConnections.size(); i++)
+	for (unsigned int i = 0; i < mpConnections.size(); i++)
 	{
 		if (mpConnections[i]->getFromNode()->getId() == targetID || mpConnections[i]->getToNode()->getId() == targetID)
 		{

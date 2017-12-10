@@ -24,7 +24,7 @@ Steering* Separation::getSteering()
 	std::vector <Vector2D> closePos;
 
 	// look at all Units and get the positions of the ones within a certain radius
-	for (int i = 1; i < UNIT_MANAGER->getUnitList().size(); i++)
+	for (unsigned int i = 1; i < UNIT_MANAGER->getUnitList().size(); i++)
 	{
 
 

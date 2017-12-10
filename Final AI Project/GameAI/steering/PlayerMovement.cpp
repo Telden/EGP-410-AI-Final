@@ -30,7 +30,7 @@ Steering* PlayerMovement::getSteering()
    if (test)
       std::cout << "player detecting wall - circ x rect" << std::endl;
 	
-   for (int i = 0; i < unitList.size(); i++)
+   for (unsigned int i = 0; i < unitList.size(); i++)
    {
 	 test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
    }

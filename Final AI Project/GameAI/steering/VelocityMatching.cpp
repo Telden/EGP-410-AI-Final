@@ -18,7 +18,7 @@ Steering* VelocityMatching::getSteering()
 	Vector2D direction;
 	float distance;
 	int count = 0;
-	for (int i = 1; i < UNIT_MANAGER->getUnitList().size(); i++)
+	for (unsigned int i = 1; i < UNIT_MANAGER->getUnitList().size(); i++)
 	{
 
 
