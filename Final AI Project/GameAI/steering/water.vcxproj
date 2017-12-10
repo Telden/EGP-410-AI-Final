@@ -54,6 +54,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="PoliceSteering.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="SaveSettingsMessage.h" />
     <ClInclude Include="Separation.h" />
@@ -116,6 +117,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="PoliceSteering.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="SaveSettingsMessage.cpp" />
     <ClCompile Include="Separation.cpp" />

@@ -175,6 +175,7 @@
     <ClCompile Include="WanderToNode.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="PoliceSteering.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -351,6 +352,7 @@
     <ClInclude Include="WanderToNode.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
+    <ClInclude Include="PoliceSteering.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

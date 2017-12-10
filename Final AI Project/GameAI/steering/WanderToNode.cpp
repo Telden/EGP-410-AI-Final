@@ -26,6 +26,7 @@ Steering* WanderToNode::getSteering()
 		mpGraphPtr->getConnections(mpTargetNode->getId());
 	}
 				
+	return this;
 }
 
 

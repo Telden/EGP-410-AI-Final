@@ -3,7 +3,7 @@
 #include "WallUnit.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
-
+#include "UnitManager.h"
 Raycast::Raycast()
 {
    for (int i = 0; i < UNIT_MANAGER->getNumOfWalls(); i++)
