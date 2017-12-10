@@ -23,7 +23,7 @@ private:
    std::vector<WallUnit*> mpWater;
    std::vector<PickupUnit*> mpPickups;
 	Sprite* mpEnemySprite;
-
+	Sprite* mpPlayerSprite;
 
 public:
 	/* Constructor and Destructor */

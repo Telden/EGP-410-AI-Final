@@ -43,11 +43,12 @@
 UnitManager::UnitManager()
 {
 
+	mpPlayerSprite = SPRITE_MANAGER->getSprite(PLAYER_ICON_SPRITE_ID);
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
 	Vector2D vel(0, 0);
 	Vector2D pos(180, 180);
-	mpPlayer = new Player(mpEnemySprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
+	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
 	//Vector2D vel(1.0f, 1.0f);
 	Node* startingNode = GRAPH->getNode(8);
