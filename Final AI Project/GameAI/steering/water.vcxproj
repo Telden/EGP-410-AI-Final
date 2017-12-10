@@ -60,6 +60,7 @@
     <ClInclude Include="Separation.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Steering.h" />
     <ClInclude Include="SwitchUI.h" />
     <ClInclude Include="ToggleDebugMessage.h" />
@@ -123,6 +124,7 @@
     <ClCompile Include="Separation.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="SwitchUi.cpp" />
     <ClCompile Include="ToggleDebugMessage.cpp" />

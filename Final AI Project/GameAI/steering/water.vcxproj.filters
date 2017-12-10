@@ -176,6 +176,7 @@
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="PoliceSteering.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -353,6 +354,7 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="PoliceSteering.h" />
+    <ClInclude Include="StateMachine.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
