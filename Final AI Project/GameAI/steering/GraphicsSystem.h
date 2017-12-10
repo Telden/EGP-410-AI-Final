@@ -30,10 +30,13 @@ public:
 
    void drawRectangle(Vector2D topLeft, Vector2D bottomRight);
    void drawLine(Vector2D start, Vector2D end);
+   void drawMouse(Vector2D mousePos);
 
 private:
 	ALLEGRO_DISPLAY* mpDisplay;
 	GraphicsBuffer* mpBackBuffer;
 	int mWidth;
 	int mHeight;
+	const int NODE_SIZE = 64;
+
 };

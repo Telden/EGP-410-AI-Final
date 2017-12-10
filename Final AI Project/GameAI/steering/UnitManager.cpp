@@ -42,6 +42,7 @@ UnitManager::UnitManager()
 
 	srand(time(NULL)); //Need to move this out of here
 
+	
 }
 
 UnitManager::~UnitManager()

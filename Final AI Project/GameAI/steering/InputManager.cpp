@@ -5,11 +5,15 @@
 #include "GameMessageManager.h"
 #include "GameMessage.h"
 #include "Game.h"
+#include  "Vector2D.h"
 
 // Messages
 #include "EndGameMessage.h"
 #include "MovementMessage.h"
-
+#include "ToggleDebugMessage.h"
+#include "UpdateMouseUiMessage.h"
+#include "CreateNodeMessage.h"
+#include "DeleteNodeMessage.h"
 
 
 InputManager::InputManager()
@@ -57,14 +61,12 @@ void InputManager::checkInput()
 	/* Movement Key Inputs (If pressed) */
 	if (al_key_down(&keyState, ALLEGRO_KEY_W) && !mForwardKeyDown)
 	{
-		//printf("W Key\n");
 		mForwardKeyDown = true;
 		pMessage = new MovementMessage('W', mForwardKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mBackwardsKeyDown)
 	{
-		//printf("S Key\n");
 		mBackwardsKeyDown = true;
 		pMessage = new MovementMessage('S', mBackwardsKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -72,7 +74,6 @@ void InputManager::checkInput()
 
 	if (al_key_down(&keyState, ALLEGRO_KEY_A) && !mLeftKeyDown)
 	{
-		//printf("A Key\n");
 		mLeftKeyDown = true;
 		pMessage = new MovementMessage('A', mLeftKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -80,12 +81,17 @@ void InputManager::checkInput()
 	}
 	if (al_key_down(&keyState, ALLEGRO_KEY_D) && !mRightKeyDown)
 	{
-		//printf("D Key");
 		mRightKeyDown = true;
 		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
+	if (al_key_down(&keyState, ALLEGRO_KEY_B) && !mDebugKeyDown)
+	{
+		mDebugKeyDown = true;
+		pMessage = new ToggleDebugMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
 
 	/* When a movement key is released */
 
@@ -98,7 +104,6 @@ void InputManager::checkInput()
 	}
 	else if (!al_key_down(&keyState, ALLEGRO_KEY_S) && mBackwardsKeyDown)
 	{
-		printf("S Key Released\n");
 		mBackwardsKeyDown = false;
 		pMessage = new MovementMessage('S', mBackwardsKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -106,7 +111,6 @@ void InputManager::checkInput()
 
 	if (!al_key_down(&keyState, ALLEGRO_KEY_A) && mLeftKeyDown)
 	{
-		printf("A Key Released\n");
 		mLeftKeyDown = false;
 		pMessage = new MovementMessage('A', mLeftKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
@@ -114,12 +118,67 @@ void InputManager::checkInput()
 	}
 	else if (!al_key_down(&keyState, ALLEGRO_KEY_D) && mRightKeyDown)
 	{
-		printf("D Key Released\n");
 		mRightKeyDown = false;
 		pMessage = new MovementMessage('D', mRightKeyDown);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
+	if (!al_key_down(&keyState, ALLEGRO_KEY_B) && mDebugKeyDown)
+	{
+		mDebugKeyDown = false;
+	}
 
 
+}
 
+void::InputManager::checkDebugInput()
+{
+	GameMessage* pMessage;
+	//get current keyboard state
+	ALLEGRO_KEYBOARD_STATE keyState;
+	al_get_keyboard_state(&keyState);
+	//get mouse state
+	ALLEGRO_MOUSE_STATE mouseState;
+	al_get_mouse_state(&mouseState);
+
+	//Get the mouse posision and send it to the graphics system to draw a node rectangle
+	Vector2D pos(mouseState.x, mouseState.y);
+	pMessage = new UpdateMouseUiMessage(pos);
+	MESSAGE_MANAGER->addMessage(pMessage, 0);
+
+	if (al_mouse_button_down(&mouseState, 1) && !mLeftClickDown)//left mouse click
+	{
+		mLeftClickDown = true;
+		pMessage = new CreateNodeMessage(pos);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+	if (al_mouse_button_down(&mouseState, 2) && !mRightClickDown)//Right mouse click
+	{
+		mRightClickDown = true;
+		pMessage = new DeleteNodeMessage(pos);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+
+	if (al_key_down(&keyState, ALLEGRO_KEY_B) && !mDebugKeyDown)
+	{
+		mDebugKeyDown = true;
+		pMessage = new ToggleDebugMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	if (!al_key_down(&keyState, ALLEGRO_KEY_B) && mDebugKeyDown)
+	{
+		mDebugKeyDown = false;
+	}
+
+	if (!al_mouse_button_down(&mouseState, 1) && mLeftClickDown)//left mouse click release
+	{
+		mLeftClickDown = false;
+
+	}
+	if (!al_mouse_button_down(&mouseState, 2) && mRightClickDown)//left mouse click release
+	{
+		mRightClickDown = false;
+
+	}
 }

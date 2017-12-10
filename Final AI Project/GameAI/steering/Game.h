@@ -18,6 +18,7 @@ class Timer;
 class UnitManager;
 class InputManager;
 class UiManager;
+class Graph;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
@@ -49,11 +50,14 @@ public:
 	inline UiManager* getUiManager() const { return mpUiManager; };
 	inline GameMessageManager* getMessageManager() { return mpMessageManager; };
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
+	inline Graph* getGraph() const { return mpGraph; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
 
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
+
+	void toggleDebug();
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -66,6 +70,7 @@ private:
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
 	bool mShouldExit;
+	bool mShouldDebug = false;
 
 	ALLEGRO_SAMPLE* mpSample;
 	IDType mBackgroundBufferID;
@@ -79,7 +84,7 @@ private:
 	KinematicUnit* mpAIUnit;
 	KinematicUnit* mpAIUnit2;
 
-	
+	Graph* mpGraph;
 
 };
 
