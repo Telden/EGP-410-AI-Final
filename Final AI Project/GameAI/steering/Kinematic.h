@@ -42,7 +42,7 @@ public:
 	float getOrientation() const { return mOrientation; };
 	void setOrientation( float orientation ) { mOrientation = orientation; };
 	void setRotationalVelocity( float rotVel ) { mRotationVel = rotVel; };
-
+	Vector2D getKinematicPosition() { return mPosition; };
 protected:
 	Vector2D mPosition;//where am I?
 	Vector2D mVelocity;//how fast am I moving?

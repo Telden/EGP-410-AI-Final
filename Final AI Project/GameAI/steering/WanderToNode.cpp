@@ -30,14 +30,10 @@ Steering* WanderToNode::getSteering()
 	if (distance < mArrivalRadius)
 	{
 		potentialConnections = mpGraphPtr->getConnections(mpTargetNode->getId());
-		for (int i = 0; i < potentialConnections.size(); i++)
-		{
-			std::cout << "Possible connections: " << potentialConnections[i]->getToNode()->getId() << std::endl;
-		}
 		seed = rand() % potentialConnections.size();
 		mpCurrentNode = mpTargetNode;
 		mpTargetNode = potentialConnections[seed]->getToNode();
-		std::cout << "Chosen Target: " << mpTargetNode->getId();
+		
 	}
 
 	mLinear = mpTargetNode->getPosision() - mpMover->getPosition();

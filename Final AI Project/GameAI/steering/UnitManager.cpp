@@ -27,6 +27,13 @@
 #include "Player.h"
 #include "WallUnit.h"
 #include "PickupUnit.h"
+#include "Graph.h"
+#include "Node.h"
+#include "WanderToNode.h"
+
+
+
+
 
 // Message headers
 #include "GameMessage.h"
@@ -35,11 +42,23 @@
 
 UnitManager::UnitManager()
 {
+
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
-	Vector2D vel(1.0f, 1.0f);
+	Vector2D vel(0, 0);
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpEnemySprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
+
+	//Vector2D vel(1.0f, 1.0f);
+	Node* startingNode = GRAPH->getNode(8);
+	Vector2D nodePos = GRAPH->getNode(8)->getPosision();
+	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80);
+	mpUnits.push_back(pUnit);
+
+	WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);
+	pUnit->setSteering(pWanderToNode);
+	pUnit = NULL;
+	pWanderToNode = NULL;
 
 	srand(time(NULL)); //Need to move this out of here
 

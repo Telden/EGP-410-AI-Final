@@ -11,6 +11,7 @@ public:
    PickupUnit(Vector2D position, int diameter, int mode);
    ~PickupUnit();
 
+   void update();
    void draw();
 
    int getMode();

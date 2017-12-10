@@ -1,6 +1,8 @@
 #include "PickupUnit.h"
 #include "Game.h"
 #include "GraphicsSystem.h"
+#include "UnitManager.h"
+#include "Player.h"
 
 // mode is 0 for regular score, 1 for a powerup
 PickupUnit::PickupUnit(Vector2D position, int radius, int mode)
@@ -15,6 +17,20 @@ PickupUnit::~PickupUnit()
 
 }
 
+
+void PickupUnit::update()
+{
+	float distance;
+	KinematicUnit*  playerObj = UNIT_MANAGER->getPlayerUnit();
+	distance = sqrt(pow((playerObj->getPosition().getX() - this->getKinematicPosition().getX()), 2) +
+		pow((playerObj->getPosition().getY() - this->getKinematicPosition().getY()), 2));
+
+	if (distance < mRadius)
+	{
+		//pickup the unit
+	}
+	
+}
 void PickupUnit::draw()
 {
    gpGame->getGraphicsSystem()->drawCircle(mPosition, mRadius / 2);
