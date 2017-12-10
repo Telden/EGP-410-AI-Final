@@ -26,6 +26,7 @@
 #include <iomanip>
 #include "Player.h"
 #include "WallUnit.h"
+#include "PickupUnit.h"
 
 // Message headers
 #include "GameMessage.h"
@@ -60,6 +61,16 @@ void UnitManager::addWall(WallUnit* newUnit)
 	mpWalls.push_back(newUnit);
 }
 
+void UnitManager::addWater(WallUnit* newUnit)
+{
+   mpWater.push_back(newUnit);
+}
+
+void UnitManager::addPickup(PickupUnit* newUnit)
+{
+   mpPickups.push_back(newUnit);
+}
+
 /*Update the units with new steering values, get their steering, and draw them*/
 void UnitManager::updateUnits(float time)
 {
@@ -69,17 +80,28 @@ void UnitManager::updateUnits(float time)
 
 
 	// update and draw police
-	for (int i = 0; i < mpUnits.size(); i++)
+	for (unsigned int i = 0; i < mpUnits.size(); i++)
 	{
-	
 		mpUnits[i]->update(time);
 		mpUnits[i]->draw(GRAPHICS_SYSTEM->getBackBuffer());
 	}
 
    // draw walls
-   for (int i = 0; i < mpWalls.size(); i++)
+   for (unsigned int i = 0; i < mpWalls.size(); i++)
    {
       mpWalls[i]->draw();
+   }
+
+   // draw water
+   for (unsigned int i = 0; i < mpWater.size(); i++)
+   {
+      mpWater[i]->draw();
+   }
+
+   // draw consumables
+   for (unsigned int i = 0; i < mpPickups.size(); i++)
+   {
+      mpPickups[i]->draw();
    }
 
 	
@@ -109,6 +131,16 @@ void UnitManager::cleanup()
    {
       delete mpWalls[i];
    }
+
+   for (unsigned int i = 0; i < mpWater.size(); i++)
+   {
+      delete mpWater[i];
+   }
+
+   for (unsigned int i = 0; i < mpPickups.size(); i++)
+   {
+      delete mpPickups[i];
+   }
 }
 
 std::vector<KinematicUnit*> UnitManager::getUnitList()
@@ -124,6 +156,16 @@ KinematicUnit* UnitManager::getKinematicUnit(int index)
 WallUnit* UnitManager::getWallUnit(int index)
 {
 	return mpWalls[index];
+}
+
+WallUnit* UnitManager::getWaterUnit(int index)
+{
+   return mpWater[index];
+}
+
+PickupUnit* UnitManager::getPickupUnit(int index)
+{
+   return mpPickups[index];
 }
 
 int UnitManager::getNumOfWalls()

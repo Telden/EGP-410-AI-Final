@@ -8,7 +8,7 @@ class GraphicsBuffer;
 class WallUnit : public Kinematic
 {
 	public:
-		WallUnit(Vector2D topLeft, Vector2D bottomRight);
+		WallUnit(Vector2D topLeft, Vector2D bottomRight, int mode);
 		~WallUnit();
 
 		void Init();
@@ -26,6 +26,7 @@ class WallUnit : public Kinematic
 	private:
 		Vector2D mTopLeft, mTopRight, mBottomLeft, mBottomRight;
 		int mHeight, mWidth;
+      int mMode;
 };
 
 #endif

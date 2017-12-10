@@ -2,7 +2,8 @@
 #include "Game.h"
 #include "GraphicsSystem.h"
 
-WallUnit::WallUnit(Vector2D topLeft, Vector2D bottomRight)
+// mode is 0 for walls, 1 for water
+WallUnit::WallUnit(Vector2D topLeft, Vector2D bottomRight, int mode)
 :Kinematic(topLeft, 0, 0, 0) // initializing velocity, orientation, and rotational velocity as 0
 {
 	mTopLeft = topLeft;
@@ -17,6 +18,8 @@ WallUnit::WallUnit(Vector2D topLeft, Vector2D bottomRight)
 	mHeight = mBottomLeft.getY() - mTopLeft.getY();
 	mWidth = mTopRight.getX() - mTopLeft.getX();
 	mWidth = mWidth;
+
+   mMode = mode;
 }
 
 void WallUnit::Init()
