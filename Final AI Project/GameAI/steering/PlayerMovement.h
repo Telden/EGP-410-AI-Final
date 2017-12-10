@@ -32,4 +32,5 @@ private:
 	bool mMoveLeft = false;
 	bool mMoveRight = false;
 	float mMaxRotationalVelocity = 5;
+	const int spriteWidthandHeight = 50;
 };

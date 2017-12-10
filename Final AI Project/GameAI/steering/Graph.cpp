@@ -67,7 +67,7 @@ void Graph::loadConnections()
 		ifStream >> input;
 		const NODE_ID nodeID = std::stoi(input);
 		pfrom = getNode(nodeID);
-		
+		std::vector<Connection*> connectionList;
 
 
 

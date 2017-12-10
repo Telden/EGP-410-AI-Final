@@ -2,7 +2,11 @@
 #include "KinematicUnit.h"
 #include "GameMessage.h"
 #include "GraphicsSystem.h"
+#include "Game.h"
+#include "UnitManager.h"
 #include <math.h>
+#include <vector>
+#include "KinematicUnit.h"
 
 
 
@@ -20,10 +24,20 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 Steering* PlayerMovement::getSteering()
 {
    bool test = mCol.circleOnBox(mpMover->getPosition(), 50);
+   std::vector<KinematicUnit*> unitList;
+   unitList = UNIT_MANAGER->getUnitList();
 
    if (test)
       std::cout << "player detecting wall - circ x rect" << std::endl;
 	
+   for (int i = 0; i < unitList.size(); i++)
+   {
+	 test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+   }
+   
+   if(test)
+	   std::cout << "player detecting enemy - circ x circ" << std::endl;
+   
 	//mLinear = 0;
 	mAngular = previousAngle;
 	//std::cout << mCurrentAcceleration << "\n";
