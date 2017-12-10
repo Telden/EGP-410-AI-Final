@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Steering.h"
+#include "CircleCollision.h"
 
 class KinematicUnit;
 
@@ -23,6 +24,7 @@ private:
 	float mAccelerationIncrease = 5;
 	float mDeceleration = 1;
 
+   CircleCollision mCol;
 
 	/* Player Input Bools */
 	bool mMoveForwards = false;

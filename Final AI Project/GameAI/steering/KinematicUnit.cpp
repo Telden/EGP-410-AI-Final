@@ -12,6 +12,7 @@
 #include "KinematicWanderSteering.h"
 #include "BlendedSteering.h"
 #include "CollisionAvoidance.h"
+#include "PoliceSteering.h"
 
 //Dual AI
 #include "DynamicWanderAndSeek.h"
@@ -27,6 +28,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 ,mMaxVelocity(maxVelocity)
 ,mMaxAcceleration(maxAcceleration)
 {
+
 }
 
 KinematicUnit::~KinematicUnit()
@@ -122,6 +124,12 @@ void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
 {
 	DynamicArriveSteering* pDynamicArriveSteering = new DynamicArriveSteering( this, gpGame->getPlayerUnit() );
 	setSteering( pDynamicArriveSteering );
+}
+
+void KinematicUnit::policeSteering()
+{
+   PoliceSteering* pPoliceSteering = new PoliceSteering(this);
+   setSteering(pPoliceSteering);
 }
 
 //Steering* KinematicUnit::dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius)

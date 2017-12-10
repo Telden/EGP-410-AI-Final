@@ -3,8 +3,15 @@
 #include "WallUnit.h"
 #include <math.h>
 #include "UnitManager.h"
+#include "allegro5\allegro_primitives.h"
+#include "Game.h"
 
-CircleCollision::CircleCollision(UnitManager* um)
+CircleCollision::CircleCollision()
+{
+   
+}
+
+/*CircleCollision::CircleCollision(UnitManager* um)
 {
 	mpUnitManager = um;
 
@@ -17,7 +24,7 @@ CircleCollision::CircleCollision(UnitManager* um)
 
 		walls.push_back(BoxWithCenter(mpUnitManager->getWallUnit(i), tmp));
 	}
-}
+}*/
 
 CircleCollision::~CircleCollision()
 {
@@ -30,6 +37,21 @@ CircleCollision::~CircleCollision()
 // used for: enemy and walls - player and walls
 bool CircleCollision::circleOnBox(Vector2D position, int spriteWidthHeight)
 {
+   if (!alreadyFoundWalls)
+   {
+      mpUnitManager = UNIT_MANAGER;
+
+      // calculate rectangle centers beforehand
+      for (int i = 0; i < mpUnitManager->getNumOfWalls(); i++)
+      {
+         Vector2D tmp;
+         tmp.setX(mpUnitManager->getWallUnit(i)->getTopLeft().getX() + (mpUnitManager->getWallUnit(i)->getWidth() / 2));
+         tmp.setY(mpUnitManager->getWallUnit(i)->getTopLeft().getY() + (mpUnitManager->getWallUnit(i)->getHeight() / 2));
+
+         walls.push_back(BoxWithCenter(mpUnitManager->getWallUnit(i), tmp));
+      }
+      alreadyFoundWalls = true;
+   }
 	float radius = spriteWidthHeight / 2;
 
 	// calculate the midpoint from the actual position and sprite width/height (which are the same cause we're a circle)
@@ -39,10 +61,12 @@ bool CircleCollision::circleOnBox(Vector2D position, int spriteWidthHeight)
 
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
+      al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+
 		// calculate distance between circle center and rectangle center
 		Vector2D distance;
-		distance.setX(abs(circCenter.getX() - walls[i].rectCenter.getX()));
-		distance.setY(abs(circCenter.getY() - walls[i].rectCenter.getY()));
+		distance.setX(abs(position.getX() - walls[i].rectCenter.getX()));
+		distance.setY(abs(position.getY() - walls[i].rectCenter.getY()));
 
 		// if distance is greater than half of the circle + half of the rectangle, no collision
 		if (distance.getX() > (walls[i].wall->getWidth() / 2) + radius)
@@ -76,19 +100,18 @@ bool CircleCollision::circleOnCircle(Vector2D position, int spriteWidthHeight, V
 	float radius = spriteWidthHeight / 2;
 	float radius2 = spriteWidthHeight / 2;
 
-	// calculate center points of the circles
-	Vector2D circCenter = (position.getX() + (radius),
-						   position.getY() + (radius)
-	);
-	Vector2D circCenter2 = (position2.getX() + (radius2),
-						    position2.getY() + (radius2)
-	);
-
 	// get the distance
-	Vector2D distance = circCenter - circCenter2;
+	float distance = sqrt(
+                     pow(position2.getX() - position.getX(), 2) +
+                     pow(position2.getY() - position.getY(), 2)
+                        );
+
+   // for debugging
+   al_draw_circle(position.getX(), position.getY(), radius, al_map_rgb(255, 0, 0), 2);
+   al_draw_circle(position2.getX(), position2.getY(), radius2, al_map_rgb(255, 0, 0), 2);
 
 	// if the distance between the two center points 
-	if (abs(distance.getLength()) > abs(spriteWidthHeight - spriteWidthHeight2))
+	if (distance > radius + radius2)
 	{
 		return false;
 	}

@@ -19,10 +19,14 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
+   bool test = mCol.circleOnBox(mpMover->getPosition(), 50);
+
+   if (test)
+      std::cout << "player detecting wall - circ x rect" << std::endl;
 	
 	//mLinear = 0;
 	mAngular = previousAngle;
-	std::cout << mCurrentAcceleration << "\n";
+	//std::cout << mCurrentAcceleration << "\n";
 	
 	if (mMoveBackwards || mMoveForwards || mMoveRight || mMoveLeft)
 	{

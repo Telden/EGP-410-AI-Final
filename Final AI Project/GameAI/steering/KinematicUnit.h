@@ -58,6 +58,7 @@ public:
 	BlendedSteering* blendedSteering(KinematicUnit* pTarget);
 	CollisionAvoidance* collisionAvoidance(KinematicUnit* pUnit, float radius);
 	void kinematicWander();
+   void policeSteering();
 	void setSteering(Steering* pSteering);
 
 private:
@@ -66,7 +67,5 @@ private:
 	Vector2D mTarget;//used only for Kinematic seek and arrive
 	float mMaxVelocity;
 	float mMaxAcceleration;
-
-	
 
 };

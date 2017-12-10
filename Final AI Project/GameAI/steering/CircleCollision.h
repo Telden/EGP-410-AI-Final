@@ -14,8 +14,11 @@ class CircleCollision
 		std::vector<BoxWithCenter> walls;
 		UnitManager* mpUnitManager;
 
+      bool alreadyFoundWalls = false;
+
 	public:
-		CircleCollision(UnitManager* um);
+		CircleCollision();
+      //CircleCollision(UnitManager* um);
 		~CircleCollision();
 
 		bool circleOnBox(Vector2D position, int spriteWidthHeight);

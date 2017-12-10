@@ -29,6 +29,9 @@ class Raycast
 
       bool doIt();
       float result(Vector2D wall);
+
+      void setStartRay(Vector2D vec) { startRay = vec; };
+      void setEndRay(Vector2D vec) { endRay = vec; };
 };
 
 struct CastWall
@@ -37,6 +40,12 @@ struct CastWall
 	WallUnit* unit;
 
 	// the result of the result function
-	float intersects = 0;
+	float intersects;
+
+   CastWall(WallUnit* wall)
+   {
+      unit = wall;
+      intersects = 0;
+   }
 };
 #endif

@@ -40,7 +40,6 @@ UnitManager::UnitManager()
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpEnemySprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
-
 	srand(time(NULL)); //Need to move this out of here
 
 }
@@ -68,14 +67,19 @@ void UnitManager::updateUnits(float time)
 	mpPlayer->draw(GRAPHICS_SYSTEM->getBackBuffer());
 
 
-	/* Update Police Cars */
-	/*for (int i = 0; i < mpUnits.size(); i++)
+	// update and draw police
+	for (int i = 0; i < mpUnits.size(); i++)
 	{
 	
 		mpUnits[i]->update(time);
 		mpUnits[i]->draw(GRAPHICS_SYSTEM->getBackBuffer());
+	}
 
-	}*/
+   // draw walls
+   for (int i = 0; i < mpWalls.size(); i++)
+   {
+      mpWalls[i]->draw();
+   }
 
 	
 	/*	if (mShouldUpdate)
@@ -98,8 +102,12 @@ void UnitManager::cleanup()
 	for (int i = 0; i < mpUnits.size(); i++)
 	{
 		delete mpUnits[i];
-
 	}
+
+   for (int i = 0; i < mpWalls.size(); i++)
+   {
+      delete mpWalls[i];
+   }
 }
 
 std::vector<KinematicUnit*> UnitManager::getUnitList()
