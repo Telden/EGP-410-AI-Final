@@ -139,6 +139,66 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
    return false;
 }
 
+bool CircleCollision::circleOnDoor(Vector2D position, int spriteWidthHeight)
+{
+	if (!alreadyFoundDoors)
+	{
+		mpUnitManager = UNIT_MANAGER;
+
+		// calculate rectangle centers beforehand
+		for (int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
+		{
+			Vector2D tmp;
+			tmp.setX(mpUnitManager->getDoorUnit(i)->getTopLeft().getX() + (mpUnitManager->getDoorUnit(i)->getWidth() / 2));
+			tmp.setY(mpUnitManager->getDoorUnit(i)->getTopLeft().getY() + (mpUnitManager->getDoorUnit(i)->getHeight() / 2));
+
+			doors.push_back(BoxWithCenter(mpUnitManager->getDoorUnit(i), tmp));
+		}
+		alreadyFoundDoors = true;
+	}
+	float radius = spriteWidthHeight / 2;
+
+	// calculate the midpoint from the actual position and sprite width/height (which are the same cause we're a circle)
+	Vector2D circCenter = (position.getX() + (radius),
+		position.getY() + (radius)
+		);
+
+	for (unsigned int i = 0; i < doors.size(); i++)
+	{
+		al_draw_circle(doors[i].rectCenter.getX(), doors[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+
+		// calculate distance between circle center and rectangle center
+		Vector2D distance;
+		distance.setX(abs(position.getX() - doors[i].rectCenter.getX()));
+		distance.setY(abs(position.getY() - doors[i].rectCenter.getY()));
+
+		// if distance is greater than half of the circle + half of the rectangle, no collision
+		if (distance.getX() >(doors[i].wall->getWidth() / 2) + radius)
+		{
+			// no collision
+			break;
+		}
+		if (distance.getY() > (doors[i].wall->getHeight() / 2) + radius)
+		{
+			// no collision
+			break;
+		}
+
+		// if distance is less than half of the rectangle, collision
+		if (distance.getX() <= (doors[i].wall->getWidth() / 2))
+		{
+			return true;
+		}
+		if (distance.getY() <= (doors[i].wall->getHeight() / 2))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 // used for: enemy and player - player and pickups
 bool CircleCollision::circleOnCircle(Vector2D position, int spriteWidthHeight, Vector2D position2, int spriteWidthHeight2)
 {

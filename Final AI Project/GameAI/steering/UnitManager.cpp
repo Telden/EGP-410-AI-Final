@@ -46,6 +46,12 @@ UnitManager::UnitManager()
    WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
    mpWalls.push_back(pWall);
 
+   WallUnit* pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 3);
+   mpDoors.push_back(pDoor);
+
+   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 3);
+   mpDoors.push_back(pDoor);
+
 	Vector2D vel(0, 0);
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
@@ -123,6 +129,12 @@ void UnitManager::updateUnits(float time)
       mpWater[i]->draw();
    }
 
+   // draw doors
+   for (unsigned int i = 0; i < mpDoors.size(); i++)
+   {
+	   mpDoors[i]->draw();
+   }
+
    // draw consumables
    for (unsigned int i = 0; i < mpPickups.size(); i++)
    {
@@ -188,6 +200,11 @@ WallUnit* UnitManager::getWallUnit(int index)
 WallUnit* UnitManager::getWaterUnit(int index)
 {
    return mpWater[index];
+}
+
+WallUnit* UnitManager::getDoorUnit(int index)
+{
+	return mpDoors[index];
 }
 
 PickupUnit* UnitManager::getPickupUnit(int index)

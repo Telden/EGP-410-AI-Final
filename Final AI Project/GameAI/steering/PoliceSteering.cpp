@@ -15,7 +15,7 @@ PoliceSteering::PoliceSteering(KinematicUnit *pMover)
 {
    mpMover = pMover;
    Node* startingNode = GRAPH->getNode(8);
-   mpWander = new WanderToNode(mpMover, startingNode, 50);
+   mpWander = new WanderToNode(mpMover, startingNode, 5);
 
    //mpChase = ???
    //mpFlee = ???

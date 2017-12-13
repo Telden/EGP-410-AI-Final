@@ -155,7 +155,6 @@ void Graph::renderGraph()
 {
 	for (unsigned int i = 0; i < mpNodes.size(); i++)
 	{
-		std::cout << mCurrentLevel << std::endl;
 		mpNodes[i]->renderNode(mCurrentLevel);
 	}
 		for (unsigned int i = 0; i < mpConnections.size(); i++)
