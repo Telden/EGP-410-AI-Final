@@ -11,21 +11,6 @@ CircleCollision::CircleCollision()
    
 }
 
-/*CircleCollision::CircleCollision(UnitManager* um)
-{
-	mpUnitManager = um;
-
-	// calculate rectangle centers beforehand
-	for (int i = 0; i < mpUnitManager->getNumOfWalls(); i++)
-	{
-		Vector2D tmp;
-		tmp.setX(mpUnitManager->getWallUnit(i)->getTopLeft().getX() - (mpUnitManager->getWallUnit(i)->getWidth() / 2));
-		tmp.setY(mpUnitManager->getWallUnit(i)->getTopLeft().getY() - (mpUnitManager->getWallUnit(i)->getHeight() / 2));
-
-		walls.push_back(BoxWithCenter(mpUnitManager->getWallUnit(i), tmp));
-	}
-}*/
-
 CircleCollision::~CircleCollision()
 {
 	if (mpUnitManager != NULL)
@@ -35,7 +20,7 @@ CircleCollision::~CircleCollision()
 }
 
 // used for: enemy and walls - player and walls
-bool CircleCollision::circleOnBox(Vector2D position, int spriteWidthHeight)
+bool CircleCollision::circleOnWall(Vector2D position, int spriteWidthHeight)
 {
    if (!alreadyFoundWalls)
    {
@@ -92,6 +77,66 @@ bool CircleCollision::circleOnBox(Vector2D position, int spriteWidthHeight)
 	}
 
 	return false;
+}
+
+// used for: enemy and water - player and water
+bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
+{
+   if (!alreadyFoundWater)
+   {
+      mpUnitManager = UNIT_MANAGER;
+
+      // calculate rectangle centers beforehand
+      for (int i = 0; i < mpUnitManager->getNumOfWater(); i++)
+      {
+         Vector2D tmp;
+         tmp.setX(mpUnitManager->getWaterUnit(i)->getTopLeft().getX() + (mpUnitManager->getWaterUnit(i)->getWidth() / 2));
+         tmp.setY(mpUnitManager->getWaterUnit(i)->getTopLeft().getY() + (mpUnitManager->getWaterUnit(i)->getHeight() / 2));
+
+         water.push_back(BoxWithCenter(mpUnitManager->getWaterUnit(i), tmp));
+      }
+      alreadyFoundWater = true;
+   }
+   float radius = spriteWidthHeight / 2;
+
+   // calculate the midpoint from the actual position and sprite width/height (which are the same cause we're a circle)
+   Vector2D circCenter = (position.getX() + (radius),
+      position.getY() + (radius)
+      );
+
+   for (unsigned int i = 0; i < water.size(); i++)
+   {
+      al_draw_circle(water[i].rectCenter.getX(), water[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+
+      // calculate distance between circle center and rectangle center
+      Vector2D distance;
+      distance.setX(abs(position.getX() - water[i].rectCenter.getX()));
+      distance.setY(abs(position.getY() - water[i].rectCenter.getY()));
+
+      // if distance is greater than half of the circle + half of the rectangle, no collision
+      if (distance.getX() >(water[i].wall->getWidth() / 2) + radius)
+      {
+         // no collision
+         break;
+      }
+      if (distance.getY() > (water[i].wall->getHeight() / 2) + radius)
+      {
+         // no collision
+         break;
+      }
+
+      // if distance is less than half of the rectangle, collision
+      if (distance.getX() <= (walls[i].wall->getWidth() / 2))
+      {
+         return true;
+      }
+      if (distance.getY() <= (walls[i].wall->getHeight() / 2))
+      {
+         return true;
+      }
+   }
+
+   return false;
 }
 
 // used for: enemy and player - player and pickups

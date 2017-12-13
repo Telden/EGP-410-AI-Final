@@ -53,7 +53,7 @@ UnitManager::UnitManager()
 	//Vector2D vel(1.0f, 1.0f);
 	Node* startingNode = GRAPH->getNode(8);
 	Vector2D nodePos = GRAPH->getNode(8)->getPosision();
-	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80);
+	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80); 
 	mpUnits.push_back(pUnit);
 
 	WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);

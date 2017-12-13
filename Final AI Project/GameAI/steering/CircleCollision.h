@@ -12,16 +12,18 @@ class CircleCollision
 {
 	private:
 		std::vector<BoxWithCenter> walls;
+      std::vector<BoxWithCenter> water;
 		UnitManager* mpUnitManager;
 
       bool alreadyFoundWalls = false;
+      bool alreadyFoundWater = false;
 
 	public:
 		CircleCollision();
-      //CircleCollision(UnitManager* um);
 		~CircleCollision();
 
-		bool circleOnBox(Vector2D position, int spriteWidthHeight);
+      bool circleOnWall(Vector2D position, int spriteWidthHeight);
+		bool circleOnWater(Vector2D position, int spriteWidthHeight);
 		bool circleOnCircle(Vector2D position, int sriteWidthHeight, Vector2D position2, int spriteWidthHeight2);
 };
 

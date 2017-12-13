@@ -23,7 +23,7 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
-   bool test = mCol.circleOnBox(mpMover->getPosition(), 50);
+   bool test = mCol.circleOnWall(mpMover->getPosition(), 50);
    std::vector<KinematicUnit*> unitList;
    unitList = UNIT_MANAGER->getUnitList();
 
