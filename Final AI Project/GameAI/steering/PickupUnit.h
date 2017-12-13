@@ -18,6 +18,7 @@ public:
 
 private:
    int mRadius, mMode;
+   bool mActive = true;
 };
 
 #endif
