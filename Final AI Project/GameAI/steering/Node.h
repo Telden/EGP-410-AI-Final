@@ -8,12 +8,13 @@
 class Node : public  Trackable
 {
 public:
-	Node(float xPos, float yPos, const NODE_ID& id);
+	Node(float xPos, float yPos, int level, const NODE_ID& id);
 	~Node() {};
 	Vector2D getPosision() { return mCenterpoint; };
 	Vector2D getTopLeftCorner() { return mTopLeftCorner; };
 	Vector2D getBottomRightCorner() { return mBottomRightCorner; };
-	void renderNode();
+	int getLevel() { return mLevel; };
+	void renderNode(int currentLevel);
 	const NODE_ID& getId() const { return mId; };
 private:
 	Vector2D mCenterpoint;
@@ -21,4 +22,5 @@ private:
 	Vector2D mBottomRightCorner;
 	const int NODE_SIZE= 64;
 	const NODE_ID mId;
+	int mLevel;
 };

@@ -20,7 +20,7 @@ private:
 	bool mDebugKeyDown = false;
 	bool mLeftClickDown = false;
 	bool mRightClickDown = false;
-
+	bool mMKeyDown = false;
 
 	std::string mCurrentSelection = "V";
 	char mInputSelection = 'V';

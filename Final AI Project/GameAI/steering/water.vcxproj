@@ -63,6 +63,7 @@
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Steering.h" />
+    <ClInclude Include="SwitchMapMessage.h" />
     <ClInclude Include="SwitchUI.h" />
     <ClInclude Include="ToggleDebugMessage.h" />
     <ClInclude Include="UiManager.h" />
@@ -128,6 +129,7 @@
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Steering.cpp" />
+    <ClCompile Include="SwitchMapMessage.cpp" />
     <ClCompile Include="SwitchUi.cpp" />
     <ClCompile Include="ToggleDebugMessage.cpp" />
     <ClCompile Include="UiManager.cpp" />

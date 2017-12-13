@@ -2,11 +2,11 @@
 #include "Game.h"
 #include "GraphicsSystem.h"
 
-Node::Node(float xLoc, float yLoc, const NODE_ID& id):mId(id)
+Node::Node(float xLoc, float yLoc, int level, const NODE_ID& id):mId(id)
 {
 	int width = NODE_SIZE / 2;
 	int height = NODE_SIZE / 2;
-
+	mLevel = level;
 	//Set the node centerpoint
 	mCenterpoint.setX(xLoc);
 	mCenterpoint.setY(yLoc);
@@ -22,7 +22,12 @@ Node::Node(float xLoc, float yLoc, const NODE_ID& id):mId(id)
 
 }
 
-void Node::renderNode()
+void Node::renderNode(int currentLevel)
 {
-	GRAPHICS_SYSTEM->drawRectangle(mTopLeftCorner, mBottomRightCorner);
+	int test = mLevel;
+	if(currentLevel == test)
+		if(mLevel == 0)
+			GRAPHICS_SYSTEM->drawStreetsNode(mTopLeftCorner, mBottomRightCorner);
+		else
+			GRAPHICS_SYSTEM->drawSewerNode(mTopLeftCorner, mBottomRightCorner);
 }

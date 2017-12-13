@@ -178,6 +178,9 @@
     <ClCompile Include="PoliceSteering.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="PickupUnit.cpp" />
+    <ClCompile Include="SwitchMapMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -357,6 +360,9 @@
     <ClInclude Include="PoliceSteering.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="PickupUnit.h" />
+    <ClInclude Include="SwitchMapMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -32,7 +32,8 @@ public:
    void drawLine(Vector2D start, Vector2D end);
    void drawCircle(Vector2D position, int radius);
    void drawMouse(Vector2D mousePos);
-
+   void drawSewerNode(Vector2D topLeft, Vector2D bottomRight);
+   void drawStreetsNode(Vector2D topLeft, Vector2D bottomRight);
 private:
 	ALLEGRO_DISPLAY* mpDisplay;
 	GraphicsBuffer* mpBackBuffer;

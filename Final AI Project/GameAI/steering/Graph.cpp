@@ -29,6 +29,7 @@ void Graph::loadNodes()
 	Node* newnode;
 	std::string input;
 	float xPos, yPos;
+	int level;
 	
 	std::fstream ifStream(NODES_FILENAME_PATH);
 	while (!ifStream.eof())
@@ -36,6 +37,9 @@ void Graph::loadNodes()
 		//Get the Node's ID
 		ifStream >> input;
 		const NODE_ID nodeID = lastID = std::stoi(input);
+		//Get the node's level
+		ifStream >> input;
+		level = std::stoi(input);
 		//Get the x and y location of the node
 		ifStream >> input;
 		xPos = std::stoi(input);
@@ -43,7 +47,7 @@ void Graph::loadNodes()
 		yPos = std::stoi(input);
 		
 		//Create the node
-		newnode = new Node(xPos, yPos, nodeID);
+		newnode = new Node(xPos, yPos, level, nodeID);
 
 		//Add it to the node vector and the node map w/node id
 		mpNodes.push_back(newnode);
@@ -69,7 +73,7 @@ void Graph::loadConnections()
 		pfrom = getNode(nodeID);
 		std::vector<Connection*> connectionList;
 
-
+		//std::cout << "\n" << pfrom->getId() << "\t";
 
 		//Get the number of connections this node has
 		ifStream >> input;
@@ -81,11 +85,14 @@ void Graph::loadConnections()
 			ifStream >> input;
 			const NODE_ID toNode = std::stoi(input);
 			pto = getNode(toNode);
+			//std::cout << pto->getId() << "\t";
 			newConnection = new Connection(pto, pfrom, CONNECTION_COST);
 			connectionList.push_back(newConnection);
 			mpConnections.push_back(newConnection);
 
+
 		}
+		
 		mConnectionMap.insert(std::pair<NODE_ID, std::vector<Connection*>>(nodeID, connectionList));
 	}
 
@@ -146,8 +153,11 @@ Node* Graph::getNode(int index)
 
 void Graph::renderGraph()
 {
-		for (unsigned int i = 0; i < mpNodes.size(); i++)
-			mpNodes[i]->renderNode();
+	for (unsigned int i = 0; i < mpNodes.size(); i++)
+	{
+		std::cout << mCurrentLevel << std::endl;
+		mpNodes[i]->renderNode(mCurrentLevel);
+	}
 		for (unsigned int i = 0; i < mpConnections.size(); i++)
 			mpConnections[i]->renderConnection();
 	
@@ -159,7 +169,7 @@ void Graph::createNode(Vector2D mousePos)
 	Node* pNode;
 	const NODE_ID nodeID = lastID += 1;
 	
-	pNode = new Node(mousePos.getX(), mousePos.getY(), nodeID);
+	pNode = new Node(mousePos.getX(), mousePos.getY(), 0, nodeID);
 	mpNodes.push_back(pNode);
 }
 
@@ -219,3 +229,10 @@ void Graph::removeConnections(NODE_ID targetID)
 	}
 }
 
+void Graph::switchMap()
+{
+	if (mCurrentLevel == 0)
+		mCurrentLevel = 1;
+	else if (mCurrentLevel == 1)
+		mCurrentLevel = 0;
+}
