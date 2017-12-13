@@ -102,6 +102,7 @@ void UnitManager::updateUnits(float time)
 {
 
 	mpPlayer->update(time);
+	mpPlayer->updateGridPosision();
 	mpPlayer->draw(GRAPHICS_SYSTEM->getBackBuffer());
 
 

@@ -123,3 +123,13 @@ void GraphicsSystem::drawMouse(Vector2D mousePos)
 
 	al_draw_circle(mousePos.getX(), mousePos.getY(), 2, al_map_rgb(255, 0, 0), 1);
 }
+
+void GraphicsSystem::drawSewerNode(Vector2D topLeft, Vector2D bottomRight)
+{
+	al_draw_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), al_map_rgb(0, 0, 0), 1);
+}
+
+void GraphicsSystem::drawStreetsNode(Vector2D topLeft, Vector2D bottomRight)
+{
+	al_draw_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), al_map_rgb(255, 0, 255), 1);
+}

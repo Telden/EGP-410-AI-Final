@@ -14,6 +14,7 @@
 #include "UpdateMouseUiMessage.h"
 #include "CreateNodeMessage.h"
 #include "DeleteNodeMessage.h"
+#include "SwitchMapMessage.h"
 
 
 InputManager::InputManager()
@@ -157,7 +158,12 @@ void::InputManager::checkDebugInput()
 		pMessage = new DeleteNodeMessage(pos);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
-
+	if (al_key_down(&keyState, ALLEGRO_KEY_M) && !mMKeyDown)
+	{
+		mMKeyDown = true;
+		pMessage = new SwitchMapMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
 
 	if (al_key_down(&keyState, ALLEGRO_KEY_B) && !mDebugKeyDown)
 	{
@@ -181,4 +187,9 @@ void::InputManager::checkDebugInput()
 		mRightClickDown = false;
 
 	}
+	if (!al_key_down(&keyState, ALLEGRO_KEY_M) && mMKeyDown)
+	{
+		mMKeyDown = false;
+	}
+	
 }
