@@ -30,10 +30,7 @@
 #include "Graph.h"
 #include "Node.h"
 #include "WanderToNode.h"
-
-
-
-
+#include "PoliceSteering.h"
 
 // Message headers
 #include "GameMessage.h"
@@ -46,26 +43,27 @@ UnitManager::UnitManager()
 	mpPlayerSprite = SPRITE_MANAGER->getSprite(PLAYER_ICON_SPRITE_ID);
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
+   WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
+   mpWalls.push_back(pWall);
+
 	Vector2D vel(0, 0);
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
 	//Vector2D vel(1.0f, 1.0f);
-	Node* startingNode = GRAPH->getNode(8);
+	//Node* startingNode = GRAPH->getNode(8);
 	Vector2D nodePos = GRAPH->getNode(8)->getPosision();
-	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80); 
+	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80);
 	mpUnits.push_back(pUnit);
 
-	WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);
-	pUnit->setSteering(pWanderToNode);
+   PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
+	//WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);
+	pUnit->setSteering(pPoliceSteering);
 	pUnit = NULL;
-	pWanderToNode = NULL;
+	pPoliceSteering = NULL;
 
 	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0);
 	mpPickups.push_back(pPickup);
-
-	WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
-	mpWalls.push_back(pWall);
 
 	srand(time(NULL)); //Need to move this out of here
 
@@ -147,7 +145,8 @@ void UnitManager::updateUnits(float time)
 /*Destroys the objects in the Unit manager's vectors*/
 void UnitManager::cleanup()
 {
-	delete mpPlayer;
+   if (mpPlayer != NULL)
+	   delete mpPlayer;
 	
 	for (unsigned int i = 0; i < mpUnits.size(); i++)
 	{

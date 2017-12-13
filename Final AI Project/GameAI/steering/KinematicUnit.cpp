@@ -126,11 +126,11 @@ void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
 	setSteering( pDynamicArriveSteering );
 }
 
-void KinematicUnit::policeSteering()
-{
-   PoliceSteering* pPoliceSteering = new PoliceSteering(this);
-   setSteering(pPoliceSteering);
-}
+//void KinematicUnit::policeSteering()
+//{
+//   PoliceSteering* pPoliceSteering = new PoliceSteering(this);
+//   setSteering(pPoliceSteering);
+//}
 
 //Steering* KinematicUnit::dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius)
 //{

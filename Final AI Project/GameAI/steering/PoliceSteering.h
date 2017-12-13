@@ -2,7 +2,6 @@
 #define POLICESTEERING_H
 
 #include "Steering.h"
-#include "Raycast.h"
 #include "CircleCollision.h"
 #include "StateMachine.h"
 
@@ -12,15 +11,14 @@ class PoliceSteering :public Steering
 {
 public:
    PoliceSteering(KinematicUnit* pMover);
-   ~PoliceSteering() {};
+   ~PoliceSteering();
 
    virtual Steering* getSteering();
 
 private:
-   KinematicUnit* mpTarget;
    KinematicUnit* mpMover;
+   KinematicUnit* mpTarget;
 
-   Raycast mRay;
    CircleCollision mCol;
    StateMachine mStateMachine;
    bool canSeePlayer;

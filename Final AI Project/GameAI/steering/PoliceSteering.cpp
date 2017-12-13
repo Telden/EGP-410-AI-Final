@@ -2,13 +2,25 @@
 #include "KinematicUnit.h"
 
 #include "Game.h"
+#include "Graph.h"
+#include "Node.h"
 #include "UnitManager.h"
 #include "Player.h"
 #include "Sprite.h"
 
+// steering
+#include "WanderToNode.h"
+
 PoliceSteering::PoliceSteering(KinematicUnit *pMover)
-   :mpMover(pMover)
 {
+   mpMover = pMover;
+   Node* startingNode = GRAPH->getNode(8);
+   mpWander = new WanderToNode(mpMover, startingNode, 50);
+
+   //mpChase = ???
+   //mpFlee = ???
+   //mpDead = ???
+
    // add states to state machine
    mStateMachine.AddState(mpWander);
    mStateMachine.AddState(mpChase);
@@ -27,6 +39,18 @@ PoliceSteering::PoliceSteering(KinematicUnit *pMover)
    mStateMachine.AddConnection(mpFlee, mpWander);
    mStateMachine.AddConnection(mpFlee, mpChase);
    mStateMachine.AddConnection(mpFlee, mpDead);
+
+   mStateMachine.changeCurrentState(mpWander);
+}
+
+PoliceSteering::~PoliceSteering()
+{
+   delete mpTarget;
+   delete mpMover;
+   delete mpWander;
+   delete mpChase;
+   delete mpFlee;
+   delete mpDead;
 }
 
 Steering* PoliceSteering::getSteering()
@@ -35,10 +59,6 @@ Steering* PoliceSteering::getSteering()
 
    // gotta update the player so we can get its current position
    mpTarget = UNIT_MANAGER->getPlayerUnit();
-
-   //mRay.setStartRay(mpMover->getPosition());
-   //mRay.setEndRay(mpTarget->getPosition());
-   //canSeePlayer = mRay.doIt();
 
    // make a bool to check if we've collided with the player
    bool colPlayer;
@@ -50,4 +70,5 @@ Steering* PoliceSteering::getSteering()
    
    // have the steering object that gets returned be the steering of the current state
    return mStateMachine.doCurrentState();
+   return this;
 }

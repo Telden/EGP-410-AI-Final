@@ -9,7 +9,7 @@ class PlayerMovement :public Steering
 {
 public:
 	PlayerMovement(KinematicUnit* pUnit);
-	~PlayerMovement(){};
+	~PlayerMovement(){ mpMover = NULL; };
 
 	virtual Steering* getSteering(); 
 	Vector2D deceleratePlayer();

@@ -1,6 +1,7 @@
 #include "StateMachine.h"
 
 #include "Steering.h"
+#include "WanderToNode.h"
 
 StateMachine::StateMachine()
 {
