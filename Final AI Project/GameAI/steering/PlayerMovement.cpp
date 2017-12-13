@@ -27,11 +27,23 @@ Steering* PlayerMovement::getSteering()
    std::vector<KinematicUnit*> unitList;
    unitList = UNIT_MANAGER->getUnitList();
 
-   if (test)
+   if (test &&  mWallCooldown==0)
    {
 	   std::cout << "player detecting wall - circ x rect" << std::endl;
+	  // if(mCurrentAcceleration > 0)
+		   mLinear = (mpMover->getOrientationAsVector() * mCurrentAcceleration)  *-1;
+		   mCurrentAcceleration *= -1;
+		   mWallCooldown = 5;
+	  // else
+
+	   return this;
 	  // mLinear = 0;
 	   //return this;
+   }
+   else
+   {
+	   if (mWallCooldown > 0)
+		   mWallCooldown--;
    }
      
 	

@@ -64,7 +64,7 @@ UnitManager::UnitManager()
 	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0);
 	mpPickups.push_back(pPickup);
 
-	WallUnit* pWall = new WallUnit(Vector2D(100, 200), Vector2D(500, 500), 0);
+	WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
 	mpWalls.push_back(pWall);
 
 	srand(time(NULL)); //Need to move this out of here

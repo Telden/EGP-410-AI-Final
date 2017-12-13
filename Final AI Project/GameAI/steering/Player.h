@@ -3,13 +3,16 @@
 #include "KinematicUnit.h"
 class PlayerMovement;
 class Sprite;
-
+class Node;
 class Player :public KinematicUnit
 {
 private:
 	PlayerMovement* mpPlayerMovement;
+	Node* mLastNode;
+	int mCurrentMap;
 public:
 	Player(Sprite* pSprite, const Vector2D& position, float orientation, const Vector2D& velocity, float rotationVel, float maxVelocity = 1.0f, float maxAcceleration = 1.0f);
 	~Player();
 	PlayerMovement* getSteeringComponent() { return mpPlayerMovement; };
+
 };
