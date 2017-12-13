@@ -20,15 +20,19 @@ PickupUnit::~PickupUnit()
 
 void PickupUnit::update()
 {
-	float distance;
-	KinematicUnit*  playerObj = UNIT_MANAGER->getPlayerUnit();
-	distance = sqrt(pow((playerObj->getPosition().getX() - this->getKinematicPosition().getX()), 2) +
-		pow((playerObj->getPosition().getY() - this->getKinematicPosition().getY()), 2));
-
-	if (distance < mRadius)
+	if (mActive)
 	{
-		//pickup the unit
-		mActive = false;
+		float distance;
+		KinematicUnit*  playerObj = UNIT_MANAGER->getPlayerUnit();
+		distance = sqrt(pow((playerObj->getPosition().getX() - this->getKinematicPosition().getX()), 2) +
+			pow((playerObj->getPosition().getY() - this->getKinematicPosition().getY()), 2));
+
+		if (distance < mRadius)
+		{
+			//pickup the unit
+			mActive = false;
+		}
+
 	}
 	
 }
