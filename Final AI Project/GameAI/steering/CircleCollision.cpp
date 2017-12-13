@@ -126,11 +126,11 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
       }
 
       // if distance is less than half of the rectangle, collision
-      if (distance.getX() <= (walls[i].wall->getWidth() / 2))
+      if (distance.getX() <= (water[i].wall->getWidth() / 2))
       {
          return true;
       }
-      if (distance.getY() <= (walls[i].wall->getHeight() / 2))
+      if (distance.getY() <= (water[i].wall->getHeight() / 2))
       {
          return true;
       }

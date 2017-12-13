@@ -19,12 +19,18 @@ class UnitManager;
 class InputManager;
 class UiManager;
 class Graph;
+class AudioManager;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
 const IDType AI_ICON_SPRITE_ID = 2;
 const IDType HORIZONTAL_WALL_ID = 3;
 const IDType VERTICAL_WALL_ID = 4;
+
+const std::string FX_PATH_SPLASH = "sound/sfxSplash.wav";
+const std::string FX_PATH_SHINE = "sound/sfxShine.wav";
+const std::string FX_PATH_ALARM = "sound/sfxAlarm.wav";
+const std::string MUS_PATH = "sound/bgmMusic.wav";
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
@@ -52,6 +58,7 @@ public:
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline Graph* getGraph() const { return mpGraph; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
+   inline AudioManager* getAudioManager() const { return mpAudioManager; };
 
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
@@ -69,6 +76,7 @@ private:
 	Timer* mpMasterTimer;
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
+   AudioManager* mpAudioManager;
 	bool mShouldExit;
 	bool mShouldDebug = false;
 

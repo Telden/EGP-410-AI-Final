@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Allignment.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BehaviorandWeight.h" />
     <ClInclude Include="BlendedSteering.h" />
     <ClInclude Include="ChangeUnitValue.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
+    <ClInclude Include="PlaySoundMessage.h" />
     <ClInclude Include="PoliceSteering.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="SaveSettingsMessage.h" />
@@ -79,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Allignment.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BlendedSteering.cpp" />
     <ClCompile Include="ChangeUnitValue.cpp" />
     <ClCompile Include="CircleCollision.cpp" />
@@ -123,6 +126,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
+    <ClCompile Include="PlaySoundMessage.cpp" />
     <ClCompile Include="PoliceSteering.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="SaveSettingsMessage.cpp" />
