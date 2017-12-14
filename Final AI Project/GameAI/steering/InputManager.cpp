@@ -12,8 +12,6 @@
 #include "MovementMessage.h"
 #include "ToggleDebugMessage.h"
 #include "UpdateMouseUiMessage.h"
-#include "CreateNodeMessage.h"
-#include "DeleteNodeMessage.h"
 #include "SwitchMapMessage.h"
 #include "CreatePickupMessage.h"
 

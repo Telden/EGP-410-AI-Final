@@ -23,7 +23,6 @@ Steering* PoliceSeek::getSteering()
 		if (mpNodeStack.empty() && UNIT_MANAGER->getPlayerUnit()->getLastNode()->getPosision() != NULL)
 		{
 			mpNodeStack = mAStar.findPath(mpMover->getLastNode(), UNIT_MANAGER->getPlayerUnit()->getLastNode());
-			//printf("Be happy");
 		}
 		else
 		{

@@ -22,7 +22,6 @@ public:
 	std::vector<Connection*> getConnections(const NODE_ID& fromId);
 	Node* getNode(int index);
 	int getNumNodes() { return mpNodes.size(); };
-	//Node* getNode(const NODE_ID& nodeID);
 	void renderGraph();
 	
 

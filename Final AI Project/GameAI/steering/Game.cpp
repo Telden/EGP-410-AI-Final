@@ -21,7 +21,6 @@
 #include "SpriteManager.h"
 #include "Timer.h"
 #include "KinematicUnit.h"
-#include "PlayerMoveToMessage.h"
 #include "UnitManager.h"
 #include "InputManager.h"
 #include "UiManager.h"
@@ -44,7 +43,6 @@ Game::Game()
 	, mShouldExit(false)
 	, mpSample(NULL)
 	, mBackgroundBufferID(INVALID_ID)
-	//,mSmurfBufferID(INVALID_ID)
 {
 }
 
@@ -176,24 +174,6 @@ bool Game::init()
 	mpInputManager = new InputManager();
 	mpInputManager->init();
 
-	////setup units
-	//Vector2D pos(0.0f, 0.0f);
-	//Vector2D vel(0.0f, 0.0f);
-	//mpUnit = new KinematicUnit(pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f);
-	//mpUnitManager->addUnit(mpUnit);
-
-	//Vector2D pos2(1000.0f, 500.0f);
-	//Vector2D vel2(0.0f, 0.0f);
-	////mpAIUnit = new KinematicUnit(pEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 120.0f); //Changed the max acceleration
-	//////give steering behavior
-	////mpAIUnit->dynamicWanderandSeek(mpUnit);
-	////mpUnitManager->addUnit(mpAIUnit);
-
-	//Vector2D pos3(500.0f, 500.0f);
-	//mpAIUnit2 = new KinematicUnit(pEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f);
-	////give steering behavior
-	//mpAIUnit2->dynamicWanderandFlee(mpUnit);
-	//mpUnitManager->addUnit(mpAIUnit2);
 
    // create the audio manager and then add the sounds and music
    mpAudioManager = new AudioManager();
@@ -354,73 +334,3 @@ void  Game::switchMap()
 	else if (mCurrentLevel == 1)
 		mCurrentLevel = 0;
 }
-
-
-/*#include "System.h"
-#include "Game.h"
-#include "GameMessageManager.h"
-#include "PlayerMoveToMessage.h"
-#include "GraphicsSystem.h"
-#include "GraphicsBuffer.h"
-#include "Sprite.h"
-#include "KinematicUnit.h"
-#include "Vector2D.h"
-*/
-/*Game* gpGame = NULL;
-Game::Game()
-:mpMessageManager(NULL)
-,mFrameNum(0)
-,mMarkedForExit(false)
-{
-}
-Game::~Game()
-{
-delete mpArrowBuffer;
-delete mpArrowSprite;
-delete mpEnemyArrowBuffer;
-delete mpEnemyArrowSprite;
-delete mpUnit;
-delete mpAIUnit;
-delete mpAIUnit2;
-delete mpMessageManager;
-}
-void Game::init()
-{
-mpMessageManager = new GameMessageManager();
-mpArrowBuffer = new GraphicsBuffer( "arrow.bmp" );
-mpArrowSprite = new Sprite( mpArrowBuffer, 0, 0, 32, 32 );
-mpEnemyArrowBuffer = new GraphicsBuffer( "enemy-arrow.bmp" );
-mpEnemyArrowSprite = new Sprite( mpEnemyArrowBuffer, 0, 0, 32, 32 );
-
-Vector2D pos( 0.0f, 0.0f );
-Vector2D vel( 0.0f, 0.0f );
-mpUnit = new KinematicUnit( mpArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f );
-Vector2D pos2( 1000.0f, 500.0f );
-Vector2D vel2( 0.0f, 0.0f );
-mpAIUnit = new KinematicUnit( mpEnemyArrowSprite, pos2, 1, vel2, 0.0f, 180.0f, 100.0f );
-mpAIUnit->dynamicArrive( mpUnit );
-//mpAIUnit->arrive( mpUnit->getPosition() );
-Vector2D pos3( 500.0f, 500.0f );
-mpAIUnit2 = new KinematicUnit( mpEnemyArrowSprite, pos3, 1, vel2, 0.0f, 180.0f, 100.0f );
-mpAIUnit2->dynamicSeek( mpUnit );
-//mpAIUnit2->seek( mpUnit->getPosition() );
-}
-bool Game::update()
-{
-mpUnit->update( LOOP_TARGET_TIME/1000.0f );
-mpUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-mpAIUnit->update( LOOP_TARGET_TIME/1000.0f );
-mpAIUnit->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-mpAIUnit2->update( LOOP_TARGET_TIME/1000.0f );
-mpAIUnit2->draw( GRAPHICS_SYSTEM->getBackBuffer() );
-mpMessageManager->processMessagesForThisframe();
-//get input - should be moved someplace better
-if( mouse_b & 1 )//left mouse click
-{
-Vector2D pos( mouse_x, mouse_y );
-GameMessage* pMessage = new PlayerMoveToMessage( pos );
-MESSAGE_MANAGER->addMessage( pMessage, 0 );
-}
-mFrameNum++;
-return mMarkedForExit;
-}*/

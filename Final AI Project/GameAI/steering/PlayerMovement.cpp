@@ -211,7 +211,6 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 	case 'D':
 		if (isPressed)
 		{
-			//printf("Moving right");
 			mMoveRight = true;
 		}		
 		else
@@ -220,7 +219,6 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 	case 'A':
 		if (isPressed)
 		{
-			//printf("Moving left");
 			mMoveLeft = true;
 		}
 			
@@ -232,11 +230,6 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 		std::cout << "Invalid input in player movement switch\n";
 
 	}
-/*
-	void drawForwardLine()
-	{
-
-	}*/
 
 
 

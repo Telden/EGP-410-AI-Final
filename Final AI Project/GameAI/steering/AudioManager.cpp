@@ -7,7 +7,7 @@ AudioManager::AudioManager()
 
 AudioManager::~AudioManager()
 {
-   for (int i = 0; i < clips.size(); i++)
+   for (unsigned int i = 0; i < clips.size(); i++)
    {
       al_destroy_sample(clips[i].sample);
    }

@@ -4,20 +4,9 @@
 #include "Sprite.h"
 #include "GraphicsSystem.h"
 #include "Steering.h"
-#include "KinematicSeekSteering.h"
-#include "KinematicArriveSteering.h"
-#include "KinematicWanderSteering.h"
-#include "DynamicSeekSteering.h"
-#include "DynamicArriveSteering.h"
-#include "KinematicWanderSteering.h"
-#include "BlendedSteering.h"
-#include "CollisionAvoidance.h"
 #include "PoliceSteering.h"
 #include "Node.h"
 #include "Graph.h"
-
-//Dual AI
-#include "DynamicWanderAndSeek.h"
 
 using namespace std;
 
@@ -116,94 +105,4 @@ void KinematicUnit::setNewOrientation()
 { 
 	mOrientation = getOrientationFromVelocity( mOrientation, mVelocity ); 
 }
-
-
-
-
-void KinematicUnit::seek(const Vector2D &target)
-{
-	KinematicSeekSteering* pSeekSteering = new KinematicSeekSteering( this, target );
-	setSteering( pSeekSteering );
-}
-
-void KinematicUnit::arrive(const Vector2D &target)
-{
-	KinematicArriveSteering* pArriveSteering = new KinematicArriveSteering( this, target );
-	setSteering( pArriveSteering );
-}
-
-void KinematicUnit::wander()
-{
-	KinematicWanderSteering* pWanderSteering = new KinematicWanderSteering( this );
-	setSteering( pWanderSteering );
-}
-
-//void KinematicUnit::dynamicSeek( KinematicUnit* pTarget )
-//{
-//	DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getPlayerUnit() );
-//	setSteering( pDynamicSeekSteering );
-//}
-
-void KinematicUnit::dynamicFlee( KinematicUnit* pTarget )
-{
-	/*DynamicSeekSteering* pDynamicSeekSteering = new DynamicSeekSteering( this, gpGame->getPlayerUnit(), true );
-	setSteering( pDynamicSeekSteering );*/
-}
-
-void KinematicUnit::dynamicArrive( KinematicUnit* pTarget )
-{
-	DynamicArriveSteering* pDynamicArriveSteering = new DynamicArriveSteering( this, gpGame->getPlayerUnit() );
-	setSteering( pDynamicArriveSteering );
-}
-
-//void KinematicUnit::policeSteering()
-//{
-//   PoliceSteering* pPoliceSteering = new PoliceSteering(this);
-//   setSteering(pPoliceSteering);
-//}
-
-//Steering* KinematicUnit::dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius)
-//{
-//	DynamicWanderAndSeek* pDynamicWanderAndSeek = new DynamicWanderAndSeek(this, gpGame->getPlayerUnit(), reactionRadius, false);
-//	return pDynamicWanderAndSeek;
-//}
-//
-//Steering* KinematicUnit::dynamicWanderandFlee(KinematicUnit* pTarget, float reactionRadius)
-//{
-//	DynamicWanderAndSeek* pDynamicWanderAndSeek = new DynamicWanderAndSeek(this, gpGame->getPlayerUnit(), reactionRadius, true);
-//	return pDynamicWanderAndSeek;
-//}
-
-
-//void KinematicUnit::dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius)
-//{
-//	DynamicWanderAndSeek* pDynamicWanderAndSeek = new DynamicWanderAndSeek(this, gpGame->getPlayerUnit(), reactionRadius, false);
-//	setSteering(pDynamicWanderAndSeek);
-//}
-//
-//void KinematicUnit::dynamicWanderandFlee(KinematicUnit* pTarget, float reactionRadius)
-//{
-//	DynamicWanderAndSeek* pDynamicWanderAndSeek = new DynamicWanderAndSeek(this, gpGame->getPlayerUnit(), reactionRadius, true);
-//	setSteering(pDynamicWanderAndSeek);
-//}
-//
-//void KinematicUnit::kinematicWander()
-//{
-//	KinematicWanderSteering* pKinematicWanderSteering = new KinematicWanderSteering(this);
-//	setSteering(pKinematicWanderSteering);
-//}
-//
-//BlendedSteering* KinematicUnit::blendedSteering(KinematicUnit* pUnit)
-//{
-//	BlendedSteering* pBlendedSteering = new BlendedSteering(this);
-//	setSteering(pBlendedSteering);
-//	return pBlendedSteering;
-//}
-//
-//CollisionAvoidance* KinematicUnit::collisionAvoidance(KinematicUnit* pUnit, float radius)
-//{
-//	CollisionAvoidance* pCollisionAvoidance = new CollisionAvoidance(this, radius);
-//	return pCollisionAvoidance;
-//	
-//}
 

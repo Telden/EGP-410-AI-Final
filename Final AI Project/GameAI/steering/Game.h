@@ -62,9 +62,6 @@ public:
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
    inline AudioManager* getAudioManager() const { return mpAudioManager; };
    inline int getCurrentLevel() const { return mCurrentLevel; };
-	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
-	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
    int getScore() { return mCurrentScore; }
    int getHighScore() { return mHighScore; }
@@ -101,10 +98,6 @@ private:
 	IDType mHorizontalWallID;
 	IDType mVerticalWallID;
 
-
-	KinematicUnit* mpUnit;
-	KinematicUnit* mpAIUnit;
-	KinematicUnit* mpAIUnit2;
 	int mCurrentLevel = 0;
    int mCurrentScore = 0;
    int mHighScore;

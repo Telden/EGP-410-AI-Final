@@ -11,16 +11,6 @@
 #include "GameMessage.h"
 #include "EndGameMessage.h"
 #include "Steering.h"
-#include "BlendedSteering.h"
-#include "BehaviorandWeight.h"
-#include "CollisionAvoidance.h"
-#include "Cohesion.h"
-#include "Separation.h"
-#include "Allignment.h"
-#include "VelocityMatching.h"
-#include "WallDetection.h"
-#include "KinematicWanderSteering.h"
-#include "DynamicWanderAndSeek.h"
 #include <fstream>
 #include <iostream>
 #include <iomanip>

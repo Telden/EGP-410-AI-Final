@@ -20,24 +20,6 @@ Player::~Player()
       delete mpPlayerMovement;
 }
 
-//void Player::updateGridPosision()
-//{
-//	Node* checkNode;
-//	
-//	
-//	for (unsigned int i = 0; i < mpGraph->getNumNodes(); i++)
-//	{
-//		checkNode = mpGraph->getNode(i);
-//		if(checkNode->getLevel() == mCurrentLevel)
-//			if (this->getPosition().getX() > checkNode->getTopLeftCorner().getX() && this->getPosition().getY() > checkNode->getTopLeftCorner().getY() &&
-//				this->getPosition().getX() < checkNode->getBottomRightCorner().getX() && this->getPosition().getY() < checkNode->getBottomRightCorner().getY())
-//			{
-//				mLastNode = checkNode;
-//				std::cout << "Current node is now: " << mLastNode->getId();
-//				mCurrentLevel = checkNode->getLevel();
-//			}
-//	}
-//}
 
 void Player::switchMap()
 {

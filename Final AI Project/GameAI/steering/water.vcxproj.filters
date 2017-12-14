@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="DynamicArriveSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicSeekSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="KinematicArriveSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="KinematicSeekSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="KinematicWanderSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
     <ClCompile Include="GameMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
@@ -33,9 +18,6 @@
     </ClCompile>
     <ClCompile Include="KinematicUnit.cpp">
       <Filter>Source Files\Units</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMoveToMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
@@ -61,35 +43,8 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
-    <ClCompile Include="CreateDynamicArrive.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateDynamicSeek.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="DeleteUnitMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
     <ClCompile Include="EndGameMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateWanderSeek.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateWanderFlee.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="DynamicWanderAndSeek.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="Face.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="WallDetection.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionDetector.cpp">
-      <Filter>Source Files\Util</Filter>
     </ClCompile>
     <ClCompile Include="UiManager.cpp">
       <Filter>Source Files\Util</Filter>
@@ -99,48 +54,6 @@
     </ClCompile>
     <ClCompile Include="UpdateUnitUiMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangeUnitValue.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionAvoidance.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="BlendedSteering.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="SwitchUi.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="Cohesion.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="Separation.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="VelocityMatching.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="Allignment.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateBoidMessage.cpp">
-      <Filter>Header Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateBoidFlock.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="CylinderCollisoin.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveSettingsMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="HorizontalWall.cpp">
-      <Filter>Source Files\Units</Filter>
-    </ClCompile>
-    <ClCompile Include="VerticalWall.cpp">
-      <Filter>Source Files\Units</Filter>
     </ClCompile>
     <ClCompile Include="PlayerMovement.cpp">
       <Filter>Source Files\Steering</Filter>
@@ -166,12 +79,6 @@
     <ClCompile Include="ToggleDebugMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
-    <ClCompile Include="CreateNodeMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
-    <ClCompile Include="DeleteNodeMessage.cpp">
-      <Filter>Source Files\Messaging</Filter>
-    </ClCompile>
     <ClCompile Include="WanderToNode.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
@@ -193,9 +100,6 @@
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="AStarPathfinder.cpp">
-      <Filter>Pathfinding</Filter>
-    </ClCompile>
-    <ClCompile Include="NodeRecord.cpp">
       <Filter>Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="CreatePickupMessage.cpp">
@@ -224,21 +128,6 @@
     <ClInclude Include="Kinematic.h">
       <Filter>Header Files\Units</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicArriveSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicSeekSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="KinematicArriveSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="KinematicSeekSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="KinematicWanderSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
     <ClInclude Include="Steering.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
@@ -246,9 +135,6 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="GameMessageManager.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMoveToMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="Defines.h">
@@ -269,35 +155,8 @@
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Util</Filter>
     </ClInclude>
-    <ClInclude Include="CreateDynamicArrive.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateDynamicSeek.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="DeleteUnitMessage.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
     <ClInclude Include="EndGameMessage.h">
       <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateWanderSeek.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateWanderFlee.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicWanderAndSeek.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Face.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="WallDetection.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionDetector.h">
-      <Filter>Header Files\Util</Filter>
     </ClInclude>
     <ClInclude Include="UiManager.h">
       <Filter>Header Files\Util</Filter>
@@ -307,48 +166,6 @@
     </ClInclude>
     <ClInclude Include="UpdateUnitUiMessage.h">
       <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeUnitValue.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionAvoidance.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="BlendedSteering.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="SwitchUI.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="BehaviorandWeight.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Cohesion.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Separation.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="VelocityMatching.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="Allignment.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateBoidFlock.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CylinderCollision.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveSettingsMessage.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="HorizontalWall.h">
-      <Filter>Header Files\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="VerticalWall.h">
-      <Filter>Header Files\Units</Filter>
     </ClInclude>
     <ClInclude Include="MovementMessage.h">
       <Filter>Header Files\Messaging</Filter>
@@ -372,12 +189,6 @@
       <Filter>Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="ToggleDebugMessage.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateNodeMessage.h">
-      <Filter>Header Files\Messaging</Filter>
-    </ClInclude>
-    <ClInclude Include="DeleteNodeMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="WanderToNode.h">

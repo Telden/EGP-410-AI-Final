@@ -21,9 +21,6 @@ PoliceSteering::PoliceSteering(KinematicUnit *pMover)
    mpChase = new PoliceSeek(mpMover, mpTarget, 5, &mStateMachine, mpWander);
    mpFlee = new PoliceFlee(mpMover, mpTarget, 5, &mStateMachine, mpWander);
 
-   //mpChase = ???
-   //mpFlee = ???
-   //mpDead = ???
 
    // add states to state machine
    mStateMachine.AddState(mpWander);

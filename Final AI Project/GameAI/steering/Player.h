@@ -10,7 +10,6 @@ class Player :public KinematicUnit
 private:
 	PlayerMovement* mpPlayerMovement;
 	Node* mLastNode;
-	//int mCurrentLevel  = 0;
 	Graph* mpGraph;
 	bool mIsSuperPowered = true;
 

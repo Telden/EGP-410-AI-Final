@@ -46,20 +46,6 @@ public:
 	//move according to the current velocities and update velocities based on current Steering
 	void update(float time);
 
-	//initiate behaviors
-	void seek( const Vector2D& target );
-	void arrive( const Vector2D& target );
-	void wander();
-	void dynamicSeek( KinematicUnit* pTarget );
-	void dynamicFlee( KinematicUnit* pTarget );
-	void dynamicArrive( KinematicUnit* pTarget );
-	Steering* dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius);
-	Steering* dynamicWanderandFlee(KinematicUnit* pTarget, float reactionRadius);
-	//void dynamicWanderandSeek(KinematicUnit* pTarget, float reactionRadius);
-	//void dynamicWanderandFlee(KinematicUnit* pTarget, float reactionRadius);
-	BlendedSteering* blendedSteering(KinematicUnit* pTarget);
-	CollisionAvoidance* collisionAvoidance(KinematicUnit* pUnit, float radius);
-	void kinematicWander();
     void policeSteering();
 	void setSteering(Steering* pSteering);
 	void updateGridPosition();
