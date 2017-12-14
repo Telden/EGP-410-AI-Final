@@ -19,18 +19,12 @@ class UnitManager;
 class InputManager;
 class UiManager;
 class Graph;
-class AudioManager;
 
 const IDType BACKGROUND_SPRITE_ID = 0;
 const IDType PLAYER_ICON_SPRITE_ID = 1;
 const IDType AI_ICON_SPRITE_ID = 2;
 const IDType HORIZONTAL_WALL_ID = 3;
 const IDType VERTICAL_WALL_ID = 4;
-
-const std::string FX_PATH_SPLASH = "sound/sfxSplash.wav";
-const std::string FX_PATH_SHINE = "sound/sfxShine.wav";
-const std::string FX_PATH_ALARM = "sound/sfxAlarm.wav";
-const std::string MUS_PATH = "sound/bgmMusic.wav";
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
@@ -58,19 +52,13 @@ public:
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline Graph* getGraph() const { return mpGraph; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
-   inline AudioManager* getAudioManager() const { return mpAudioManager; };
-
+	inline int getCurrentLevel() const { return mCurrentLevel; };
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
-   int getScore() { return mCurrentScore; }
-   int getHighScore() { return mHighScore; }
-   void setScore(int newVal) { mCurrentScore = newVal; }
-   void setHighScore(int newVal) { mHighScore = newVal; }
-
-
 	void toggleDebug();
+	void switchMap();
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -82,10 +70,9 @@ private:
 	Timer* mpMasterTimer;
 	UnitManager* mpUnitManager;
 	InputManager* mpInputManager;
-   AudioManager* mpAudioManager;
 	bool mShouldExit;
 	bool mShouldDebug = false;
-
+	int mCurrentLevel = 0;
 	ALLEGRO_SAMPLE* mpSample;
 	IDType mBackgroundBufferID;
 	IDType mPlayerIconBufferID;
@@ -97,9 +84,6 @@ private:
 	KinematicUnit* mpUnit;
 	KinematicUnit* mpAIUnit;
 	KinematicUnit* mpAIUnit2;
-
-   int mCurrentScore = 0;
-   int mHighScore;
 
 	Graph* mpGraph;
 

@@ -27,8 +27,7 @@ public:
 	int getNumNodes() { return mpNodes.size(); };
 	//Node* getNode(const NODE_ID& nodeID);
 	void renderGraph();
-	void switchMap();
-
+	
 
 private:
 	std::vector<Node*> mpNodes;
@@ -41,7 +40,7 @@ private:
 	const std::string NODES_FILENAME_PATH = "data/nodes.txt";
 	const std::string CONNECTIONS_FILENAME_PATH = "data/connections.txt";
 	const int CONNECTION_COST = 1;
-	int mCurrentLevel = 1;
+	
 	
 	
 };

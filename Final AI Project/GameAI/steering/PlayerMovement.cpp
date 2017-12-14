@@ -7,8 +7,13 @@
 #include <math.h>
 #include <vector>
 #include "KinematicUnit.h"
+#include "Graph.h"
+#include "Connection.h"
+#include "Player.h"
 
-
+#include "GameMessageManager.h"
+#include "GameMessage.h"
+#include "SwitchMapMessage.h"
 
 //Remove later
 #include "Game.h"
@@ -24,21 +29,32 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 Steering* PlayerMovement::getSteering()
 {
    bool test = mCol.circleOnWall(mpMover->getPosition(), 50);
+   bool doorTest = mCol.circleOnDoor(mpMover->getPosition(), 50);
+   if (doorTest)
+   {
+	   std::vector<Connection*> connections = GRAPH->getConnections(UNIT_MANAGER->getPlayerUnit()->getLastNode()->getId()); 
+	   for (unsigned int i = 0; i < connections.size(); i++)
+	   {
+		   if (connections[i]->getFromNode()->getLevel() != connections[i]->getToNode()->getLevel())
+		   {
+			   mpMover->setPosition(connections[i]->getToNode()->getPosision());
+			   GameMessage* pMessage = new SwitchMapMessage();
+			   MESSAGE_MANAGER->addMessage(pMessage, 0);
+		   }
+	   }
+
+   }
+	  
    std::vector<KinematicUnit*> unitList;
    unitList = UNIT_MANAGER->getUnitList();
 
    if (test &&  mWallCooldown==0)
    {
 	   std::cout << "player detecting wall - circ x rect" << std::endl;
-	  // if(mCurrentAcceleration > 0)
 		   mLinear = (mpMover->getOrientationAsVector() * mCurrentAcceleration)  *-1;
 		   mCurrentAcceleration *= -1;
 		   mWallCooldown = 5;
-	  // else
-
 	   return this;
-	  // mLinear = 0;
-	   //return this;
    }
    else
    {
@@ -49,7 +65,10 @@ Steering* PlayerMovement::getSteering()
 	
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
-	 test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+	   if (unitList[i]->mCurrentLevel == gpGame->getCurrentLevel())
+	   {
+		   test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+	   }
    }
    
    if(test)

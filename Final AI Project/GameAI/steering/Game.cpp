@@ -312,7 +312,13 @@ void Game::toggleDebug()
 		mShouldDebug = true;
 }
 
-
+void  Game::switchMap()
+{
+	if (mCurrentLevel == 0)
+		mCurrentLevel = 1;
+	else if (mCurrentLevel == 1)
+		mCurrentLevel = 0;
+}
 
 
 /*#include "System.h"

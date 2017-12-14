@@ -21,14 +21,14 @@ using namespace std;
 
 Steering gNullSteering( gZeroVector2D, 0.0f );
 
-KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, float maxVelocity, float maxAcceleration)
+KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, int level, float maxVelocity, float maxAcceleration)
 :Kinematic( position, orientation, velocity, rotationVel )
 ,mpSprite(pSprite)
 ,mpCurrentSteering(NULL)
 ,mMaxVelocity(maxVelocity)
 ,mMaxAcceleration(maxAcceleration)
 {
-
+	mCurrentLevel = level;
 }
 
 KinematicUnit::~KinematicUnit()
@@ -38,7 +38,8 @@ KinematicUnit::~KinematicUnit()
 
 void KinematicUnit::draw( GraphicsBuffer* pBuffer )
 {
-	mpSprite->draw( *pBuffer, mPosition.getX(), mPosition.getY(), -mOrientation );
+	if(gpGame->getCurrentLevel() == mCurrentLevel)
+		mpSprite->draw( *pBuffer, mPosition.getX(), mPosition.getY(), -mOrientation );
 }
 
 void KinematicUnit::update(float time)

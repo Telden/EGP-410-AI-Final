@@ -21,6 +21,7 @@ private:
 	std::vector<KinematicUnit*> mpUnits;
 	std::vector<WallUnit*> mpWalls;
    std::vector<WallUnit*> mpWater;
+   std::vector<WallUnit*> mpDoors;
    std::vector<PickupUnit*> mpPickups;
 	Sprite* mpEnemySprite;
 	Sprite* mpPlayerSprite;
@@ -35,13 +36,15 @@ public:
 	std::vector<KinematicUnit*> getUnitList(); 
 	KinematicUnit* getKinematicUnit(int index);
 	WallUnit* getWallUnit(int index);
-   WallUnit* getWaterUnit(int index);
-   PickupUnit* getPickupUnit(int index);
+	WallUnit* getWaterUnit(int index);
+	WallUnit* getDoorUnit(int index);
+    PickupUnit* getPickupUnit(int index);
 
 	Player* getPlayerUnit() { return mpPlayer; };
 	int getNumOfWalls();
    int getNumOfWater() { return mpWater.size(); }
    int getNumOfPickUps() { return mpPickups.size(); }
+   int getNumOfDoors() { return mpDoors.size(); }
 
 	void addUnit(KinematicUnit* newUnit);
 	void addWall(WallUnit* newUnit);

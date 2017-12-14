@@ -6,7 +6,7 @@
 #include "Graph.h"
 
 Player::Player(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, float maxVelocity, float maxAcceleration)
-	:KinematicUnit(pSprite, position, orientation, velocity, rotationVel, maxVelocity, maxAcceleration)
+	:KinematicUnit(pSprite, position, orientation, velocity, rotationVel, 0, maxVelocity, maxAcceleration)
 {
 	mpPlayerMovement = new PlayerMovement(this);
 	setSteering(mpPlayerMovement);
@@ -32,7 +32,16 @@ void Player::updateGridPosision()
 				this->getPosition().getX() < checkNode->getBottomRightCorner().getX() && this->getPosition().getY() < checkNode->getBottomRightCorner().getY())
 			{
 				mLastNode = checkNode;
+				std::cout << "Current node is now: " << mLastNode->getId();
 				mCurrentLevel = checkNode->getLevel();
 			}
 	}
+}
+
+void Player::switchMap()
+{
+	if (mCurrentLevel == 0)
+		mCurrentLevel = 1;
+	else if (mCurrentLevel == 1)
+		mCurrentLevel = 0;
 }
