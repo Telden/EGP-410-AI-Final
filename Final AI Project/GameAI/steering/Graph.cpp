@@ -1,6 +1,7 @@
 #include "Graph.h"
 #include "Connection.h"
 #include "Node.h"
+#include "Game.h"
 #include <fstream>
 #include <string>
 #include <vector>
@@ -155,7 +156,7 @@ void Graph::renderGraph()
 {
 	for (unsigned int i = 0; i < mpNodes.size(); i++)
 	{
-		mpNodes[i]->renderNode(mCurrentLevel);
+		mpNodes[i]->renderNode(gpGame->getCurrentLevel());
 	}
 		for (unsigned int i = 0; i < mpConnections.size(); i++)
 			mpConnections[i]->renderConnection();
@@ -226,12 +227,4 @@ void Graph::removeConnections(NODE_ID targetID)
 		mpConnections.erase(mpConnections.begin() + toDelete);
 		indexes.pop();
 	}
-}
-
-void Graph::switchMap()
-{
-	if (mCurrentLevel == 0)
-		mCurrentLevel = 1;
-	else if (mCurrentLevel == 1)
-		mCurrentLevel = 0;
 }

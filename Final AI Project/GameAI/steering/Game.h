@@ -52,12 +52,13 @@ public:
 	inline Timer* getMasterTimer() const { return mpMasterTimer; };
 	inline Graph* getGraph() const { return mpGraph; };
 	inline double getCurrentTime() const { return mpMasterTimer->getElapsedTime(); };
-
+	inline int getCurrentLevel() const { return mCurrentLevel; };
 	inline KinematicUnit* getPlayerUnit() { return mpUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
 	void toggleDebug();
+	void switchMap();
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -71,7 +72,7 @@ private:
 	InputManager* mpInputManager;
 	bool mShouldExit;
 	bool mShouldDebug = false;
-
+	int mCurrentLevel = 0;
 	ALLEGRO_SAMPLE* mpSample;
 	IDType mBackgroundBufferID;
 	IDType mPlayerIconBufferID;

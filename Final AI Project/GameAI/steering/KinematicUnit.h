@@ -25,7 +25,7 @@ const float MIN_VELOCITY_TO_TURN_SQUARED = 1.0f;
 class KinematicUnit: public Kinematic
 {
 public:
-	KinematicUnit( Sprite* pSprite, const Vector2D& position, float orientation, const Vector2D& velocity, float rotationVel, float maxVelocity = 1.0f, float maxAcceleration = 1.0f );
+	KinematicUnit( Sprite* pSprite, const Vector2D& position, float orientation, const Vector2D& velocity, float rotationVel, int level, float maxVelocity = 1.0f, float maxAcceleration = 1.0f );
 	~KinematicUnit();
 
 	//getters and setters
@@ -61,6 +61,7 @@ public:
 	void kinematicWander();
    void policeSteering();
 	void setSteering(Steering* pSteering);
+	int mCurrentLevel;
 
 private:
 	Sprite* mpSprite;
@@ -68,5 +69,6 @@ private:
 	Vector2D mTarget;//used only for Kinematic seek and arrive
 	float mMaxVelocity;
 	float mMaxAcceleration;
+	
 
 };

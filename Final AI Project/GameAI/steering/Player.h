@@ -10,7 +10,7 @@ class Player :public KinematicUnit
 private:
 	PlayerMovement* mpPlayerMovement;
 	Node* mLastNode;
-	int mCurrentLevel  = 0;
+	//int mCurrentLevel  = 0;
 	Graph* mpGraph;
 
 public:
@@ -20,5 +20,6 @@ public:
 	Node* getLastNode() { return mLastNode; };
 	void updateGridPosision();
 	void switchMap();
+	//int mCurrentLevel = 0;
 
 };

@@ -65,7 +65,10 @@ Steering* PlayerMovement::getSteering()
 	
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
-	 test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+	   if (unitList[i]->mCurrentLevel == gpGame->getCurrentLevel())
+	   {
+		   test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+	   }
    }
    
    if(test)

@@ -46,24 +46,35 @@ UnitManager::UnitManager()
    WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
    mpWalls.push_back(pWall);
 
-   WallUnit* pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 3);
+   pWall = new WallUnit(Vector2D(650, 650), Vector2D(500, 500), 1);
+   mpWalls.push_back(pWall);
+
+   WallUnit* pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 0);
    mpDoors.push_back(pDoor);
 
-   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 3);
+   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 0);
    mpDoors.push_back(pDoor);
+
+   pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 1);
+   mpDoors.push_back(pDoor);
+
+   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 1);
+   mpDoors.push_back(pDoor);
+
+  
+
+
+  
 
 	Vector2D vel(0, 0);
 	Vector2D pos(180, 180);
 	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
-	//Vector2D vel(1.0f, 1.0f);
-	//Node* startingNode = GRAPH->getNode(8);
-	Vector2D nodePos = GRAPH->getNode(8)->getPosision();
-	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 144, 80);
+	Vector2D nodePos = GRAPH->getNode(0)->getPosision();
+	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0,  0, 144, 80);
 	mpUnits.push_back(pUnit);
 
-   PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
-	//WanderToNode* pWanderToNode = new WanderToNode(pUnit, startingNode, 10);
+	PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
 	pUnit->setSteering(pPoliceSteering);
 	pUnit = NULL;
 	pPoliceSteering = NULL;
@@ -71,8 +82,7 @@ UnitManager::UnitManager()
 	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0);
 	mpPickups.push_back(pPickup);
 
-	srand(time(NULL)); //Need to move this out of here
-
+	srand(time(NULL));
 	
 }
 
@@ -120,19 +130,19 @@ void UnitManager::updateUnits(float time)
    // draw walls
    for (unsigned int i = 0; i < mpWalls.size(); i++)
    {
-      mpWalls[i]->draw();
+      mpWalls[i]->draw(gpGame->getCurrentLevel());
    }
 
    // draw water
    for (unsigned int i = 0; i < mpWater.size(); i++)
    {
-      mpWater[i]->draw();
+      mpWater[i]->draw(gpGame->getCurrentLevel());
    }
 
    // draw doors
    for (unsigned int i = 0; i < mpDoors.size(); i++)
    {
-	   mpDoors[i]->draw();
+	   mpDoors[i]->draw(gpGame->getCurrentLevel());
    }
 
    // draw consumables

@@ -46,34 +46,38 @@ bool CircleCollision::circleOnWall(Vector2D position, int spriteWidthHeight)
 
 	for (unsigned int i = 0; i < walls.size(); i++)
 	{
-      al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+		if (walls[i].wall->getLevel() == gpGame->getCurrentLevel())
+		{
+			al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
-		// calculate distance between circle center and rectangle center
-		Vector2D distance;
-		distance.setX(abs(position.getX() - walls[i].rectCenter.getX()));
-		distance.setY(abs(position.getY() - walls[i].rectCenter.getY()));
+			// calculate distance between circle center and rectangle center
+			Vector2D distance;
+			distance.setX(abs(position.getX() - walls[i].rectCenter.getX()));
+			distance.setY(abs(position.getY() - walls[i].rectCenter.getY()));
 
-		// if distance is greater than half of the circle + half of the rectangle, no collision
-		if (distance.getX() > (walls[i].wall->getWidth() / 2) + radius)
-		{
-			// no collision
-			break;
-		}
-		if (distance.getY() > (walls[i].wall->getHeight() / 2) + radius)
-		{
-			// no collision
-			break;
-		}
+			// if distance is greater than half of the circle + half of the rectangle, no collision
+			if (distance.getX() > (walls[i].wall->getWidth() / 2) + radius)
+			{
+				// no collision
+				break;
+			}
+			if (distance.getY() > (walls[i].wall->getHeight() / 2) + radius)
+			{
+				// no collision
+				break;
+			}
 
-		// if distance is less than half of the rectangle, collision
-		if (distance.getX() <= (walls[i].wall->getWidth() / 2))
-		{
-			return true;
+			// if distance is less than half of the rectangle, collision
+			if (distance.getX() <= (walls[i].wall->getWidth() / 2))
+			{
+				return true;
+			}
+			if (distance.getY() <= (walls[i].wall->getHeight() / 2))
+			{
+				return true;
+			}
 		}
-		if (distance.getY() <= (walls[i].wall->getHeight() / 2))
-		{
-			return true;
-		}
+		 
 	}
 
 	return false;
@@ -106,34 +110,38 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
 
    for (unsigned int i = 0; i < water.size(); i++)
    {
-      al_draw_circle(water[i].rectCenter.getX(), water[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+	   if (water[i].wall->getLevel() == gpGame->getCurrentLevel())
+	   {
+		   al_draw_circle(water[i].rectCenter.getX(), water[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
-      // calculate distance between circle center and rectangle center
-      Vector2D distance;
-      distance.setX(abs(position.getX() - water[i].rectCenter.getX()));
-      distance.setY(abs(position.getY() - water[i].rectCenter.getY()));
+		   // calculate distance between circle center and rectangle center
+		   Vector2D distance;
+		   distance.setX(abs(position.getX() - water[i].rectCenter.getX()));
+		   distance.setY(abs(position.getY() - water[i].rectCenter.getY()));
 
-      // if distance is greater than half of the circle + half of the rectangle, no collision
-      if (distance.getX() >(water[i].wall->getWidth() / 2) + radius)
-      {
-         // no collision
-         break;
-      }
-      if (distance.getY() > (water[i].wall->getHeight() / 2) + radius)
-      {
-         // no collision
-         break;
-      }
+		   // if distance is greater than half of the circle + half of the rectangle, no collision
+		   if (distance.getX() >(water[i].wall->getWidth() / 2) + radius)
+		   {
+			   // no collision
+			   break;
+		   }
+		   if (distance.getY() > (water[i].wall->getHeight() / 2) + radius)
+		   {
+			   // no collision
+			   break;
+		   }
 
-      // if distance is less than half of the rectangle, collision
-      if (distance.getX() <= (walls[i].wall->getWidth() / 2))
-      {
-         return true;
-      }
-      if (distance.getY() <= (walls[i].wall->getHeight() / 2))
-      {
-         return true;
-      }
+		   // if distance is less than half of the rectangle, collision
+		   if (distance.getX() <= (walls[i].wall->getWidth() / 2))
+		   {
+			   return true;
+		   }
+		   if (distance.getY() <= (walls[i].wall->getHeight() / 2))
+		   {
+			   return true;
+		   }
+	   }
+     
    }
 
    return false;
@@ -165,34 +173,38 @@ bool CircleCollision::circleOnDoor(Vector2D position, int spriteWidthHeight)
 
 	for (unsigned int i = 0; i < doors.size(); i++)
 	{
-		al_draw_circle(doors[i].rectCenter.getX(), doors[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+		if (doors[i].wall->getLevel() == gpGame->getCurrentLevel())
+		{
+			al_draw_circle(doors[i].rectCenter.getX(), doors[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
-		// calculate distance between circle center and rectangle center
-		Vector2D distance;
-		distance.setX(abs(position.getX() - doors[i].rectCenter.getX()));
-		distance.setY(abs(position.getY() - doors[i].rectCenter.getY()));
+			// calculate distance between circle center and rectangle center
+			Vector2D distance;
+			distance.setX(abs(position.getX() - doors[i].rectCenter.getX()));
+			distance.setY(abs(position.getY() - doors[i].rectCenter.getY()));
 
-		// if distance is greater than half of the circle + half of the rectangle, no collision
-		if (distance.getX() >(doors[i].wall->getWidth() / 2) + radius)
-		{
-			// no collision
-			break;
-		}
-		if (distance.getY() > (doors[i].wall->getHeight() / 2) + radius)
-		{
-			// no collision
-			break;
-		}
+			// if distance is greater than half of the circle + half of the rectangle, no collision
+			if (distance.getX() >(doors[i].wall->getWidth() / 2) + radius)
+			{
+				// no collision
+				break;
+			}
+			if (distance.getY() > (doors[i].wall->getHeight() / 2) + radius)
+			{
+				// no collision
+				break;
+			}
 
-		// if distance is less than half of the rectangle, collision
-		if (distance.getX() <= (doors[i].wall->getWidth() / 2))
-		{
-			return true;
+			// if distance is less than half of the rectangle, collision
+			if (distance.getX() <= (doors[i].wall->getWidth() / 2))
+			{
+				return true;
+			}
+			if (distance.getY() <= (doors[i].wall->getHeight() / 2))
+			{
+				return true;
+			}
 		}
-		if (distance.getY() <= (doors[i].wall->getHeight() / 2))
-		{
-			return true;
-		}
+			
 	}
 
 	return false;

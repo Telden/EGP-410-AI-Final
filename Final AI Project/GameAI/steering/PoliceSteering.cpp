@@ -14,7 +14,7 @@
 PoliceSteering::PoliceSteering(KinematicUnit *pMover)
 {
    mpMover = pMover;
-   Node* startingNode = GRAPH->getNode(8);
+   Node* startingNode = GRAPH->getNode(0);
    mpWander = new WanderToNode(mpMover, startingNode, 5);
 
    //mpChase = ???
@@ -61,8 +61,9 @@ Steering* PoliceSteering::getSteering()
    mpTarget = UNIT_MANAGER->getPlayerUnit();
 
    // make a bool to check if we've collided with the player
-   bool colPlayer;
-   colPlayer = mCol.circleOnCircle(mpMover->getPosition(), 50 , mpTarget->getPosition(), 50);
+   bool colPlayer = false;;
+   if(mpMover->mCurrentLevel == mpTarget->mCurrentLevel)
+		 colPlayer = mCol.circleOnCircle(mpMover->getPosition(), 50 , mpTarget->getPosition(), 50);
 
    // report on if we've collided with the player
    if (colPlayer)

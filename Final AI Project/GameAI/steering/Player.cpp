@@ -6,7 +6,7 @@
 #include "Graph.h"
 
 Player::Player(Sprite *pSprite, const Vector2D &position, float orientation, const Vector2D &velocity, float rotationVel, float maxVelocity, float maxAcceleration)
-	:KinematicUnit(pSprite, position, orientation, velocity, rotationVel, maxVelocity, maxAcceleration)
+	:KinematicUnit(pSprite, position, orientation, velocity, rotationVel, 0, maxVelocity, maxAcceleration)
 {
 	mpPlayerMovement = new PlayerMovement(this);
 	setSteering(mpPlayerMovement);
