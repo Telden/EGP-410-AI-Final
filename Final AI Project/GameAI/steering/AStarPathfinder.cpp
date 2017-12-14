@@ -133,6 +133,17 @@ std::stack<Node*> AStarPathfinder::findPath(Node* pFrom, Node* pTo)
 		}
 	}
 
+//Clean up the node records
+   for (unsigned int i = 0; i < open.size(); i++)
+   {
+      if(open[i] != NULL)
+         delete open[i];
+   }
+   for (unsigned int i = 0; i < close.size(); i++)
+   {
+      if(close[i] !=NULL)
+         delete close[i];
+   }
 	
 	return path;
 

@@ -72,8 +72,13 @@ public:
    void setHighScore(int newVal) { mHighScore = newVal; }
    void switchMap();
 
-
 	void toggleDebug();
+
+   void setPlayerHasPowerup(bool newVal) { mPlayerHasPowerup = newVal; };
+   void setPlayerHasPickup(bool newVal) { mPlayerHasPickup = newVal; };
+
+   bool getPlayerHasPowerup() { return mPlayerHasPowerup; };
+   bool getPlayerHasPickup() { return mPlayerHasPickup; };
 
 private:
 	GraphicsSystem* mpGraphicsSystem;
@@ -105,6 +110,9 @@ private:
    int mHighScore;
 
 	Graph* mpGraph;
+
+   bool mPlayerHasPickup = false;
+   bool mPlayerHasPowerup = false;
 
 };
 

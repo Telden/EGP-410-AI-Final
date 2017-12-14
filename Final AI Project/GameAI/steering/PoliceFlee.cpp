@@ -5,16 +5,18 @@
 #include "Player.h"
 #include "Node.h"
 #include "AStarPathfinder.h"
-#include "Connection.h"
 #include "Graph.h"
-
-PoliceFlee::PoliceFlee(KinematicUnit* mover, KinematicUnit* target, int radius)
+#include "StateMachine.h"
+#include "Connection.h"
+PoliceFlee::PoliceFlee(KinematicUnit* mover, KinematicUnit* target, int radius, StateMachine* machine, Steering* wander)
 {
 	mpMover = mover;
 	mpTarget = target;
 	mRadius = radius;
 	mpGraph = GRAPH;
 	mpCurrentTarget = NULL;
+   mpStateMachine = machine;
+   mpWander = wander;
 }
 
 Steering* PoliceFlee::getSteering()
@@ -34,8 +36,8 @@ Steering* PoliceFlee::getSteering()
 					{
 						for (unsigned int i = 0; i < potentialConnections.size(); i++)
 						{
-							distance = sqrt(pow((potentialConnections[i]->getToNode()->getPosision().getX() - mpTarget->getPosition().getX()), 2) +
-								pow((potentialConnections[i]->getToNode()->getPosision().getY() - mpTarget->getPosition().getY()), 2));
+							distance = sqrt(pow((potentialConnections[i]->getToNode()->getPosision().getX() - UNIT_MANAGER->getPlayerUnit()->getPosition().getX()), 2) +
+								pow((potentialConnections[i]->getToNode()->getPosision().getY() - UNIT_MANAGER->getPlayerUnit()->getPosition().getY()), 2));
 							if (distance < shortestDistance)
 							{
 								shortestDistance = distance;
@@ -68,8 +70,8 @@ Steering* PoliceFlee::getSteering()
 					{
 						for (unsigned int i = 0; i < potentialConnections.size(); i++)
 						{
-							distance = sqrt(pow((potentialConnections[i]->getToNode()->getPosision().getX() - mpTarget->getPosition().getX()), 2) +
-								pow((potentialConnections[i]->getToNode()->getPosision().getY() - mpTarget->getPosition().getY()), 2));
+							distance = sqrt(pow((potentialConnections[i]->getToNode()->getPosision().getX() - UNIT_MANAGER->getPlayerUnit()->getPosition().getX()), 2) +
+								pow((potentialConnections[i]->getToNode()->getPosision().getY() - UNIT_MANAGER->getPlayerUnit()->getPosition().getY()), 2));
 							if (distance > longestDistance)
 							{
 								longestDistance = distance;
@@ -89,6 +91,18 @@ Steering* PoliceFlee::getSteering()
 				mAngular = 0;
 			}
 
+         if (mFleeTime > 0)
+         {
+            mFleeTime--;
+         }
+         else
+         {
+            mFleeTime = 30;
+            //Do state machine stuff
+            mpStateMachine->changeCurrentState(mpWander);
+            gpGame->setPlayerHasPowerup(false);
+         }
+  
 	return this;
 
 }

@@ -4,16 +4,17 @@
 #include <vector>
 
 class Steering;
-struct Connection;
+struct ConnectionSM;
 
 class StateMachine
 {
    private:
       std::vector<Steering*> mpStates;
-      std::vector<Connection> mConnections;
+      std::vector<ConnectionSM> mConnections;
+      
+   public:
       Steering* mpCurrentState;
 
-   public:
       StateMachine();
       ~StateMachine();
 
@@ -26,9 +27,9 @@ class StateMachine
       void AddConnection(Steering* from, Steering* to);
 };
 
-struct Connection
+struct ConnectionSM
 {
-   Connection(Steering* from, Steering* to)
+   ConnectionSM(Steering* from, Steering* to)
    {
       mpFrom = from;
       mpTo = to;

@@ -7,7 +7,12 @@ AudioManager::AudioManager()
 
 AudioManager::~AudioManager()
 {
+   for (int i = 0; i < clips.size(); i++)
+   {
+      al_destroy_sample(clips[i].sample);
+   }
 
+   al_destroy_sample(mpMusic);
 }
 
 void AudioManager::AddClip(std::string name, std::string path)

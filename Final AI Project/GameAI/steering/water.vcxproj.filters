@@ -198,10 +198,13 @@
     <ClCompile Include="NodeRecord.cpp">
       <Filter>Pathfinding</Filter>
     </ClCompile>
-    <ClCompile Include="PoliceFlee.cpp">
-      <Filter>Header Files\Steering</Filter>
-    </ClCompile>
     <ClCompile Include="CreatePickupMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="PoliceFlee.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHasPowerupMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
   </ItemGroup>
@@ -407,6 +410,9 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="CreatePickupMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHasPowerupMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>

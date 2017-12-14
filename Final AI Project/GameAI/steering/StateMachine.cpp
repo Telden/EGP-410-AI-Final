@@ -31,7 +31,7 @@ void StateMachine::AddState(Steering* newSteer)
 void StateMachine::AddConnection(Steering* from, Steering* to)
 {
    // add pointers to represent a connection between two states
-   mConnections.push_back(Connection(from, to));
+   mConnections.push_back(ConnectionSM(from, to));
 }
 
 void StateMachine::changeCurrentState(Steering* newState)

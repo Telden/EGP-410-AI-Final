@@ -75,18 +75,20 @@ Steering* PlayerMovement::getSteering()
       GameMessage* pMessage = new EndGameMessage();
       MESSAGE_MANAGER->addMessage(pMessage, 0);
    }
-   
+
+   bool enemyTest = false;
    // check collision with each enemy
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
 	   if (unitList[i]->mCurrentLevel == gpGame->getCurrentLevel())
 	   {
-		   test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
+		   if (mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight))
+            enemyTest = true;
 	   }
    }
 
    // actually test to see if an enemy was detected
-   if (test)
+   if (enemyTest)
    {
       std::cout << "--- GAME OVER ---" << std::endl;
       GameMessage* pMessage = new EndGameMessage();
@@ -209,7 +211,7 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 	case 'D':
 		if (isPressed)
 		{
-			printf("Moving right");
+			//printf("Moving right");
 			mMoveRight = true;
 		}		
 		else
@@ -218,7 +220,7 @@ void PlayerMovement::recieveMessage(char input, bool isPressed)
 	case 'A':
 		if (isPressed)
 		{
-			printf("Moving left");
+			//printf("Moving left");
 			mMoveLeft = true;
 		}
 			

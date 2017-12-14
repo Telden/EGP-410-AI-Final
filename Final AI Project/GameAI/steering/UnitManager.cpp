@@ -108,15 +108,14 @@ UnitManager::UnitManager()
 	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0,  0, 144, 80);
 	mpUnits.push_back(pUnit);
 
-	PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
-	pUnit->setSteering(pPoliceSteering);
+   PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
+   pUnit->setSteering(pPoliceSteering);
 
 	pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 0, 144, 80);
 	mpUnits.push_back(pUnit);
 
-	PoliceFlee* pPoliceFlee = new PoliceFlee(pUnit, mpPlayer, 5);
-	//PoliceSeek* pPoliceSeek = new PoliceSeek(pUnit, mpPlayer, 5);
-	pUnit->setSteering(pPoliceFlee);
+   pPoliceSteering = new PoliceSteering(pUnit);
+   pUnit->setSteering(pPoliceSteering);
 
 	pUnit = NULL;
 	pPoliceSteering = NULL;
@@ -127,6 +126,9 @@ UnitManager::UnitManager()
 
 	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0,  0);
 	mpPickups.push_back(pPickup);
+
+   pPickup = new PickupUnit(GRAPH->getNode(3)->getPosision(), 20, 1, 0);
+   mpPickups.push_back(pPickup);
 
 	srand(time(NULL));
 	
@@ -218,6 +220,11 @@ void UnitManager::cleanup()
    for (unsigned int i = 0; i < mpWater.size(); i++)
    {
       delete mpWater[i];
+   }
+
+   for (unsigned int i = 0; i < mpDoors.size(); i++)
+   {
+      delete mpDoors[i];
    }
 
    for (unsigned int i = 0; i < mpPickups.size(); i++)

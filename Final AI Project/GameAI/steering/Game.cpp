@@ -202,6 +202,10 @@ bool Game::init()
    mpAudioManager->AddClip("alarm", FX_PATH_ALARM);
    mpAudioManager->AddMusic(MUS_PATH);
 
+   // player states
+   mPlayerHasPickup = false;
+   mPlayerHasPowerup = false;
+
    // get the high score from the file
    std::ifstream fin;
    fin.open(HIGH_SCORE_PATH);
@@ -261,6 +265,9 @@ void Game::cleanup()
 	mpGraph = NULL;
 	al_destroy_sample(mpSample);
 	mpSample = NULL;
+
+   delete mpAudioManager;
+   mpAudioManager = NULL;
 
 	//shutdown components
 	al_uninstall_audio();

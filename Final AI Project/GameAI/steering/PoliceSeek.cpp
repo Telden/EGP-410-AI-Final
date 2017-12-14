@@ -5,22 +5,24 @@
 #include "Player.h"
 #include "Node.h"
 #include "AStarPathfinder.h"
+#include "StateMachine.h"
 
-PoliceSeek::PoliceSeek(KinematicUnit* mover, KinematicUnit* target, int radius)
+PoliceSeek::PoliceSeek(KinematicUnit* mover, KinematicUnit* target, int radius, StateMachine* stateMachine, Steering* wander)
 {
 	mpMover = mover;
 	mpTarget = target;
 	mRadius = radius;
+   mpStateMachine = stateMachine;
+   mpWander = wander;
 }
 
 Steering* PoliceSeek::getSteering()
 {
-	if (mpTarget->mCurrentLevel == mpMover->mCurrentLevel)
+	if (UNIT_MANAGER->getPlayerUnit()->mCurrentLevel == mpMover->mCurrentLevel)
 	{
-		if (mpNodeStack.empty() && mpTarget->getLastNode()->getPosision() != NULL)
+		if (mpNodeStack.empty() && UNIT_MANAGER->getPlayerUnit()->getLastNode()->getPosision() != NULL)
 		{
-			mpAStar = new AStarPathfinder();
-			mpNodeStack = mpAStar->findPath(mpMover->getLastNode(), mpTarget->getLastNode());
+			mpNodeStack = mAStar.findPath(mpMover->getLastNode(), UNIT_MANAGER->getPlayerUnit()->getLastNode());
 			//printf("Be happy");
 		}
 		else
@@ -36,11 +38,14 @@ Steering* PoliceSeek::getSteering()
 				mpMover->mCurrentLevel = mpNodeStack.top()->getLevel();
 			if (distance < mRadius)
 				mpNodeStack.pop();
+
+         if (mpNodeStack.empty())
+         {
+            gpGame->setPlayerHasPickup(false);
+            mpStateMachine->changeCurrentState(mpWander);
+         }
 		
 		}
-		
-	
-		
 	}
 	return this;
 

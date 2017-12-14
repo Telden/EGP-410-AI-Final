@@ -10,12 +10,16 @@
 
 // steering
 #include "WanderToNode.h"
+#include "PoliceSeek.h"
+#include "PoliceFlee.h"
 
 PoliceSteering::PoliceSteering(KinematicUnit *pMover)
 {
    mpMover = pMover;
    Node* startingNode = GRAPH->getNode(0);
    mpWander = new WanderToNode(mpMover, startingNode, 5);
+   mpChase = new PoliceSeek(mpMover, mpTarget, 5, &mStateMachine, mpWander);
+   mpFlee = new PoliceFlee(mpMover, mpTarget, 5, &mStateMachine, mpWander);
 
    //mpChase = ???
    //mpFlee = ???
@@ -40,7 +44,8 @@ PoliceSteering::PoliceSteering(KinematicUnit *pMover)
    mStateMachine.AddConnection(mpFlee, mpChase);
    mStateMachine.AddConnection(mpFlee, mpDead);
 
-   mStateMachine.changeCurrentState(mpWander);
+   mStateMachine.mpCurrentState = mpWander;
+   //mStateMachine.changeCurrentState(mpWander);
 }
 
 PoliceSteering::~PoliceSteering()
@@ -68,6 +73,16 @@ Steering* PoliceSteering::getSteering()
    // report on if we've collided with the player
    if (colPlayer)
       std::cout << "enemy detecting player - circ x circ" << std::endl;
+
+   if (gpGame->getPlayerHasPickup())
+   {
+      mStateMachine.changeCurrentState(mpChase);
+   }
+
+   if (gpGame->getPlayerHasPowerup())
+   {
+      mStateMachine.changeCurrentState(mpFlee);
+   }
    
    // have the steering object that gets returned be the steering of the current state
    return mStateMachine.doCurrentState();

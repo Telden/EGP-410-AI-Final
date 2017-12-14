@@ -13,10 +13,7 @@ CircleCollision::CircleCollision()
 
 CircleCollision::~CircleCollision()
 {
-	/*if (mpUnitManager != NULL)
-	{
-		delete mpUnitManager;
-	}*/
+	
 }
 
 // used for: enemy and walls - player and walls
@@ -46,7 +43,7 @@ bool CircleCollision::circleOnWall(Vector2D position, int spriteWidthHeight)
 
    wallCollisionSuccess = false;
 
-	for (unsigned int i = 0; i < mpUnitManager->getNumOfWalls(); i++)
+	for (int i = 0; i < mpUnitManager->getNumOfWalls(); i++)
 	{
       // check to see if the wall is on the same level of the hierarchy
 		if (walls[i].wall->getLevel() == gpGame->getCurrentLevel())
@@ -119,7 +116,7 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
 
    waterCollisionSuccess = false;
 
-   for (unsigned int i = 0; i < mpUnitManager->getNumOfWater(); i++)
+   for (int i = 0; i < mpUnitManager->getNumOfWater(); i++)
    {
       // check to see if the wall is on the same level of the hierarchy
       if (water[i].wall->getLevel() == gpGame->getCurrentLevel())
@@ -191,7 +188,7 @@ bool CircleCollision::circleOnDoor(Vector2D position, int spriteWidthHeight)
 
    doorCollisionSuccess = false;
 
-   for (unsigned int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
+   for (int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
    {
       // check to see if the wall is on the same level of the hierarchy
       if (doors[i].wall->getLevel() == gpGame->getCurrentLevel())
