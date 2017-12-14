@@ -16,12 +16,15 @@ class CircleCollision
 		std::vector<BoxWithCenter> doors;
 		UnitManager* mpUnitManager;
 
+      // a cheat for not using the constructor, just find everything one time and check if you already have
       bool alreadyFoundWalls = false;
       bool alreadyFoundWater = false;
 	   bool alreadyFoundDoors = false;
 
+      // keep track of collision success per each function
       bool wallCollisionSuccess = false;
       bool doorCollisionSuccess = false;
+      bool waterCollisionSuccess = false;
 
 	public:
 		CircleCollision();

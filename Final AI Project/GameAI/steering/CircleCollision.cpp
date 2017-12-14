@@ -13,10 +13,10 @@ CircleCollision::CircleCollision()
 
 CircleCollision::~CircleCollision()
 {
-	if (mpUnitManager != NULL)
+	/*if (mpUnitManager != NULL)
 	{
 		delete mpUnitManager;
-	}
+	}*/
 }
 
 // used for: enemy and walls - player and walls
@@ -117,43 +117,52 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
       position.getY() + (radius)
       );
 
-   for (unsigned int i = 0; i < water.size(); i++)
+   waterCollisionSuccess = false;
+
+   for (unsigned int i = 0; i < mpUnitManager->getNumOfWater(); i++)
    {
-	   if (water[i].wall->getLevel() == gpGame->getCurrentLevel())
-	   {
-		   al_draw_circle(water[i].rectCenter.getX(), water[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+      // check to see if the wall is on the same level of the hierarchy
+      if (water[i].wall->getLevel() == gpGame->getCurrentLevel())
+      {
+         // used for seeing the mid-point of the walls
+         //al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
-		   // calculate distance between circle center and rectangle center
-		   Vector2D distance;
-		   distance.setX(abs(position.getX() - water[i].rectCenter.getX()));
-		   distance.setY(abs(position.getY() - water[i].rectCenter.getY()));
+         // calculate distance between circle center and rectangle center
+         Vector2D distance;
+         distance.setX(abs(position.getX() - water[i].rectCenter.getX()));
+         distance.setY(abs(position.getY() - water[i].rectCenter.getY()));
 
-		   // if distance is greater than half of the circle + half of the rectangle, no collision
-		   if (distance.getX() >(water[i].wall->getWidth() / 2) + radius)
-		   {
-			   // no collision
-			   break;
-		   }
-		   if (distance.getY() > (water[i].wall->getHeight() / 2) + radius)
-		   {
-			   // no collision
-			   break;
-		   }
+         // because break is breaking my collision, use a bool to keep track instead
+         bool breakplz = false;
 
-		   // if distance is less than half of the rectangle, collision
-		   if (distance.getX() <= (walls[i].wall->getWidth() / 2))
-		   {
-			   return true;
-		   }
-		   if (distance.getY() <= (walls[i].wall->getHeight() / 2))
-		   {
-			   return true;
-		   }
-	   }
-     
+         // if distance is greater than half of the circle + half of the rectangle, no collision
+         if (distance.getX() > (water[i].wall->getWidth() / 2) + radius)
+         {
+            // no collision
+            breakplz = true;
+         }
+         if (distance.getY() > (water[i].wall->getHeight() / 2) + radius)
+         {
+            // no collision
+            breakplz = true;
+         }
+
+         // if we didn't "break" above, keep checking
+         if (!breakplz)
+         {
+            // if distance is less than half of the rectangle, collision
+            if (distance.getX() <= (water[i].wall->getWidth() / 2))
+            {
+               waterCollisionSuccess = true;//return true;
+            }
+            if (distance.getY() <= (water[i].wall->getHeight() / 2))
+            {
+               waterCollisionSuccess = true;//return true;
+            }
+         }
+      }
    }
-
-   return false;
+   return waterCollisionSuccess;
 }
 
 bool CircleCollision::circleOnDoor(Vector2D position, int spriteWidthHeight)

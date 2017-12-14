@@ -50,24 +50,38 @@ UnitManager::UnitManager()
       // top right
       mpWalls.push_back(new WallUnit(Vector2D(562, 100), Vector2D(924, 334), 0));
       // bottom left
-      WallUnit* pWall = new WallUnit(Vector2D(100, 424), Vector2D(462, 668), 0);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(100, 424), Vector2D(462, 668), 0));
       // bottom right
-      pWall = new WallUnit(Vector2D(562, 424), Vector2D(924, 668), 0);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(562, 424), Vector2D(924, 668), 0));
    // underworld walls
       // top
-      pWall = new WallUnit(Vector2D(0, 0), Vector2D(1024, 10), 1);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(0, 0), Vector2D(1024, 10), 1));
       // bottom
-      pWall = new WallUnit(Vector2D(0, 758), Vector2D(1024, 768), 1);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(0, 758), Vector2D(1024, 768), 1));
       // left
-      pWall = new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 1);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 1));
       // right
-      pWall = new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 1);
-      mpWalls.push_back(pWall);
+      mpWalls.push_back(new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 1));
+
+   // final game water
+   // overworld water
+      // top left
+      mpWater.push_back(new WallUnit(Vector2D(100, 100), Vector2D(462, 334), 1));
+      // top right
+      mpWater.push_back(new WallUnit(Vector2D(562, 100), Vector2D(924, 334), 1));
+      // bottom left
+      mpWater.push_back(new WallUnit(Vector2D(100, 424), Vector2D(462, 668), 1));
+      // bottom right
+      mpWater.push_back(new WallUnit(Vector2D(562, 424), Vector2D(924, 668), 1));
+   // underworld water
+      // top
+      mpWater.push_back(new WallUnit(Vector2D(0, 0), Vector2D(1024, 10), 0));
+      // bottom
+      mpWater.push_back(new WallUnit(Vector2D(0, 758), Vector2D(1024, 768), 0));
+      // left
+      mpWater.push_back(new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 0));
+      // right
+      mpWater.push_back(new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 0));
 
    // final game doors
    // overworld doors

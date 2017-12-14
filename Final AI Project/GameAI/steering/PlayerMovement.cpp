@@ -28,8 +28,10 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
-   bool test = mCol.circleOnWall(mpMover->getPosition(), 50);
+   bool test = mCol.circleOnWall(mpMover->getPosition(), 20);
    bool doorTest = mCol.circleOnDoor(mpMover->getPosition(), 50);
+   bool waterTest = mCol.circleOnWater(mpMover->getPosition(), 20);
+
    if (doorTest)
    {
 	   std::vector<Connection*> connections = GRAPH->getConnections(UNIT_MANAGER->getPlayerUnit()->getLastNode()->getId()); 
@@ -52,7 +54,7 @@ Steering* PlayerMovement::getSteering()
    {
 	   std::cout << "player detecting wall - circ x rect" << std::endl;
 		   mLinear = (mpMover->getOrientationAsVector() * mCurrentAcceleration)  *-1;
-		   mCurrentAcceleration *= -1;
+		   mCurrentAcceleration *= -0.5;
 		   mWallCooldown = 5;
 	   return this;
    }
@@ -62,7 +64,12 @@ Steering* PlayerMovement::getSteering()
 		   mWallCooldown--;
    }
      
-	
+   if (waterTest)
+   {
+      std::cout << "water!" << std::endl;
+      // player is dead
+   }
+   
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
 	   if (unitList[i]->mCurrentLevel == gpGame->getCurrentLevel())
