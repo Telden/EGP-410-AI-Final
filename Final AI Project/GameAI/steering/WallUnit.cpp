@@ -32,8 +32,29 @@ WallUnit::~WallUnit()
 	
 }
 
-void WallUnit::draw(int currentLevel)
+void WallUnit::draw(int currentLevel, int colorID)
 {
+   // only draw if the object is on the current level
 	if(currentLevel == mLevel)
-		gpGame->getGraphicsSystem()->drawRectangle(mTopLeft, mBottomRight);
+   {
+      // check which color to draw
+      switch (colorID)
+      {
+         case 0:
+         {
+            gpGame->getGraphicsSystem()->drawRectangle(mTopLeft, mBottomRight, al_map_rgb(127, 127, 127));
+            break;
+         }
+         case 1:
+         {
+            gpGame->getGraphicsSystem()->drawRectangle(mTopLeft, mBottomRight, al_map_rgb(0, 0, 255));
+            break;
+         }
+         case 2:
+         {
+            gpGame->getGraphicsSystem()->drawRectangle(mTopLeft, mBottomRight, al_map_rgb(200, 200, 200));
+            break;
+         }
+      }
+   }
 }

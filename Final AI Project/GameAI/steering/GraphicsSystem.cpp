@@ -90,9 +90,9 @@ ALLEGRO_BITMAP* GraphicsSystem::switchTargetBitmap( ALLEGRO_BITMAP* pNewTarget )
 	return pOldTarget;
 }
 
-void GraphicsSystem::drawRectangle(Vector2D topLeft, Vector2D bottomRight)
+void GraphicsSystem::drawRectangle(Vector2D topLeft, Vector2D bottomRight, ALLEGRO_COLOR color)
 {
-   al_draw_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), al_map_rgb(0, 0, 0), 1);
+   al_draw_filled_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), color);
 }
 
 void GraphicsSystem::drawLine(Vector2D start, Vector2D end)

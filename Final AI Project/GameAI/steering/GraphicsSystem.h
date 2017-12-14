@@ -28,7 +28,7 @@ public:
 
 	static ALLEGRO_BITMAP* switchTargetBitmap( ALLEGRO_BITMAP* pNewTarget );//return old target
 
-   void drawRectangle(Vector2D topLeft, Vector2D bottomRight);
+   void drawRectangle(Vector2D topLeft, Vector2D bottomRight, ALLEGRO_COLOR color);
    void drawLine(Vector2D start, Vector2D end);
    void drawCircle(Vector2D position, int radius);
    void drawMouse(Vector2D mousePos);

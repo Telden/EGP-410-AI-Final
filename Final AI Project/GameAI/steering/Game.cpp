@@ -210,6 +210,9 @@ bool Game::init()
       std::cout << "Failed to open " << HIGH_SCORE_PATH << std::endl;
    }
    fin >> mHighScore;
+   // prevent garbage from getting in the high score
+   if (mHighScore < 0)
+      mHighScore = 0;
    fin.close();
 	return true;
 }

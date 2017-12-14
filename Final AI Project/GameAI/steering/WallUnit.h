@@ -13,7 +13,7 @@ class WallUnit : public Kinematic
 
 		void Init();
 
-		void draw(int currentLevel);
+		void draw(int currentLevel, int colorID);
 
 		Vector2D getTopLeft() { return mTopLeft; } 
 		Vector2D getTopRight() { return mTopRight; }

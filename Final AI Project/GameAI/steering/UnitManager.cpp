@@ -31,6 +31,7 @@
 #include "Node.h"
 #include "WanderToNode.h"
 #include "PoliceSteering.h"
+#include "allegro5\allegro_primitives.h"
 
 // Message headers
 #include "GameMessage.h"
@@ -61,7 +62,7 @@ UnitManager::UnitManager()
       // left
       mpWalls.push_back(new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 1));
       // right
-      mpWalls.push_back(new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 1));
+      mpWalls.push_back(new WallUnit(Vector2D(1014, 0), Vector2D(1024, 768), 1));
 
    // final game water
    // overworld water
@@ -81,7 +82,7 @@ UnitManager::UnitManager()
       // left
       mpWater.push_back(new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 0));
       // right
-      mpWater.push_back(new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 0));
+      mpWater.push_back(new WallUnit(Vector2D(1014, 0), Vector2D(1024, 768), 0));
 
    // final game doors
    // overworld doors
@@ -95,15 +96,12 @@ UnitManager::UnitManager()
    pDoor = new WallUnit(Vector2D(480, 748), Vector2D(544, 768), 1);
    mpDoors.push_back(pDoor);
 
-  
-
-
-  
-
+   // final player position
 	Vector2D vel(0, 0);
 	Vector2D pos(512, 512);
 	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
+   // final enemy position
 	Vector2D nodePos = GRAPH->getNode(0)->getPosision();
 	KinematicUnit* pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0,  0, 144, 80);
 	mpUnits.push_back(pUnit);
@@ -164,19 +162,19 @@ void UnitManager::updateUnits(float time)
    // draw walls
    for (unsigned int i = 0; i < mpWalls.size(); i++)
    {
-      mpWalls[i]->draw(gpGame->getCurrentLevel());
+      mpWalls[i]->draw(gpGame->getCurrentLevel(), 0);
    }
 
    // draw water
    for (unsigned int i = 0; i < mpWater.size(); i++)
    {
-      mpWater[i]->draw(gpGame->getCurrentLevel());
+      mpWater[i]->draw(gpGame->getCurrentLevel(), 1);
    }
 
    // draw doors
    for (unsigned int i = 0; i < mpDoors.size(); i++)
    {
-	   mpDoors[i]->draw(gpGame->getCurrentLevel());
+	   mpDoors[i]->draw(gpGame->getCurrentLevel(), 2);
    }
 
    // draw consumables
