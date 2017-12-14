@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddToScoreMessage.h" />
     <ClInclude Include="Allignment.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BehaviorandWeight.h" />
@@ -80,6 +81,7 @@
     <ClInclude Include="WanderToNode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddToScoreMessage.cpp" />
     <ClCompile Include="Allignment.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BlendedSteering.cpp" />

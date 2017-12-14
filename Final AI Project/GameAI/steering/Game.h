@@ -64,6 +64,12 @@ public:
 	inline KinematicUnit* getAIUnit() { return mpAIUnit; };//should be someplace else
 	inline KinematicUnit* getAIUnit2() { return mpAIUnit2; };//should be someplace else
 
+   int getScore() { return mCurrentScore; }
+   int getHighScore() { return mHighScore; }
+   void setScore(int newVal) { mCurrentScore = newVal; }
+   void setHighScore(int newVal) { mHighScore = newVal; }
+
+
 	void toggleDebug();
 
 private:
@@ -91,6 +97,9 @@ private:
 	KinematicUnit* mpUnit;
 	KinematicUnit* mpAIUnit;
 	KinematicUnit* mpAIUnit2;
+
+   int mCurrentScore = 0;
+   int mHighScore;
 
 	Graph* mpGraph;
 

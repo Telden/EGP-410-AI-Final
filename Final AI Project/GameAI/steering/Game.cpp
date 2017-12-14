@@ -267,7 +267,7 @@ void Game::processLoop()
 	{
 		mpUnitManager->updateUnits(LOOP_TARGET_TIME / 1000.0f);
 		mpInputManager->checkInput();
-		mpUiManager->update();
+		mpUiManager->update(mCurrentScore);
 	}
 
 	

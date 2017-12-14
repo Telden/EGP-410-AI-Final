@@ -18,7 +18,7 @@ public:
 	void cleanup();
 
 	// Update the UI every frame
-	void update();
+	void update(int score);
 
 	//Update mouse UI information
 	void updateMouseUiInformation(float& mouseX, float& mouseY, std::string mousePos, std::string currentSelection);
@@ -34,6 +34,9 @@ public:
 
 	//Switch the UI on or off
 	void switchUI();
+
+   // score
+   void drawScore(int score);
 
 private:
 	ALLEGRO_FONT* mpFont;
