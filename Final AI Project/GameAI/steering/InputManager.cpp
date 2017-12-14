@@ -193,6 +193,6 @@ void::InputManager::checkDebugInput()
 
 	if (!al_key_down(&keyState, ALLEGRO_KEY_P) && mPKeyDown)
 	{
-		mPKeyDown = true;
+		mPKeyDown = false;
 	}
 }
