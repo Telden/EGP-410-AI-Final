@@ -4,6 +4,11 @@
 #include "UnitManager.h"
 #include "Player.h"
 
+#include "GameMessageManager.h"
+#include "GameMessage.h"
+#include "PlaySoundMessage.h"
+#include "AddToScoreMessage.h"
+
 // mode is 0 for regular score, 1 for a powerup
 PickupUnit::PickupUnit(Vector2D position, int radius, int mode)
    :Kinematic(position, 0, 0, 0) // initializing velocity, orientation, and rotational velocity as 0
@@ -20,6 +25,8 @@ PickupUnit::~PickupUnit()
 
 void PickupUnit::update()
 {
+   GameMessage* pMessage;
+
 	if (mActive)
 	{
 		float distance;
@@ -30,7 +37,13 @@ void PickupUnit::update()
 		if (distance < mRadius)
 		{
 			//pickup the unit
+         
 			mActive = false;
+         pMessage = new PlaySoundMessage("shine");
+         MESSAGE_MANAGER->addMessage(pMessage, 0);
+
+         pMessage = new AddToScoreMessage(100);
+         MESSAGE_MANAGER->addMessage(pMessage, 0);
 		}
 
 	}

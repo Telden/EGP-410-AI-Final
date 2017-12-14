@@ -24,6 +24,7 @@
 #include "InputManager.h"
 #include "UiManager.h"
 #include "Graph.h"
+#include "AudioManager.h"
 
 Game* gpGame = NULL;
 
@@ -106,7 +107,7 @@ bool Game::init()
 		return false;
 	}
 
-	if (!al_reserve_samples(1))
+	if (!al_reserve_samples(8))
 	{
 		fprintf(stderr, "failed to reserve samples!\n");
 		return false;
@@ -122,14 +123,6 @@ bool Game::init()
 	if (!al_init_primitives_addon())
 	{
 		printf("Primitives addon not added!\n");
-		return false;
-	}
-
-	//load the sample
-	mpSample = al_load_sample("clapping.wav");
-	if (!mpSample)
-	{
-		printf("Audio clip sample not loaded!\n");
 		return false;
 	}
 
@@ -200,6 +193,13 @@ bool Game::init()
 	//mpAIUnit2->dynamicWanderandFlee(mpUnit);
 	//mpUnitManager->addUnit(mpAIUnit2);
 
+   // create the audio manager and then add the sounds and music
+   mpAudioManager = new AudioManager();
+   mpAudioManager->AddClip("splash", FX_PATH_SPLASH);
+   mpAudioManager->AddClip("shine", FX_PATH_SHINE);
+   mpAudioManager->AddClip("alarm", FX_PATH_ALARM);
+   mpAudioManager->AddMusic(MUS_PATH);
+
 	return true;
 }
 
@@ -267,7 +267,7 @@ void Game::processLoop()
 	{
 		mpUnitManager->updateUnits(LOOP_TARGET_TIME / 1000.0f);
 		mpInputManager->checkInput();
-		mpUiManager->update();
+		mpUiManager->update(mCurrentScore);
 	}
 
 	

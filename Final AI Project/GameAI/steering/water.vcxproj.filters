@@ -181,6 +181,14 @@
     <ClCompile Include="SwitchMapMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="DeadSteering.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="PlaySoundMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
+    <ClCompile Include="AddToScoreMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -361,6 +369,14 @@
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="PickupUnit.h" />
     <ClInclude Include="SwitchMapMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="DeadSteering.h" />
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="PlaySoundMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="AddToScoreMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>

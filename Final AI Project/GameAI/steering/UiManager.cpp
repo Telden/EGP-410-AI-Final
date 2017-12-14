@@ -22,7 +22,7 @@ bool UiManager::init()
 	}
 
 	//actually load the font
-	mpFont = al_load_ttf_font("cour.ttf", 20, 0);
+	mpFont = al_load_ttf_font("cour.ttf", 40, 0);
 	if (mpFont == NULL)
 	{
 		printf("ttf font file not loaded properly!\n");
@@ -39,9 +39,10 @@ void UiManager::cleanup()
 	mpFont = NULL;
 }
 
-void UiManager::update()
+void UiManager::update(int score)
 {
 	drawPointerText();
+   drawScore(score);
 	if (mShouldDraw)
 		drawDebugInfo();
 }
@@ -207,4 +208,12 @@ void UiManager::drawDebugInfo()
 	tmpText << "LCTRL + S: Save Settings ";
 	al_draw_text(mpFont, al_map_rgb(mRed, mGreen, mBlue), 30, 270, ALLEGRO_ALIGN_LEFT, tmpText.str().c_str());
 	tmpText.str("");
+}
+
+// a function to draw the score on the screen
+void UiManager::drawScore(int score)
+{
+   std::stringstream tmpText;
+   tmpText << "$" << score;
+   al_draw_text(mpFont, al_map_rgb(0, 0, 0), 30, 40, ALLEGRO_ALIGN_LEFT, tmpText.str().c_str());
 }
