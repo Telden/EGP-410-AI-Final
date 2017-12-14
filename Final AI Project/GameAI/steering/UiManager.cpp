@@ -1,6 +1,8 @@
 #include "UiManager.h"
 #include <sstream>
 
+#include "Game.h"
+
 UiManager::UiManager()
 {
 	mpFont = NULL;
@@ -213,7 +215,12 @@ void UiManager::drawDebugInfo()
 // a function to draw the score on the screen
 void UiManager::drawScore(int score)
 {
-   std::stringstream tmpText;
-   tmpText << "$" << score;
+   // display the current score
+   std::stringstream tmpText, tmpText2;
+   tmpText << "$" << gpGame->getScore();
    al_draw_text(mpFont, al_map_rgb(0, 0, 0), 30, 40, ALLEGRO_ALIGN_LEFT, tmpText.str().c_str());
+
+   // display the previous high score
+   tmpText2 << "HiScore: " << gpGame->getHighScore();
+   al_draw_text(mpFont, al_map_rgb(0, 0, 0), 512, 40, ALLEGRO_ALIGN_LEFT, tmpText2.str().c_str());
 }

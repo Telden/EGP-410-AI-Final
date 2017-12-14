@@ -32,6 +32,8 @@ const std::string FX_PATH_SHINE = "sound/sfxShine.wav";
 const std::string FX_PATH_ALARM = "sound/sfxAlarm.wav";
 const std::string MUS_PATH = "sound/bgmMusic.wav";
 
+const std::string HIGH_SCORE_PATH = "data/highscore.txt";
+
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
 
 class Game:public Trackable

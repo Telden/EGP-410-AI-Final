@@ -14,6 +14,7 @@
 #include "GameMessageManager.h"
 #include "GameMessage.h"
 #include "SwitchMapMessage.h"
+#include "EndGameMessage.h"
 
 //Remove later
 #include "Game.h"
@@ -28,10 +29,12 @@ PlayerMovement::PlayerMovement(KinematicUnit* pMover)
 
 Steering* PlayerMovement::getSteering()
 {
+   // do our collision tests
    bool test = mCol.circleOnWall(mpMover->getPosition(), 20);
    bool doorTest = mCol.circleOnDoor(mpMover->getPosition(), 50);
    bool waterTest = mCol.circleOnWater(mpMover->getPosition(), 20);
 
+   // check if we've collided with a door
    if (doorTest)
    {
 	   std::vector<Connection*> connections = GRAPH->getConnections(UNIT_MANAGER->getPlayerUnit()->getLastNode()->getId()); 
@@ -44,18 +47,19 @@ Steering* PlayerMovement::getSteering()
 			   MESSAGE_MANAGER->addMessage(pMessage, 0);
 		   }
 	   }
-
    }
 	  
    std::vector<KinematicUnit*> unitList;
    unitList = UNIT_MANAGER->getUnitList();
 
-   if (test &&  mWallCooldown==0)
+   // check if we've collided with a wall
+   if (test && mWallCooldown==0)
    {
-	   std::cout << "player detecting wall - circ x rect" << std::endl;
-		   mLinear = (mpMover->getOrientationAsVector() * mCurrentAcceleration)  *-1;
-		   mCurrentAcceleration *= -0.5;
-		   mWallCooldown = 5;
+      // we need a cooldown here or else the player will get stuck
+	   //std::cout << "player detecting wall - circ x rect" << std::endl;
+		mLinear = (mpMover->getOrientationAsVector() * mCurrentAcceleration)  *-1;
+		mCurrentAcceleration *= -0.5;
+		mWallCooldown = 5;
 	   return this;
    }
    else
@@ -63,13 +67,16 @@ Steering* PlayerMovement::getSteering()
 	   if (mWallCooldown > 0)
 		   mWallCooldown--;
    }
-     
+   
+   // check collision with each water
    if (waterTest)
    {
-      std::cout << "water!" << std::endl;
-      // player is dead
+      std::cout << "--- GAME OVER ---" << std::endl;
+      GameMessage* pMessage = new EndGameMessage();
+      MESSAGE_MANAGER->addMessage(pMessage, 0);
    }
    
+   // check collision with each enemy
    for (unsigned int i = 0; i < unitList.size(); i++)
    {
 	   if (unitList[i]->mCurrentLevel == gpGame->getCurrentLevel())
@@ -77,14 +84,17 @@ Steering* PlayerMovement::getSteering()
 		   test = mCol.circleOnCircle(mpMover->getPosition(), spriteWidthandHeight, unitList[i]->getPosition(), spriteWidthandHeight);
 	   }
    }
+
+   // actually test to see if an enemy was detected
+   if (test)
+   {
+      std::cout << "--- GAME OVER ---" << std::endl;
+      GameMessage* pMessage = new EndGameMessage();
+      MESSAGE_MANAGER->addMessage(pMessage, 0);
+   }
    
-   if(test)
-	   std::cout << "player detecting enemy - circ x circ" << std::endl;
-   
-	//mLinear = 0;
+   // the actual movement
 	mAngular = previousAngle;
-	//std::cout << mCurrentAcceleration << "\n";
-	
 	if (mMoveBackwards || mMoveForwards || mMoveRight || mMoveLeft)
 	{
 		/* When move up key is pressed */

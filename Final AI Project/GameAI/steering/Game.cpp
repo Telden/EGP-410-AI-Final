@@ -9,6 +9,8 @@
 #include <allegro5/allegro_primitives.h>
 
 #include <sstream>
+#include <fstream>
+#include <iostream>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -200,11 +202,34 @@ bool Game::init()
    mpAudioManager->AddClip("alarm", FX_PATH_ALARM);
    mpAudioManager->AddMusic(MUS_PATH);
 
+   // get the high score from the file
+   std::ifstream fin;
+   fin.open(HIGH_SCORE_PATH);
+   if (!fin)
+   {
+      std::cout << "Failed to open " << HIGH_SCORE_PATH << std::endl;
+   }
+   fin >> mHighScore;
+   fin.close();
 	return true;
 }
 
 void Game::cleanup()
 {
+   // output the high score to the file
+   std::ofstream fout;
+   fout.open(HIGH_SCORE_PATH);
+   if (!fout)
+   {
+      std::cout << "Failed to open " << HIGH_SCORE_PATH << std::endl;
+   }
+   if (mCurrentScore > mHighScore)
+   {
+      std::cout << "Congratulations! " << mHighScore << " is your new high score!" << std::endl;
+      fout << mCurrentScore;
+   }
+   fout.close();
+
 	//Delete Unit Manager
 	delete mpUnitManager;
 
