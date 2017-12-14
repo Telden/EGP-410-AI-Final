@@ -18,7 +18,10 @@ class CircleCollision
 
       bool alreadyFoundWalls = false;
       bool alreadyFoundWater = false;
-	  bool alreadyFoundDoors = false;
+	   bool alreadyFoundDoors = false;
+
+      bool wallCollisionSuccess = false;
+      bool doorCollisionSuccess = false;
 
 	public:
 		CircleCollision();

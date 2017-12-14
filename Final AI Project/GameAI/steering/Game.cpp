@@ -28,8 +28,8 @@
 
 Game* gpGame = NULL;
 
-const int WIDTH = 1024;
-const int HEIGHT = 768;
+const int WIDTH = 1024; // /2 is 512
+const int HEIGHT = 768; // /2 is 384
 
 Game::Game()
 	:mpGraphicsSystem(NULL)

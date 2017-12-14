@@ -43,22 +43,42 @@ UnitManager::UnitManager()
 	mpPlayerSprite = SPRITE_MANAGER->getSprite(PLAYER_ICON_SPRITE_ID);
 	mpEnemySprite = SPRITE_MANAGER->getSprite(AI_ICON_SPRITE_ID);
 
-   WallUnit* pWall = new WallUnit(Vector2D(450, 450), Vector2D(500, 500), 0);
-   mpWalls.push_back(pWall);
+   // final game walls
+   // overworld walls
+      // top left
+      mpWalls.push_back(new WallUnit(Vector2D(100, 100), Vector2D(462, 334), 0));
+      // top right
+      mpWalls.push_back(new WallUnit(Vector2D(562, 100), Vector2D(924, 334), 0));
+      // bottom left
+      WallUnit* pWall = new WallUnit(Vector2D(100, 424), Vector2D(462, 668), 0);
+      mpWalls.push_back(pWall);
+      // bottom right
+      pWall = new WallUnit(Vector2D(562, 424), Vector2D(924, 668), 0);
+      mpWalls.push_back(pWall);
+   // underworld walls
+      // top
+      pWall = new WallUnit(Vector2D(0, 0), Vector2D(1024, 10), 1);
+      mpWalls.push_back(pWall);
+      // bottom
+      pWall = new WallUnit(Vector2D(0, 758), Vector2D(1024, 768), 1);
+      mpWalls.push_back(pWall);
+      // left
+      pWall = new WallUnit(Vector2D(0, 0), Vector2D(10, 768), 1);
+      mpWalls.push_back(pWall);
+      // right
+      pWall = new WallUnit(Vector2D(1004, 0), Vector2D(1014, 768), 1);
+      mpWalls.push_back(pWall);
 
-   pWall = new WallUnit(Vector2D(650, 650), Vector2D(500, 500), 1);
-   mpWalls.push_back(pWall);
-
-   WallUnit* pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 0);
+   // final game doors
+   // overworld doors
+   WallUnit* pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 20), 0);
    mpDoors.push_back(pDoor);
-
-   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 0);
+   pDoor = new WallUnit(Vector2D(480, 748), Vector2D(544, 768), 0);
    mpDoors.push_back(pDoor);
-
-   pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 18), 1);
+   // underworld doors
+   pDoor = new WallUnit(Vector2D(480, 0), Vector2D(544, 20), 1);
    mpDoors.push_back(pDoor);
-
-   pDoor = new WallUnit(Vector2D(480, 768), Vector2D(544, 736), 1);
+   pDoor = new WallUnit(Vector2D(480, 748), Vector2D(544, 768), 1);
    mpDoors.push_back(pDoor);
 
   
@@ -67,7 +87,7 @@ UnitManager::UnitManager()
   
 
 	Vector2D vel(0, 0);
-	Vector2D pos(180, 180);
+	Vector2D pos(512, 512);
 	mpPlayer = new Player(mpPlayerSprite, pos, 3.14, vel, 0, 180.0f, 100.0f);
 
 	Vector2D nodePos = GRAPH->getNode(0)->getPosision();

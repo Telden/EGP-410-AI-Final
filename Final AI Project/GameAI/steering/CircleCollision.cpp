@@ -44,43 +44,52 @@ bool CircleCollision::circleOnWall(Vector2D position, int spriteWidthHeight)
 						   position.getY() + (radius)
 					      );
 
-	for (unsigned int i = 0; i < walls.size(); i++)
+   wallCollisionSuccess = false;
+
+	for (unsigned int i = 0; i < mpUnitManager->getNumOfWalls(); i++)
 	{
+      // check to see if the wall is on the same level of the hierarchy
 		if (walls[i].wall->getLevel() == gpGame->getCurrentLevel())
 		{
-			al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+         // used for seeing the mid-point of the walls
+			//al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
 			// calculate distance between circle center and rectangle center
 			Vector2D distance;
 			distance.setX(abs(position.getX() - walls[i].rectCenter.getX()));
 			distance.setY(abs(position.getY() - walls[i].rectCenter.getY()));
 
+         // because break is breaking my collision, use a bool to keep track instead
+         bool breakplz = false;
+
 			// if distance is greater than half of the circle + half of the rectangle, no collision
 			if (distance.getX() > (walls[i].wall->getWidth() / 2) + radius)
 			{
 				// no collision
-				break;
+				breakplz = true;
 			}
 			if (distance.getY() > (walls[i].wall->getHeight() / 2) + radius)
 			{
 				// no collision
-				break;
+            breakplz = true;
 			}
 
-			// if distance is less than half of the rectangle, collision
-			if (distance.getX() <= (walls[i].wall->getWidth() / 2))
-			{
-				return true;
-			}
-			if (distance.getY() <= (walls[i].wall->getHeight() / 2))
-			{
-				return true;
-			}
+         // if we didn't "break" above, keep checking
+         if (!breakplz)
+         {
+			   // if distance is less than half of the rectangle, collision
+			   if (distance.getX() <= (walls[i].wall->getWidth() / 2))
+			   {
+				   wallCollisionSuccess = true;//return true;
+			   }
+			   if (distance.getY() <= (walls[i].wall->getHeight() / 2))
+			   {
+               wallCollisionSuccess = true;//return true;
+			   }
+         }
 		}
-		 
 	}
-
-	return false;
+   return wallCollisionSuccess;
 }
 
 // used for: enemy and water - player and water
@@ -149,65 +158,74 @@ bool CircleCollision::circleOnWater(Vector2D position, int spriteWidthHeight)
 
 bool CircleCollision::circleOnDoor(Vector2D position, int spriteWidthHeight)
 {
-	if (!alreadyFoundDoors)
-	{
-		mpUnitManager = UNIT_MANAGER;
+   if (!alreadyFoundDoors)
+   {
+      mpUnitManager = UNIT_MANAGER;
 
-		// calculate rectangle centers beforehand
-		for (int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
-		{
-			Vector2D tmp;
-			tmp.setX(mpUnitManager->getDoorUnit(i)->getTopLeft().getX() + (mpUnitManager->getDoorUnit(i)->getWidth() / 2));
-			tmp.setY(mpUnitManager->getDoorUnit(i)->getTopLeft().getY() + (mpUnitManager->getDoorUnit(i)->getHeight() / 2));
+      // calculate rectangle centers beforehand
+      for (int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
+      {
+         Vector2D tmp;
+         tmp.setX(mpUnitManager->getDoorUnit(i)->getTopLeft().getX() + (mpUnitManager->getDoorUnit(i)->getWidth() / 2));
+         tmp.setY(mpUnitManager->getDoorUnit(i)->getTopLeft().getY() + (mpUnitManager->getDoorUnit(i)->getHeight() / 2));
 
-			doors.push_back(BoxWithCenter(mpUnitManager->getDoorUnit(i), tmp));
-		}
-		alreadyFoundDoors = true;
-	}
-	float radius = spriteWidthHeight / 2;
+         doors.push_back(BoxWithCenter(mpUnitManager->getDoorUnit(i), tmp));
+      }
+      alreadyFoundDoors = true;
+   }
+   float radius = spriteWidthHeight / 2;
 
-	// calculate the midpoint from the actual position and sprite width/height (which are the same cause we're a circle)
-	Vector2D circCenter = (position.getX() + (radius),
-		position.getY() + (radius)
-		);
+   // calculate the midpoint from the actual position and sprite width/height (which are the same cause we're a circle)
+   Vector2D circCenter = (position.getX() + (radius),
+      position.getY() + (radius)
+      );
 
-	for (unsigned int i = 0; i < doors.size(); i++)
-	{
-		if (doors[i].wall->getLevel() == gpGame->getCurrentLevel())
-		{
-			al_draw_circle(doors[i].rectCenter.getX(), doors[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
+   doorCollisionSuccess = false;
 
-			// calculate distance between circle center and rectangle center
-			Vector2D distance;
-			distance.setX(abs(position.getX() - doors[i].rectCenter.getX()));
-			distance.setY(abs(position.getY() - doors[i].rectCenter.getY()));
+   for (unsigned int i = 0; i < mpUnitManager->getNumOfDoors(); i++)
+   {
+      // check to see if the wall is on the same level of the hierarchy
+      if (doors[i].wall->getLevel() == gpGame->getCurrentLevel())
+      {
+         // used for seeing the mid-point of the walls
+         //al_draw_circle(walls[i].rectCenter.getX(), walls[i].rectCenter.getY(), 50, al_map_rgb(255, 0, 0), 2);
 
-			// if distance is greater than half of the circle + half of the rectangle, no collision
-			if (distance.getX() >(doors[i].wall->getWidth() / 2) + radius)
-			{
-				// no collision
-				break;
-			}
-			if (distance.getY() > (doors[i].wall->getHeight() / 2) + radius)
-			{
-				// no collision
-				break;
-			}
+         // calculate distance between circle center and rectangle center
+         Vector2D distance;
+         distance.setX(abs(position.getX() - doors[i].rectCenter.getX()));
+         distance.setY(abs(position.getY() - doors[i].rectCenter.getY()));
 
-			// if distance is less than half of the rectangle, collision
-			if (distance.getX() <= (doors[i].wall->getWidth() / 2))
-			{
-				return true;
-			}
-			if (distance.getY() <= (doors[i].wall->getHeight() / 2))
-			{
-				return true;
-			}
-		}
-			
-	}
+         // because break is breaking my collision, use a bool to keep track instead
+         bool breakplz = false;
 
-	return false;
+         // if distance is greater than half of the circle + half of the rectangle, no collision
+         if (distance.getX() > (doors[i].wall->getWidth() / 2) + radius)
+         {
+            // no collision
+            breakplz = true;
+         }
+         if (distance.getY() > (doors[i].wall->getHeight() / 2) + radius)
+         {
+            // no collision
+            breakplz = true;
+         }
+
+         // if we didn't "break" above, keep checking
+         if (!breakplz)
+         {
+            // if distance is less than half of the rectangle, collision
+            if (distance.getX() <= (doors[i].wall->getWidth() / 2))
+            {
+               doorCollisionSuccess = true;//return true;
+            }
+            if (distance.getY() <= (doors[i].wall->getHeight() / 2))
+            {
+               doorCollisionSuccess = true;//return true;
+            }
+         }
+      }
+   }
+   return doorCollisionSuccess;
 }
 
 
