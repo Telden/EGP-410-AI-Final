@@ -12,7 +12,7 @@ private:
 
 	bool mKeyPressed = true;
 
-	/* Movmement Key Bools */
+	/* Key Bools */
 	bool mForwardKeyDown = false;
 	bool mBackwardsKeyDown = false;
 	bool mLeftKeyDown = false;
@@ -21,9 +21,9 @@ private:
 	bool mLeftClickDown = false;
 	bool mRightClickDown = false;
 	bool mMKeyDown = false;
+	bool mOKeyDown = false;
+	bool mPKeyDown = false;
 
-	std::string mCurrentSelection = "V";
-	char mInputSelection = 'V';
 public:
 	InputManager();
 	~InputManager();

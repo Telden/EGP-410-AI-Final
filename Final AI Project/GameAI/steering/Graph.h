@@ -17,9 +17,6 @@ public:
 	void init();
 	void loadNodes();
 	void loadConnections();
-	void createNode(Vector2D mousePos);
-	void deleteNode(Vector2D mousePos);
-	void removeConnections(NODE_ID targetID);
 
 	std::vector<Connection*> getConnections(const Node& from);
 	std::vector<Connection*> getConnections(const NODE_ID& fromId);

@@ -198,6 +198,12 @@
     <ClCompile Include="NodeRecord.cpp">
       <Filter>Pathfinding</Filter>
     </ClCompile>
+    <ClCompile Include="PoliceFlee.cpp">
+      <Filter>Header Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatePickupMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -396,6 +402,12 @@
     </ClInclude>
     <ClInclude Include="NodeRecord.h">
       <Filter>Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="PoliceFlee.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatePickupMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -15,5 +15,5 @@ CreateNodeMessage::~CreateNodeMessage()
 
 void CreateNodeMessage::process()
 {
-	GRAPH->createNode(mMousePos);
+	//GRAPH->createNode(mMousePos);
 }

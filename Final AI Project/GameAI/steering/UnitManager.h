@@ -40,6 +40,8 @@ public:
 	WallUnit* getDoorUnit(int index);
     PickupUnit* getPickupUnit(int index);
 
+	void createPickupUnit(Vector2D mousePos, int diameter, int mode, int level);
+
 	Player* getPlayerUnit() { return mpPlayer; };
 	int getNumOfWalls();
    int getNumOfWater() { return mpWater.size(); }
@@ -53,7 +55,6 @@ public:
 	
 	/* Update Functions */
 	void updateUnits(float time);
-	void updateUI();
 };
 #endif 
 
