@@ -31,6 +31,7 @@
 #include "Node.h"
 #include "WanderToNode.h"
 #include "PoliceSteering.h"
+#include "PoliceSeek.h"
 
 // Message headers
 #include "GameMessage.h"
@@ -76,8 +77,18 @@ UnitManager::UnitManager()
 
 	PoliceSteering* pPoliceSteering = new PoliceSteering(pUnit);
 	pUnit->setSteering(pPoliceSteering);
+
+	pUnit = new KinematicUnit(mpEnemySprite, nodePos, 3.14, vel, 0, 0, 144, 80);
+	mpUnits.push_back(pUnit);
+	PoliceSeek* pPoliceSeek = new PoliceSeek(pUnit, mpPlayer, 5);
+	pUnit->setSteering(pPoliceSeek);
+
 	pUnit = NULL;
 	pPoliceSteering = NULL;
+	pPoliceSeek = NULL;
+
+
+
 
 	PickupUnit* pPickup = new PickupUnit(GRAPH->getNode(4)->getPosision(), 20, 0);
 	mpPickups.push_back(pPickup);
@@ -116,7 +127,6 @@ void UnitManager::updateUnits(float time)
 {
 
 	mpPlayer->update(time);
-	mpPlayer->updateGridPosision();
 	mpPlayer->draw(GRAPHICS_SYSTEM->getBackBuffer());
 
 
