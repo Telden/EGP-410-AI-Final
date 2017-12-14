@@ -6,6 +6,7 @@
 class KinematicUnit;
 class Node;
 class AStarPathfinder;
+class Graph;
 class PoliceSeek : public Steering
 {
 public:
@@ -20,4 +21,6 @@ private:
 	Vector2D mTarget;
 	std::stack<Node*>mpNodeStack;
 	AStarPathfinder* mpAStar;
+	Graph* mpGraph;
+	Node* mpCurrentTarget;
 };

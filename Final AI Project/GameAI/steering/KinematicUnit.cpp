@@ -33,6 +33,7 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 	mCurrentLevel = level;
 	mpGraph = GRAPH;
 	mLastNode = GRAPH->getNode(0);
+	
 }
 
 KinematicUnit::~KinematicUnit()
