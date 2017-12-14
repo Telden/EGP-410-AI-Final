@@ -15,6 +15,7 @@
 #include "CreateNodeMessage.h"
 #include "DeleteNodeMessage.h"
 #include "SwitchMapMessage.h"
+#include "CreatePickupMessage.h"
 
 
 InputManager::InputManager()
@@ -146,18 +147,6 @@ void::InputManager::checkDebugInput()
 	pMessage = new UpdateMouseUiMessage(pos);
 	MESSAGE_MANAGER->addMessage(pMessage, 0);
 
-	if (al_mouse_button_down(&mouseState, 1) && !mLeftClickDown)//left mouse click
-	{
-		mLeftClickDown = true;
-		pMessage = new CreateNodeMessage(pos);
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
-	if (al_mouse_button_down(&mouseState, 2) && !mRightClickDown)//Right mouse click
-	{
-		mRightClickDown = true;
-		pMessage = new DeleteNodeMessage(pos);
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
 	if (al_key_down(&keyState, ALLEGRO_KEY_M) && !mMKeyDown)
 	{
 		mMKeyDown = true;
@@ -172,24 +161,38 @@ void::InputManager::checkDebugInput()
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
+	if (al_key_down(&keyState, ALLEGRO_KEY_O) && !mOKeyDown)
+	{
+		mOKeyDown = true;
+		pMessage = new CreatePickupMessage(pos, 20, 0, gpGame->getCurrentLevel());
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	if (al_key_down(&keyState, ALLEGRO_KEY_P) && !mPKeyDown)
+	{
+		mPKeyDown = true;
+		pMessage = new CreatePickupMessage(pos, 20, 1, gpGame->getCurrentLevel());
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	/* When the key is released */
 	if (!al_key_down(&keyState, ALLEGRO_KEY_B) && mDebugKeyDown)
 	{
 		mDebugKeyDown = false;
 	}
 
-	if (!al_mouse_button_down(&mouseState, 1) && mLeftClickDown)//left mouse click release
-	{
-		mLeftClickDown = false;
-
-	}
-	if (!al_mouse_button_down(&mouseState, 2) && mRightClickDown)//left mouse click release
-	{
-		mRightClickDown = false;
-
-	}
 	if (!al_key_down(&keyState, ALLEGRO_KEY_M) && mMKeyDown)
 	{
 		mMKeyDown = false;
 	}
 	
+	if (!al_key_down(&keyState, ALLEGRO_KEY_O) && mOKeyDown)
+	{
+		mOKeyDown = false;
+	}
+
+	if (!al_key_down(&keyState, ALLEGRO_KEY_P) && mPKeyDown)
+	{
+		mPKeyDown = true;
+	}
 }

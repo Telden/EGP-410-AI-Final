@@ -107,21 +107,8 @@ void GraphicsSystem::drawCircle(Vector2D center, int radius)
 
 void GraphicsSystem::drawMouse(Vector2D mousePos)
 {
-	int width = NODE_SIZE / 2;
-	int height = NODE_SIZE / 2;
 
-	Vector2D topLeft;
-	Vector2D bottomRight;
-
-	topLeft.setX(mousePos.getX() - width);
-	topLeft.setY(mousePos.getY() - height);
-
-	bottomRight.setX(mousePos.getX() + width);
-	bottomRight.setY(mousePos.getY() + height);
-
-	al_draw_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), al_map_rgb(255, 0, 0), 1);
-
-	al_draw_circle(mousePos.getX(), mousePos.getY(), 2, al_map_rgb(255, 0, 0), 1);
+	al_draw_circle(mousePos.getX(), mousePos.getY(), 20, al_map_rgb(255, 0, 0), 1);
 }
 
 void GraphicsSystem::drawSewerNode(Vector2D topLeft, Vector2D bottomRight)

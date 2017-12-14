@@ -31,9 +31,12 @@
 #include "Node.h"
 #include "WanderToNode.h"
 #include "PoliceSteering.h"
+<<<<<<< HEAD
 #include "allegro5\allegro_primitives.h"
+=======
 #include "PoliceSeek.h"
 #include "PoliceFlee.h"
+>>>>>>> Astar_implementation
 
 // Message headers
 #include "GameMessage.h"
@@ -162,7 +165,6 @@ void UnitManager::updateUnits(float time)
 {
 
 	mpPlayer->update(time);
-	mpPlayer->updateGridPosision();
 	mpPlayer->draw(GRAPHICS_SYSTEM->getBackBuffer());
 
 

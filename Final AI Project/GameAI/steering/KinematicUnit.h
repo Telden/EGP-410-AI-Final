@@ -15,7 +15,8 @@ class Sprite;
 class GraphicsBuffer;
 class BlendedSteering;
 class CollisionAvoidance;
-
+class Node;
+class Graph;
 extern Steering gNullSteering;//global object - can point to it for a "NULL" Steering
 
 //minmimum forward speed a unit has to have inorder to rotate 
@@ -39,7 +40,7 @@ public:
 	void setMaxVelocity(float maxVelocity) { mMaxVelocity = maxVelocity; };
 	virtual void setNewOrientation();//face the direction you are moving
 	Steering* getSteering() { return mpCurrentSteering; };
-
+	Node*  getLastNode() { return mLastNode; };
 	//draw yourself to the indicated buffer
 	void draw( GraphicsBuffer* pBuffer );
 	//move according to the current velocities and update velocities based on current Steering
@@ -59,8 +60,12 @@ public:
 	BlendedSteering* blendedSteering(KinematicUnit* pTarget);
 	CollisionAvoidance* collisionAvoidance(KinematicUnit* pUnit, float radius);
 	void kinematicWander();
-   void policeSteering();
+    void policeSteering();
 	void setSteering(Steering* pSteering);
+	void updateGridPosition();
+
+
+
 	int mCurrentLevel;
 
 private:
@@ -69,6 +74,8 @@ private:
 	Vector2D mTarget;//used only for Kinematic seek and arrive
 	float mMaxVelocity;
 	float mMaxAcceleration;
+	Graph* mpGraph;
+	Node* mLastNode;
 	
 
 };

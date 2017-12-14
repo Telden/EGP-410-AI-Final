@@ -13,6 +13,8 @@
 #include "BlendedSteering.h"
 #include "CollisionAvoidance.h"
 #include "PoliceSteering.h"
+#include "Node.h"
+#include "Graph.h"
 
 //Dual AI
 #include "DynamicWanderAndSeek.h"
@@ -29,6 +31,9 @@ KinematicUnit::KinematicUnit(Sprite *pSprite, const Vector2D &position, float or
 ,mMaxAcceleration(maxAcceleration)
 {
 	mCurrentLevel = level;
+	mpGraph = GRAPH;
+	mLastNode = GRAPH->getNode(0);
+	
 }
 
 KinematicUnit::~KinematicUnit()
@@ -44,6 +49,7 @@ void KinematicUnit::draw( GraphicsBuffer* pBuffer )
 
 void KinematicUnit::update(float time)
 {
+	updateGridPosition();
 	Steering* steering;
 	if( mpCurrentSteering != NULL )
 	{
@@ -79,6 +85,26 @@ void KinematicUnit::update(float time)
 	//setNewOrientation();
 }
 
+void KinematicUnit::updateGridPosition()
+{
+	Node* checkNode;
+
+
+	for (unsigned int i = 0; i < mpGraph->getNumNodes(); i++)
+	{
+		checkNode = mpGraph->getNode(i);
+		if (checkNode->getLevel() == mCurrentLevel)
+			if (this->getPosition().getX() > checkNode->getTopLeftCorner().getX() && this->getPosition().getY() > checkNode->getTopLeftCorner().getY() &&
+				this->getPosition().getX() < checkNode->getBottomRightCorner().getX() && this->getPosition().getY() < checkNode->getBottomRightCorner().getY())
+			{
+				mLastNode = checkNode;
+				//std::cout << "Current node is now: " << mLastNode->getId();
+				mCurrentLevel = checkNode->getLevel();
+			}
+	}
+}
+
+
 //private - deletes old Steering before setting
 void KinematicUnit::setSteering( Steering* pSteering )
 {
@@ -90,6 +116,9 @@ void KinematicUnit::setNewOrientation()
 { 
 	mOrientation = getOrientationFromVelocity( mOrientation, mVelocity ); 
 }
+
+
+
 
 void KinematicUnit::seek(const Vector2D &target)
 {

@@ -30,11 +30,17 @@ Steering* WanderToNode::getSteering()
 	if (distance < mArrivalRadius)
 	{
 		potentialConnections = mpGraphPtr->getConnections(mpTargetNode->getId());
-		seed = rand() % potentialConnections.size();
-		mpCurrentNode = mpTargetNode;
-		mpTargetNode = potentialConnections[seed]->getToNode();
+		if (potentialConnections.size() != 0)
+		{
+			seed = rand() % potentialConnections.size();
+			mpCurrentNode = mpTargetNode;
+			mpTargetNode = potentialConnections[seed]->getToNode();
+		}
+		
 		
 	}
+	if (mpTargetNode->getLevel() != mpMover->mCurrentLevel)
+		mpMover->mCurrentLevel = mpTargetNode->getLevel();
 
 	mLinear = mpTargetNode->getPosision() - mpMover->getPosition();
 	mLinear.normalize();

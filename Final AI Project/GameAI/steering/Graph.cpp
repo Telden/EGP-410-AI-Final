@@ -14,7 +14,14 @@ Graph::Graph()
 
 Graph::~Graph()
 {
-
+	for (unsigned int i = 0; i < mpNodes.size(); i++)
+	{
+		delete mpNodes[i];
+	}
+	for (unsigned int i = 0; i < mpConnections.size(); i++)
+	{
+		delete mpConnections[i];
+	}
 }
 
 void Graph::init()
@@ -138,19 +145,6 @@ Node* Graph::getNode(int index)
 	}
 }
 
-//Node* Graph::getNode(const NODE_ID& nodeID)
-//{
-//	std::map< NODE_ID, Node*>::iterator iter = mpNodeMap.find(nodeID);
-//	if (iter == mpNodeMap.end())
-//	{
-//		std::cout << "ERROR: Could not find node with given node ID\n";
-//	}
-//	else
-//	{
-//		return iter->second;
-//	}
-//}
-
 
 void Graph::renderGraph()
 {
@@ -164,67 +158,4 @@ void Graph::renderGraph()
 	
 }
 
-void Graph::createNode(Vector2D mousePos)
-{
-	Node* pNode;
-	const NODE_ID nodeID = lastID += 1;
-	
-	pNode = new Node(mousePos.getX(), mousePos.getY(), 0, nodeID);
-	mpNodes.push_back(pNode);
-}
 
-void Graph::deleteNode(Vector2D mousePos)
-{
-	Vector2D  topleft;
-	Vector2D bottomRight;
-	Node* pTarget;
-	NODE_ID targetID;
-	unsigned int i = 0;
-	bool nodeFound = false;
-	for (i; i < mpNodes.size(); i++)
-	{
-		//cache the bottom right, top  left corners 
-		topleft = mpNodes[i]->getTopLeftCorner();
-		bottomRight = mpNodes[i]->getBottomRightCorner();
-
-		if (mousePos.getX() >= topleft.getX() && mousePos.getY() >= topleft.getY() &&
-			mousePos.getX() <= bottomRight.getX() && mousePos.getY() <= bottomRight.getY())
-		{
-			targetID = mpNodes[i]->getId();
-			std::cout << "Deleting node " << mpNodes[i]->getId() << std::endl;
-			nodeFound = true;
-			break;
-		}
-	}
-
-	
-	if (nodeFound)
-	{
-		removeConnections(targetID);
-		mpNodes.erase(mpNodes.begin() + i);
-	}
-		
-	
-
-}
-
-void Graph::removeConnections(NODE_ID targetID)
-{
-	std::stack<int> indexes;
-	int toDelete;
-	for (unsigned int i = 0; i < mpConnections.size(); i++)
-	{
-		if (mpConnections[i]->getFromNode()->getId() == targetID || mpConnections[i]->getToNode()->getId() == targetID)
-		{
-			toDelete = i;
-			indexes.push(toDelete);
-		}
-	}
-
-	while (!indexes.empty())
-	{
-		toDelete = indexes.top();
-		mpConnections.erase(mpConnections.begin() + toDelete);
-		indexes.pop();
-	}
-}

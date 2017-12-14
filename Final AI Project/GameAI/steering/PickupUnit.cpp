@@ -10,11 +10,12 @@
 #include "AddToScoreMessage.h"
 
 // mode is 0 for regular score, 1 for a powerup
-PickupUnit::PickupUnit(Vector2D position, int radius, int mode)
+PickupUnit::PickupUnit(Vector2D position, int radius, int mode, int level)
    :Kinematic(position, 0, 0, 0) // initializing velocity, orientation, and rotational velocity as 0
 {
    mRadius = radius;
    mMode = mode;
+   mLevel = level;
 }
 
 PickupUnit::~PickupUnit()
@@ -41,17 +42,38 @@ void PickupUnit::update()
 			mActive = false;
          pMessage = new PlaySoundMessage("shine");
          MESSAGE_MANAGER->addMessage(pMessage, 0);
+		 switch (mMode)
+		 {
+		 case 0:
+			 pMessage = new AddToScoreMessage(100);
+			 MESSAGE_MANAGER->addMessage(pMessage, 0);
+			 break;
+		 case 1:
+			 //Powerup player;
+			 break;
+		 }
+			
 
-         pMessage = new AddToScoreMessage(100);
-         MESSAGE_MANAGER->addMessage(pMessage, 0);
 		}
 
+	}
+	else
+	{
+		if (mRespawnTime > 0)
+			mRespawnTime--;
+		else
+		{
+			mActive = true;
+			mRespawnTime = mResetRespawnTime;
+		}
+			
+			
 	}
 	
 }
 void PickupUnit::draw()
 {
-	if(mActive)
+	if(mActive && gpGame->getCurrentLevel() == mLevel)
 		gpGame->getGraphicsSystem()->drawCircle(mPosition, mRadius / 2);
 }
 

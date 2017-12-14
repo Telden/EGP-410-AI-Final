@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="AddToScoreMessage.h" />
     <ClInclude Include="Allignment.h" />
+    <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="BehaviorandWeight.h" />
     <ClInclude Include="BlendedSteering.h" />
@@ -22,7 +23,9 @@
     <ClInclude Include="CollisionAvoidance.h" />
     <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="Connection.h" />
+    <ClInclude Include="CreatePickupMessage.h" />
     <ClInclude Include="DeadSteering.h" />
+    <ClInclude Include="NodeRecord.h" />
     <ClInclude Include="PickupUnit.h" />
     <ClInclude Include="CreateBoidFlock.h" />
     <ClInclude Include="CreateDynamicArrive.h" />
@@ -59,6 +62,8 @@
     <ClInclude Include="PlayerMovement.h" />
     <ClInclude Include="PlayerMoveToMessage.h" />
     <ClInclude Include="PlaySoundMessage.h" />
+    <ClInclude Include="PoliceFlee.h" />
+    <ClInclude Include="PoliceSeek.h" />
     <ClInclude Include="PoliceSteering.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="SaveSettingsMessage.h" />
@@ -83,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="AddToScoreMessage.cpp" />
     <ClCompile Include="Allignment.cpp" />
+    <ClCompile Include="AStarPathfinder.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="BlendedSteering.cpp" />
     <ClCompile Include="ChangeUnitValue.cpp" />
@@ -91,7 +97,9 @@
     <ClCompile Include="CollisionAvoidance.cpp" />
     <ClCompile Include="CollisionDetector.cpp" />
     <ClCompile Include="Connection.cpp" />
+    <ClCompile Include="CreatePickupMessage.cpp" />
     <ClCompile Include="DeadSteering.cpp" />
+    <ClCompile Include="NodeRecord.cpp" />
     <ClCompile Include="PickupUnit.cpp" />
     <ClCompile Include="CreateBoidFlock.cpp" />
     <ClCompile Include="CreateBoidMessage.cpp" />
@@ -129,6 +137,8 @@
     <ClCompile Include="PlayerMovement.cpp" />
     <ClCompile Include="PlayerMoveToMessage.cpp" />
     <ClCompile Include="PlaySoundMessage.cpp" />
+    <ClCompile Include="PoliceFlee.cpp" />
+    <ClCompile Include="PoliceSeek.cpp" />
     <ClCompile Include="PoliceSteering.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="SaveSettingsMessage.cpp" />

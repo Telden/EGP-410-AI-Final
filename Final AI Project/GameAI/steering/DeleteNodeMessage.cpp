@@ -14,5 +14,5 @@ DeleteNodeMessage::~DeleteNodeMessage()
 
 void DeleteNodeMessage::process()
 {
-	GRAPH->deleteNode(mMousePos);
+	//GRAPH->deleteNode(mMousePos);
 }
